@@ -114,11 +114,11 @@ export default function Header() {
 
   return (
     <nav className="bg-white/95 backdrop-blur-md border-b border-slate-200/50 sticky top-0 z-50 shadow-soft">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-18">
-          <div className="flex items-center space-x-4">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8">
+        <div className="flex items-center justify-between h-14 sm:h-16 lg:h-18">
+          <div className="flex items-center space-x-2 sm:space-x-4">
             <div className="relative group">
-              <div className="w-12 h-12 bg-gradient-primary rounded-2xl flex items-center justify-center shadow-glow group-hover:shadow-glow-lg transition-all duration-300 transform group-hover:scale-105 p-2">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-gradient-primary rounded-xl sm:rounded-2xl flex items-center justify-center shadow-glow group-hover:shadow-glow-lg transition-all duration-300 transform group-hover:scale-105 p-1.5 sm:p-2">
                 {/* Mini mosaïque 3x3 */}
                 <div className="grid grid-cols-3 gap-0.5 w-full h-full">
                   <div className="bg-white rounded-sm"></div>
@@ -132,11 +132,11 @@ export default function Header() {
                   <div className="bg-white rounded-sm"></div>
                 </div>
               </div>
-              <div className="absolute -inset-1 bg-gradient-primary rounded-2xl opacity-20 group-hover:opacity-30 transition-opacity blur"></div>
+              <div className="absolute -inset-1 bg-gradient-primary rounded-xl sm:rounded-2xl opacity-20 group-hover:opacity-30 transition-opacity blur"></div>
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-2xl font-bold text-slate-900">La Grande</h1>
-              <span className="text-blue-700 font-bold text-sm tracking-wider">MOSAÏQUE</span>
+              <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-slate-900">La Grande</h1>
+              <span className="text-blue-700 font-bold text-xs sm:text-sm tracking-wider">MOSAÏQUE</span>
             </div>
           </div>
           
@@ -170,29 +170,29 @@ export default function Header() {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
               </button>
               
-              {/* Menu déroulant horizontal centré */}
-              <div className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[900px] bg-white rounded-2xl shadow-strong border border-slate-200/50 backdrop-blur-md transition-all duration-300 origin-top z-50 ${
+              {/* Menu déroulant horizontal centré - Responsive */}
+              <div className={`absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[280px] sm:w-[400px] md:w-[600px] lg:w-[800px] xl:w-[900px] bg-white rounded-xl sm:rounded-2xl shadow-strong border border-slate-200/50 backdrop-blur-md transition-all duration-300 origin-top z-50 ${
                 isActualitesDropdownOpen 
                   ? 'opacity-100 scale-100 translate-y-0 -translate-x-1/2' 
                   : 'opacity-0 scale-95 -translate-y-2 -translate-x-1/2 pointer-events-none'
               }`}>
-                <div className="p-6">
+                <div className="p-3 sm:p-4 lg:p-6">
                   {/* Header du menu */}
-                  <div className="flex items-center justify-between mb-6 pb-4 border-b border-slate-200">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6 pb-3 sm:pb-4 border-b border-slate-200">
                     <div>
-                      <h3 className="text-xl font-bold text-slate-900 mb-1">Catégories d&apos;Actualités</h3>
-                      <p className="text-sm text-slate-600">Explorez toutes nos catégories de contenu</p>
+                      <h3 className="text-base sm:text-lg lg:text-xl font-bold text-slate-900 mb-1">Catégories d&apos;Actualités</h3>
+                      <p className="text-xs sm:text-sm text-slate-600">Explorez toutes nos catégories de contenu</p>
                     </div>
-                    <div className="text-right">
-                      <span className="text-xs bg-blue-100 text-blue-700 px-3 py-1.5 rounded-full font-semibold">
+                    <div className="text-left sm:text-right mt-2 sm:mt-0">
+                      <span className="text-xs bg-blue-100 text-blue-700 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full font-semibold">
                         {actualitesCategories.reduce((total, cat) => total + cat.count, 0)} articles
                       </span>
                       <p className="text-xs text-slate-500 mt-1">Au total</p>
                     </div>
                   </div>
                   
-                  {/* Grille horizontale des catégories */}
-                  <div className="grid grid-cols-5 gap-3 mb-6">
+                  {/* Grille horizontale des catégories - Responsive */}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3 mb-4 sm:mb-6">
                     {actualitesCategories.map((category, index) => {
                       // Mapping des noms de catégories vers les clés des données
                       const getCategoryKey = (name: string): string => {
@@ -223,35 +223,35 @@ export default function Header() {
                         >
                           <a
                             href={category.href}
-                            className="flex flex-col items-center text-center p-3 rounded-xl hover:bg-blue-50 transition-all duration-200 border border-transparent hover:border-blue-200/50 hover:shadow-md min-h-[160px]"
+                            className="flex flex-col items-center text-center p-2 sm:p-3 rounded-lg sm:rounded-xl hover:bg-blue-50 transition-all duration-200 border border-transparent hover:border-blue-200/50 hover:shadow-md min-h-[120px] sm:min-h-[140px] lg:min-h-[160px]"
                           >
-                            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center group-hover/item:scale-110 transition-transform duration-200 shadow-md mb-2">
-                              <category.icon className="w-5 h-5 text-white" />
+                            <div className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-md sm:rounded-lg flex items-center justify-center group-hover/item:scale-110 transition-transform duration-200 shadow-md mb-1 sm:mb-2">
+                              <category.icon className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-white" />
                             </div>
                             
                             <div className="w-full flex-1 flex flex-col">
-                              <div className="flex items-center justify-center space-x-1 mb-1">
-                                <span className="text-sm font-bold text-slate-900 group-hover/item:text-blue-700 transition-colors">
+                              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center sm:space-x-1 mb-1">
+                                <span className="text-xs sm:text-sm font-bold text-slate-900 group-hover/item:text-blue-700 transition-colors">
                                   {category.name}
                                 </span>
-                                <span className="text-xs bg-slate-100 text-slate-600 px-1.5 py-0.5 rounded-full font-medium">
+                                <span className="text-xs bg-slate-100 text-slate-600 px-1 sm:px-1.5 py-0.5 rounded-full font-medium mt-0.5 sm:mt-0">
                                   {category.count}
                                 </span>
                               </div>
                               
-                              <div className="text-xs text-slate-500 group-hover/item:text-slate-600 transition-colors mb-2 line-clamp-2 leading-relaxed">
+                              <div className="text-xs text-slate-500 group-hover/item:text-slate-600 transition-colors mb-1 sm:mb-2 line-clamp-2 leading-relaxed hidden sm:block">
                                 {category.description}
                               </div>
                               
-                              <div className="text-xs text-blue-600 font-medium line-clamp-2 group-hover/item:text-blue-700 mt-auto">
+                              <div className="text-xs text-blue-600 font-medium line-clamp-2 group-hover/item:text-blue-700 mt-auto hidden md:block">
                                 📰 {category.latestArticle}
                               </div>
                             </div>
                           </a>
 
-                          {/* Aperçu des actualités au survol */}
+                          {/* Aperçu des actualités au survol - Hidden on small screens */}
                           {hoveredCategory === categoryKey && categoryArticles.length > 0 && (
-                            <div className="absolute top-0 left-full ml-3 w-80 bg-white rounded-xl shadow-strong border border-slate-200/50 backdrop-blur-md z-[60] transition-all duration-300">
+                            <div className="absolute top-0 left-full ml-3 w-80 bg-white rounded-xl shadow-strong border border-slate-200/50 backdrop-blur-md z-[60] transition-all duration-300 hidden lg:block">
                               <div className="p-4">
                                 <div className="flex items-center space-x-2 mb-3 pb-2 border-b border-slate-200">
                                   <category.icon className="w-5 h-5 text-blue-600" />
@@ -309,25 +309,25 @@ export default function Header() {
                     })}
                   </div>
                   
-                  {/* Section trending et CTA en bas */}
-                  <div className="grid grid-cols-2 gap-6">
+                  {/* Section trending et CTA en bas - Responsive */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 lg:gap-6">
                     {/* Section trending */}
-                    <div className="p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border border-blue-100">
+                    <div className="p-3 sm:p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg sm:rounded-xl border border-blue-100">
                       <div className="flex items-center space-x-2 mb-2">
-                        <div className="w-6 h-6 bg-gradient-to-r from-orange-400 to-red-500 rounded-full flex items-center justify-center">
+                        <div className="w-5 h-5 sm:w-6 sm:h-6 bg-gradient-to-r from-orange-400 to-red-500 rounded-full flex items-center justify-center">
                           <span className="text-xs text-white font-bold">🔥</span>
                         </div>
-                        <span className="text-sm font-bold text-slate-900">Trending Aujourd&apos;hui</span>
+                        <span className="text-xs sm:text-sm font-bold text-slate-900">Trending Aujourd&apos;hui</span>
                       </div>
-                      <p className="text-xs text-slate-600 mb-3">Les sujets les plus chauds du moment</p>
-                      <div className="flex flex-wrap gap-2">
+                      <p className="text-xs text-slate-600 mb-2 sm:mb-3">Les sujets les plus chauds du moment</p>
+                      <div className="flex flex-wrap gap-1 sm:gap-2">
                         <span className="inline-flex items-center px-2 py-1 bg-white rounded-full text-xs font-medium text-slate-700 border border-slate-200">
                           #KinshasaFestival
                         </span>
                         <span className="inline-flex items-center px-2 py-1 bg-white rounded-full text-xs font-medium text-slate-700 border border-slate-200">
                           #CongoleseMusic
                         </span>
-                        <span className="inline-flex items-center px-2 py-1 bg-white rounded-full text-xs font-medium text-slate-700 border border-slate-200">
+                        <span className="inline-flex items-center px-2 py-1 bg-white rounded-full text-xs font-medium text-slate-700 border border-slate-200 hidden sm:inline-flex">
                           #ArtisteDuMois
                         </span>
                       </div>
@@ -335,15 +335,16 @@ export default function Header() {
                     
                     {/* CTA */}
                     <div className="flex flex-col justify-center">
-                      <h4 className="text-sm font-bold text-slate-900 mb-2">Découvrez Plus</h4>
-                      <p className="text-xs text-slate-600 mb-4">Accédez à toutes nos actualités et restez informé de l&apos;actualité culturelle congolaise</p>
+                      <h4 className="text-xs sm:text-sm font-bold text-slate-900 mb-2">Découvrez Plus</h4>
+                      <p className="text-xs text-slate-600 mb-3 sm:mb-4 hidden sm:block">Accédez à toutes nos actualités et restez informé de l&apos;actualité culturelle congolaise</p>
                       <a 
                         href="/actualites" 
-                        className="flex items-center justify-center space-x-2 w-full py-3 bg-gradient-primary text-white rounded-xl font-semibold hover:shadow-glow transition-all duration-300 transform hover:scale-105"
+                        className="flex items-center justify-center space-x-2 w-full py-2 sm:py-3 bg-gradient-primary text-white rounded-lg sm:rounded-xl font-semibold hover:shadow-glow transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm"
                       >
-                        <TrendingUp className="w-5 h-5" />
-                        <span>Voir Toutes les Actualités</span>
-                        <ArrowRight className="w-4 h-4" />
+                        <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <span className="hidden sm:inline">Voir Toutes les Actualités</span>
+                        <span className="sm:hidden">Toutes les Actualités</span>
+                        <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
                       </a>
                     </div>
                   </div>
@@ -352,16 +353,131 @@ export default function Header() {
             </div>
           </div>
 
-          <div className="flex items-center space-x-4">
-            <button className="text-slate-700 hover:text-blue-700 transition-colors font-medium hidden sm:block">
-              Connexion
+          <div className="flex items-center space-x-2 sm:space-x-4">
+            {/* Menu Hamburger pour mobile */}
+            <button 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="lg:hidden p-2 text-slate-700 hover:text-blue-700 transition-colors"
+              aria-label="Menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
             </button>
-            <button className="bg-gradient-primary text-white px-6 py-2.5 rounded-xl font-semibold hover:shadow-glow transition-all duration-300 transform hover:scale-105 flex items-center space-x-2">
-              <Sparkles className="w-4 h-4" />
-              <span>Rejoindre</span>
-            </button>
+
+            {/* Boutons desktop */}
+            <div className="hidden sm:flex items-center space-x-2 lg:space-x-4">
+              <button className="text-slate-700 hover:text-blue-700 transition-colors font-medium text-sm lg:text-base">
+                Connexion
+              </button>
+              <button className="bg-gradient-primary text-white px-3 sm:px-4 lg:px-6 py-1.5 sm:py-2 lg:py-2.5 rounded-lg sm:rounded-xl font-semibold hover:shadow-glow transition-all duration-300 transform hover:scale-105 flex items-center space-x-1 sm:space-x-2 text-sm lg:text-base">
+                <Sparkles className="w-3 h-3 sm:w-4 sm:h-4" />
+                <span className="hidden sm:inline">Rejoindre</span>
+                <span className="sm:hidden">+</span>
+              </button>
+            </div>
+
+            {/* Bouton mobile simplifié */}
+            <div className="sm:hidden">
+              <button className="bg-gradient-primary text-white px-3 py-1.5 rounded-lg font-semibold flex items-center">
+                <Sparkles className="w-3 h-3" />
+              </button>
+            </div>
           </div>
         </div>
+
+        {/* Menu Mobile */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden border-t border-slate-200 bg-white/95 backdrop-blur-md">
+            <div className="px-3 py-4 space-y-3">
+              {/* Navigation principale */}
+              <div className="space-y-2">
+                <a href="/artistes" className="block px-3 py-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors font-medium">
+                  🎨 Artistes
+                </a>
+                <a href="/culture" className="block px-3 py-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors font-medium">
+                  🏛️ Culture
+                </a>
+                <a href="/sports" className="block px-3 py-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors font-medium">
+                  ⚽ Sports
+                </a>
+                <a href="/votes" className="block px-3 py-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors font-medium">
+                  🗳️ Votez Vos Artistes
+                </a>
+                
+                {/* Actualités avec sous-menu */}
+                <div>
+                  <button 
+                    onClick={() => setIsMobileActualitesOpen(!isMobileActualitesOpen)}
+                    className="w-full flex items-center justify-between px-3 py-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors font-medium"
+                  >
+                    <span>📰 Actualités</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform ${isMobileActualitesOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {/* Sous-menu actualités */}
+                  {isMobileActualitesOpen && (
+                    <div className="mt-2 ml-4 space-y-1">
+                      {actualitesCategories.slice(0, 6).map((category) => (
+                        <a
+                          key={category.name}
+                          href={category.href}
+                          className="flex items-center space-x-2 px-3 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                        >
+                          <category.icon className="w-4 h-4" />
+                          <span>{category.name}</span>
+                          <span className="text-xs bg-slate-200 text-slate-600 px-1.5 py-0.5 rounded-full">
+                            {category.count}
+                          </span>
+                        </a>
+                      ))}
+                      <a
+                        href="/actualites"
+                        className="flex items-center space-x-2 px-3 py-2 text-sm text-blue-600 font-semibold hover:bg-blue-50 rounded-lg transition-colors"
+                      >
+                        <TrendingUp className="w-4 h-4" />
+                        <span>Voir toutes les actualités</span>
+                        <ChevronRight className="w-3 h-3" />
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </div>
+              
+              {/* Séparateur */}
+              <div className="border-t border-slate-200"></div>
+              
+              {/* Boutons d'action mobile */}
+              <div className="space-y-2">
+                <button className="w-full px-3 py-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors font-medium text-left">
+                  🔑 Connexion
+                </button>
+                <button className="w-full bg-gradient-primary text-white px-3 py-3 rounded-lg font-semibold hover:shadow-glow transition-all duration-300 flex items-center justify-center space-x-2">
+                  <Sparkles className="w-4 h-4" />
+                  <span>Rejoindre La Grande Mosaïque</span>
+                </button>
+              </div>
+              
+              {/* Trending tags */}
+              <div className="pt-3">
+                <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Trending</h4>
+                <div className="flex flex-wrap gap-2">
+                  <span className="inline-flex items-center px-2 py-1 bg-blue-50 rounded-full text-xs font-medium text-blue-700">
+                    #KinshasaFestival
+                  </span>
+                  <span className="inline-flex items-center px-2 py-1 bg-green-50 rounded-full text-xs font-medium text-green-700">
+                    #CongoleseMusic
+                  </span>
+                  <span className="inline-flex items-center px-2 py-1 bg-purple-50 rounded-full text-xs font-medium text-purple-700">
+                    #ArtisteDuMois
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   )

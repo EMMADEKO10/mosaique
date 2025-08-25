@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { 
   Trophy, 
   Star, 
@@ -125,10 +126,11 @@ function SongsVoteSection({ songs, onVote, votedItems }: VoteSectionProps & { so
       {songs.map((song, index) => (
         <div key={song.id} className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-slate-200">
           <div className="relative">
-            <img 
+            <Image 
               src={song.coverUrl} 
               alt={song.title}
-              className="w-full h-32 sm:h-40 lg:h-48 object-cover"
+              fill
+              className="object-cover"
             />
             <div className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-black/70 text-white px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-semibold">
               #{index + 1}
@@ -175,10 +177,11 @@ function ArtistsVoteSection({ artists, onVote, votedItems }: VoteSectionProps & 
       {artists.map((artist) => (
         <div key={artist.id} className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-slate-200">
           <div className="relative">
-            <img 
+            <Image 
               src={artist.image} 
               alt={artist.name}
-              className="w-full h-32 sm:h-40 lg:h-48 object-cover"
+              fill
+              className="object-cover"
             />
             <div className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-black/70 text-white px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-semibold">
               #{artist.rank}
@@ -245,11 +248,14 @@ function BattlesVoteSection({ battles, onVote, votedItems }: VoteSectionProps & 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
               {/* Artiste 1 */}
               <div className="text-center bg-blue-50/50 p-4 rounded-xl">
-                <img 
-                  src={battle.artist1.image} 
-                  alt={battle.artist1.name}
-                  className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 rounded-full mx-auto mb-3 sm:mb-4 object-cover border-2 sm:border-4 border-blue-200"
-                />
+                <div className="relative w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 rounded-full mx-auto mb-3 sm:mb-4 border-2 sm:border-4 border-blue-200 overflow-hidden">
+                  <Image 
+                    src={battle.artist1.image} 
+                    alt={battle.artist1.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
                 <h4 className="text-sm sm:text-base lg:text-lg font-bold text-slate-900 line-clamp-1">{battle.artist1.name}</h4>
                 <p className="text-slate-600 text-xs sm:text-sm line-clamp-1">{battle.artist1.location} • {battle.artist1.style}</p>
                 <p className="text-blue-600 font-semibold mt-1 sm:mt-2 text-sm sm:text-base">{battle.artist1.votes.toLocaleString()} votes</p>
@@ -278,11 +284,14 @@ function BattlesVoteSection({ battles, onVote, votedItems }: VoteSectionProps & 
 
               {/* Artiste 2 */}
               <div className="text-center bg-red-50/50 p-4 rounded-xl">
-                <img 
-                  src={battle.artist2.image} 
-                  alt={battle.artist2.name}
-                  className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 rounded-full mx-auto mb-3 sm:mb-4 object-cover border-2 sm:border-4 border-red-200"
-                />
+                <div className="relative w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 rounded-full mx-auto mb-3 sm:mb-4 border-2 sm:border-4 border-red-200 overflow-hidden">
+                  <Image 
+                    src={battle.artist2.image} 
+                    alt={battle.artist2.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
                 <h4 className="text-sm sm:text-base lg:text-lg font-bold text-slate-900 line-clamp-1">{battle.artist2.name}</h4>
                 <p className="text-slate-600 text-xs sm:text-sm line-clamp-1">{battle.artist2.location} • {battle.artist2.style}</p>
                 <p className="text-red-600 font-semibold mt-1 sm:mt-2 text-sm sm:text-base">{battle.artist2.votes.toLocaleString()} votes</p>

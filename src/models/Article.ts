@@ -83,7 +83,7 @@ const ArticleSchema = new Schema<IArticle>({
 }, {
   timestamps: true,
   toJSON: {
-    transform: function(doc, ret) {
+    transform: function(doc, ret: Record<string, unknown>) {
       ret.id = ret._id
       delete ret._id
       delete ret.__v
@@ -139,7 +139,7 @@ const CommentSchema = new Schema<IComment>({
 }, {
   timestamps: true,
   toJSON: {
-    transform: function(doc, ret) {
+    transform: function(doc, ret: Record<string, unknown>) {
       ret.id = ret._id
       delete ret._id
       delete ret.__v

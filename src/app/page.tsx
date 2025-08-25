@@ -4,15 +4,8 @@ import { useState, useEffect } from 'react'
 import { 
   ChevronRight, 
   Play, 
-  Users, 
-  Calendar, 
   Trophy, 
-  Star, 
   ArrowRight, 
-  Music,
-  Palette,
-  Camera,
-  BookOpen,
   Crown,
   Zap
 } from 'lucide-react'
@@ -24,7 +17,7 @@ export default function HomePage() {
   const [isVisible, setIsVisible] = useState(false)
   const [currentArticleIndex, setCurrentArticleIndex] = useState(0)
   const [isClient, setIsClient] = useState(false)
-  const [shuffleSeed, setShuffleSeed] = useState(Date.now()) // Pour forcer un nouveau mélange
+  // const [shuffleSeed, setShuffleSeed] = useState(Date.now()) // Pour forcer un nouveau mélange - Non utilisé pour l'instant
   const [globalSortOption, setGlobalSortOption] = useState<'recent' | 'featured' | 'popular' | 'random'>('recent')
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
 
@@ -135,47 +128,47 @@ export default function HomePage() {
     'lifestyle': 'from-teal-600 to-cyan-600'
   }
 
-  const stats = [
-    { icon: Users, value: '2,500+', label: 'Artistes Inscrits', color: 'bg-primary-600' },
-    { icon: Calendar, value: '150+', label: 'Événements', color: 'bg-accent-green' },
-    { icon: Trophy, value: '50+', label: 'Trophées Distribués', color: 'bg-accent-yellow' },
-    { icon: Star, value: '25k+', label: 'Votes Enregistrés', color: 'bg-accent-purple' },
-  ]
+  // const stats = [
+  //   { icon: Users, value: '2,500+', label: 'Artistes Inscrits', color: 'bg-primary-600' },
+  //   { icon: Calendar, value: '150+', label: 'Événements', color: 'bg-accent-green' },
+  //   { icon: Trophy, value: '50+', label: 'Trophées Distribués', color: 'bg-accent-yellow' },
+  //   { icon: Star, value: '25k+', label: 'Votes Enregistrés', color: 'bg-accent-purple' },
+  // ]
 
-  const categories = [
-    {
-      title: 'Musique',
-      description: 'Des rythmes traditionnels aux beats modernes, découvrez les talents musicaux congolais',
-      icon: Music,
-      image: '🎵',
-      gradient: 'from-accent-purple to-primary-600',
-      stats: '500+ artistes'
-    },
-    {
-      title: 'Arts Visuels', 
-      description: 'Peinture, sculpture, art digital - explorez la créativité visuelle sans limites',
-      icon: Palette,
-      image: '🎨',
-      gradient: 'from-accent-green to-primary-600',
-      stats: '300+ œuvres'
-    },
-    {
-      title: 'Cinéma & Vidéo',
-      description: 'Courts-métrages, documentaires, clips - le cinéma congolais à l&apos;honneur',
-      icon: Camera,
-      image: '🎬',
-      gradient: 'from-accent-orange to-primary-600',
-      stats: '100+ films'
-    },
-    {
-      title: 'Littérature',
-      description: 'Romans, poésie, nouvelles - plongez dans l&apos;univers littéraire local',
-      icon: BookOpen,
-      image: '📚',
-      gradient: 'from-accent-red to-primary-600',
-      stats: '200+ auteurs'
-    },
-  ]
+  // const categories = [
+  //   {
+  //     title: 'Musique',
+  //     description: 'Des rythmes traditionnels aux beats modernes, découvrez les talents musicaux congolais',
+  //     icon: Music,
+  //     image: '🎵',
+  //     gradient: 'from-accent-purple to-primary-600',
+  //     stats: '500+ artistes'
+  //   },
+  //   {
+  //     title: 'Arts Visuels', 
+  //     description: 'Peinture, sculpture, art digital - explorez la créativité visuelle sans limites',
+  //     icon: Palette,
+  //     image: '🎨',
+  //     gradient: 'from-accent-green to-primary-600',
+  //     stats: '300+ œuvres'
+  //   },
+  //   {
+  //     title: 'Cinéma & Vidéo',
+  //     description: 'Courts-métrages, documentaires, clips - le cinéma congolais à l&apos;honneur',
+  //     icon: Camera,
+  //     image: '🎬',
+  //     gradient: 'from-accent-orange to-primary-600',
+  //     stats: '100+ films'
+  //   },
+  //   {
+  //     title: 'Littérature',
+  //     description: 'Romans, poésie, nouvelles - plongez dans l&apos;univers littéraire local',
+  //     icon: BookOpen,
+  //     image: '📚',
+  //     gradient: 'from-accent-red to-primary-600',
+  //     stats: '200+ auteurs'
+  //   },
+  // ]
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/20 to-slate-100">
@@ -621,7 +614,6 @@ export default function HomePage() {
                 <button
                   onClick={() => {
                     setGlobalSortOption('random')
-                    setShuffleSeed(Date.now()) // Force un nouveau mélange
                   }}
                   className={`px-2 sm:px-3 py-1 rounded-md text-xs font-medium transition-all duration-200 ${
                     globalSortOption === 'random'

@@ -101,7 +101,7 @@ const EventSchema = new Schema<IEvent>({
 }, {
   timestamps: true,
   toJSON: {
-    transform: function(doc, ret) {
+    transform: function(doc, ret: Record<string, unknown>) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { _id, __v, ...rest } = ret
       return { id: _id, ...rest }
@@ -138,7 +138,7 @@ const EventParticipantSchema = new Schema<IEventParticipant>({
 }, {
   timestamps: true,
   toJSON: {
-    transform: function(doc, ret) {
+    transform: function(doc, ret: Record<string, unknown>) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { _id, __v, ...rest } = ret
       return { id: _id, ...rest }
@@ -175,7 +175,7 @@ const NotificationSchema = new Schema<INotification>({
 }, {
   timestamps: true,
   toJSON: {
-    transform: function(doc, ret) {
+    transform: function(doc, ret: Record<string, unknown>) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { _id, __v, ...rest } = ret
       return { id: _id, ...rest }

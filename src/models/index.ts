@@ -8,19 +8,31 @@ export { Event, EventParticipant, Notification } from './Event'
 // Types pour faciliter l'utilisation
 export type {
   IUser,
-  IUserProfile,
+  IUserProfile
+} from './User'
+
+export type {
   IArticle,
-  IComment,
+  IComment
+} from './Article'
+
+export type {
   IArtist,
   IPortfolio,
-  IAchievement,
+  IAchievement
+} from './Artist'
+
+export type {
   IVoteCategory,
   IVote,
-  ITrophy,
+  ITrophy
+} from './Vote'
+
+export type {
   IEvent,
   IEventParticipant,
   INotification
-} from './User'
+} from './Event'
 
 export type { IArticle as IArticleType, IComment as ICommentType } from './Article'
 export type { IArtist as IArtistType, IPortfolio as IPortfolioType, IAchievement as IAchievementType } from './Artist'

@@ -1,6 +1,6 @@
 // Composant exemple pour afficher les actualités
 
-import { Article, getArticlesByCategory, getFeaturedArticles } from '@/data/actualites'
+import { getArticlesByCategory, getFeaturedArticles } from '@/data/actualites'
 import Image from 'next/image'
 import Link from 'next/link'
 

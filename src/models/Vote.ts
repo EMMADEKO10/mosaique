@@ -76,7 +76,7 @@ const VoteCategorySchema = new Schema<IVoteCategory>({
 }, {
   timestamps: true,
   toJSON: {
-    transform: function(doc, ret) {
+    transform: function(doc, ret: Record<string, unknown>) {
       ret.id = ret._id
       delete ret._id
       delete ret.__v
@@ -125,7 +125,7 @@ const VoteSchema = new Schema<IVote>({
 }, {
   timestamps: true,
   toJSON: {
-    transform: function(doc, ret) {
+    transform: function(doc, ret: Record<string, unknown>) {
       ret.id = ret._id
       delete ret._id
       delete ret.__v
@@ -175,7 +175,7 @@ const TrophySchema = new Schema<ITrophy>({
 }, {
   timestamps: true,
   toJSON: {
-    transform: function(doc, ret) {
+    transform: function(doc, ret: Record<string, unknown>) {
       ret.id = ret._id
       delete ret._id
       delete ret.__v

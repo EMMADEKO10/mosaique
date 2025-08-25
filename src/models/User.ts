@@ -89,7 +89,7 @@ const UserSchema = new Schema<IUser>({
 }, {
   timestamps: true,
   toJSON: {
-    transform: function(doc, ret) {
+    transform: function(doc, ret: Record<string, unknown>) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { _id, __v, password, ...rest } = ret
       return {
@@ -155,7 +155,7 @@ const UserProfileSchema = new Schema<IUserProfile>({
 }, {
   timestamps: true,
   toJSON: {
-    transform: function(doc, ret) {
+    transform: function(doc, ret: Record<string, unknown>) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { _id, __v, ...rest } = ret
       return {

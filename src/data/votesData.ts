@@ -444,7 +444,7 @@ export const getVoteDataByCategory = (categoryId: string) => {
 export const voteForItem = (categoryId: string, itemId: string): boolean => {
   try {
     const categoryData = getVoteDataByCategory(categoryId)
-    const item = categoryData.data.find((item: any) => item.id === itemId)
+    const item = categoryData.data.find((item: Song | Artist | Battle) => item.id === itemId)
     
     if (item) {
       if ('votes' in item) {
@@ -465,13 +465,13 @@ export const voteForItem = (categoryId: string, itemId: string): boolean => {
 // Statistiques par catégorie
 export const getCategoryStats = (categoryId: string) => {
   const categoryData = getVoteDataByCategory(categoryId)
-  const data = categoryData.data as any[]
+  const data = categoryData.data as (Song | Artist | Battle)[]
   
   const totalVotes = data.reduce((sum, item) => {
     if (categoryData.type === 'battles') {
-      return sum + (item.totalVotes || 0)
+      return sum + ((item as Battle).totalVotes || 0)
     }
-    return sum + (item.votes || 0)
+    return sum + ((item as Song | Artist).votes || 0)
   }, 0)
   
   const totalItems = data.length
