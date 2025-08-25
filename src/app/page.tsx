@@ -184,9 +184,9 @@ export default function HomePage() {
 
       {/* Hero Section Spectaculaire */}
       <section className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-accent-purple/5">
-        {/* Émetteur en arrière-plan */}
-        <div className="absolute right-8 top-1/4 transform -translate-y-1/4 opacity-15 pointer-events-none z-0">
-          <div className="w-64 h-96 lg:w-80 lg:h-[480px]">
+        {/* Émetteur en arrière-plan - Hidden on mobile */}
+        <div className="absolute right-4 sm:right-8 top-1/4 transform -translate-y-1/4 opacity-10 sm:opacity-15 pointer-events-none z-0 hidden sm:block">
+          <div className="w-48 h-72 sm:w-64 sm:h-96 lg:w-80 lg:h-[480px]">
             {/* Tour de l'émetteur */}
             <div className="relative w-full h-full">
               {/* Antenne principale */}
@@ -246,22 +246,23 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 py-8 sm:py-12 lg:py-24 xl:py-32 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
             {/* Contenu principal */}
             <div className={`text-left transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               {/* Badge de nouveauté */}
-              <div className="inline-flex items-center space-x-2 bg-gradient-creative text-white px-8 py-3 rounded-full text-sm font-semibold mb-8 shadow-glow animate-fade-in-down">
-                <Crown className="w-5 h-5" />
-                <span>La Première Plateforme Culturelle Congolaise</span>
-                <Zap className="w-5 h-5" />
+              <div className="inline-flex items-center space-x-1 sm:space-x-2 bg-gradient-creative text-white px-3 sm:px-6 lg:px-8 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 lg:mb-8 shadow-glow animate-fade-in-down">
+                <Crown className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
+                <span className="hidden sm:inline">La Première Plateforme Culturelle Congolaise</span>
+                <span className="sm:hidden">Plateforme Culturelle Congo</span>
+                <Zap className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
               </div>
               
                           {/* Titre principal avec carte RDC */}
-            <div className="flex items-center justify-center mb-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start mb-4 sm:mb-6 lg:mb-8">
               {/* Carte géographique RDC */}
-              <div className="relative mr-6">
-                <div className="w-28 h-36 lg:w-36 lg:h-44 relative bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-2 shadow-lg border border-green-200/50">
+              <div className="relative mb-4 sm:mb-0 sm:mr-4 lg:mr-6">
+                <div className="w-20 h-24 sm:w-24 sm:h-30 lg:w-28 lg:h-36 xl:w-36 xl:h-44 relative bg-gradient-to-br from-green-50 to-blue-50 rounded-xl sm:rounded-2xl p-1.5 sm:p-2 shadow-lg border border-green-200/50">
                   {/* Vraie forme de la RDC selon l'image fournie */}
                   <svg viewBox="0 0 120 80" className="w-full h-full">
                     {/* Vraie forme de la RDC basée exactement sur votre image */}
@@ -283,102 +284,105 @@ export default function HomePage() {
                     
                     {/* Kinshasa (à l'ouest, queue étroite) */}
                     <circle cx="18" cy="46" r="2" className="fill-red-500 animate-pulse" />
-                    <text x="8" y="52" className="text-[7px] fill-red-700 font-bold">Kinshasa</text>
+                    <text x="8" y="52" className="text-[5px] sm:text-[6px] lg:text-[7px] fill-red-700 font-bold">Kinshasa</text>
                     
-                    {/* Lubumbashi (sud-est du territoire principal) */}
-                    <circle cx="90" cy="48" r="1.5" className="fill-blue-500" />
-                    <text x="78" y="54" className="text-[6px] fill-blue-700 font-semibold">Lubumbashi</text>
+                    {/* Lubumbashi (sud-est du territoire principal) - Hidden on small screens */}
+                    <circle cx="90" cy="48" r="1.5" className="fill-blue-500 hidden sm:block" />
+                    <text x="78" y="54" className="text-[4px] sm:text-[5px] lg:text-[6px] fill-blue-700 font-semibold hidden sm:block">Lubumbashi</text>
                     
-                    {/* Goma (à l'est) */}
-                    <circle cx="105" cy="44" r="1.5" className="fill-green-500" />
-                    <text x="95" y="40" className="text-[6px] fill-green-700 font-semibold">Goma</text>
+                    {/* Goma (à l'est) - Hidden on small screens */}
+                    <circle cx="105" cy="44" r="1.5" className="fill-green-500 hidden sm:block" />
+                    <text x="95" y="40" className="text-[4px] sm:text-[5px] lg:text-[6px] fill-green-700 font-semibold hidden sm:block">Goma</text>
                     
-                    {/* Kisangani (centre du pays) */}
-                    <circle cx="75" cy="43" r="1.5" className="fill-purple-500" />
-                    <text x="65" y="39" className="text-[6px] fill-purple-700 font-semibold">Kisangani</text>
+                    {/* Kisangani (centre du pays) - Hidden on small screens */}
+                    <circle cx="75" cy="43" r="1.5" className="fill-purple-500 hidden sm:block" />
+                    <text x="65" y="39" className="text-[4px] sm:text-[5px] lg:text-[6px] fill-purple-700 font-semibold hidden sm:block">Kisangani</text>
                   </svg>
                   
                   {/* Drapeau RDC animé */}
-                  <div className="absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-r from-blue-600 via-yellow-400 to-red-600 rounded-full flex items-center justify-center animate-bounce shadow-md">
+                  <div className="absolute -top-2 sm:-top-3 -right-2 sm:-right-3 w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-blue-600 via-yellow-400 to-red-600 rounded-full flex items-center justify-center animate-bounce shadow-md">
                     <span className="text-white text-xs font-bold">⭐</span>
                   </div>
                   
                   {/* Badge "Cœur de l'Afrique" */}
-                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-green-600 text-white text-[10px] px-2 py-1 rounded-full font-bold shadow-sm">
-                    💚 Cœur de l&apos;Afrique
+                  <div className="absolute -bottom-1 sm:-bottom-2 left-1/2 transform -translate-x-1/2 bg-green-600 text-white text-[8px] sm:text-[10px] px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full font-bold shadow-sm">
+                    <span className="hidden sm:inline">💚 Cœur de l&apos;Afrique</span>
+                    <span className="sm:hidden">💚 Congo</span>
                   </div>
                 </div>
               </div>
 
               {/* Titre */}
-              <div className="text-left">
-                <h1 className="text-5xl lg:text-7xl font-bold text-neutral-900 leading-none mb-3">
+              <div className="text-center sm:text-left">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-bold text-neutral-900 leading-none mb-2 sm:mb-3">
                   <span className="block text-blue-700">La Grande</span>
                   <span className="block text-neutral-900">Mosaïque</span>
                 </h1>
-                <div className="text-xl lg:text-2xl text-neutral-600 font-semibold mb-2">
+                <div className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-neutral-600 font-semibold mb-2 sm:mb-3">
                   République Démocratique du Congo
                 </div>
                 
                 {/* Textes accrocheurs */}
-                <div className="space-y-1 mb-4">
-                  <div className="text-sm lg:text-base text-blue-600 font-medium italic">
+                <div className="space-y-1 mb-3 sm:mb-4">
+                  <div className="text-xs sm:text-sm lg:text-base text-blue-600 font-medium italic text-center sm:text-left">
                     &ldquo;Là où chaque talent congolais brille comme une étoile&rdquo;
                   </div>
-                  <div className="text-xs lg:text-sm text-emerald-600 font-semibold">
+                  <div className="text-xs lg:text-sm text-emerald-600 font-semibold text-center sm:text-left">
                     🌟 Plus de 80 millions de talents à découvrir
                   </div>
-                  <div className="text-xs lg:text-sm text-purple-600 font-semibold">
+                  <div className="text-xs lg:text-sm text-purple-600 font-semibold text-center sm:text-left">
                     🎭 De Kinshasa à Lubumbashi, une richesse culturelle infinie
                   </div>
                 </div>
                 
                 {/* Badge spécial */}
-                <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-green-100 to-yellow-100 border border-green-300 rounded-full px-3 py-1 text-xs font-bold text-green-800">
+                <div className="inline-flex items-center space-x-1 sm:space-x-2 bg-gradient-to-r from-green-100 to-yellow-100 border border-green-300 rounded-full px-2 sm:px-3 py-1 text-xs font-bold text-green-800">
                   <span>🏆</span>
-                  <span>Première plateforme culturelle du Congo</span>
+                  <span className="hidden sm:inline">Première plateforme culturelle du Congo</span>
+                  <span className="sm:hidden">Plateforme culturelle Congo</span>
                   <span>🇨🇩</span>
                 </div>
               </div>
             </div>
               
               {/* Sous-titre */}
-              <p className="text-xl text-neutral-600 max-w-2xl mb-12 leading-relaxed">
-                <span className="text-2xl">🎨 Explorez • 🎵 Célébrez • 🏆 Votez</span>
+              <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-neutral-600 max-w-2xl mb-6 sm:mb-8 lg:mb-12 leading-relaxed text-center sm:text-left">
+                <span className="text-lg sm:text-xl lg:text-2xl">🎨 Explorez • 🎵 Célébrez • 🏆 Votez</span>
                 <br />
                 pour les talents artistiques exceptionnels du Congo
                 <br />
-                <span className="text-lg text-neutral-500 mt-2 block">
+                <span className="text-sm sm:text-base lg:text-lg text-neutral-500 mt-2 block">
                   Une plateforme qui unit tradition et modernité dans un écrin numérique unique
                 </span>
               </p>
               
               {/* Boutons d'action */}
-              <div className="flex flex-col sm:flex-row gap-6 items-start">
-                <button className="group bg-gradient-primary text-white px-10 py-5 rounded-2xl font-bold text-xl hover:shadow-glow-lg transition-all duration-300 transform hover:scale-105 flex items-center space-x-3">
-                  <Play className="w-6 h-6" />
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 items-center sm:items-start">
+                <button className="group bg-gradient-primary text-white px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base lg:text-lg xl:text-xl hover:shadow-glow-lg transition-all duration-300 transform hover:scale-105 flex items-center space-x-2 sm:space-x-3 w-full sm:w-auto justify-center">
+                  <Play className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
                   <span>Découvrir Maintenant</span>
-                  <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 group-hover:translate-x-1 transition-transform" />
                 </button>
                 
-                <button className="group bg-white/90 backdrop-blur-sm text-neutral-900 px-10 py-5 rounded-2xl font-bold text-xl border-2 border-neutral-200 hover:border-primary-300 hover:shadow-strong transition-all duration-300 flex items-center space-x-3">
-                  <Trophy className="w-6 h-6 text-accent-yellow" />
-                  <span>Voir les Trophées</span>
-                  <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                <button className="group bg-white/90 backdrop-blur-sm text-neutral-900 px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base lg:text-lg xl:text-xl border-2 border-neutral-200 hover:border-primary-300 hover:shadow-strong transition-all duration-300 flex items-center space-x-2 sm:space-x-3 w-full sm:w-auto justify-center">
+                  <Trophy className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-accent-yellow" />
+                  <span className="hidden sm:inline">Voir les Trophées</span>
+                  <span className="sm:hidden">Trophées</span>
+                  <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
 
             {/* Carrousel avec actualités défilantes */}
-            <div className="relative flex items-center justify-center">
-              <div className="relative w-[500px] h-[500px] lg:w-[600px] lg:h-[600px]">
+            <div className="relative flex items-center justify-center mt-8 lg:mt-0">
+              <div className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px]">
                 {/* Cercle de base */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-50 via-white to-purple-50 shadow-2xl border border-slate-200/30"></div>
                 
                 {/* Orbite guide visible */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="absolute border-2 border-dashed border-blue-300/30 rounded-full w-[360px] h-[360px] animate-pulse"></div>
-                  <div className="absolute border border-blue-200/20 rounded-full w-[380px] h-[380px]"></div>
+                  <div className="absolute border-2 border-dashed border-blue-300/30 rounded-full w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[280px] md:h-[280px] lg:w-[360px] lg:h-[360px] xl:w-[380px] xl:h-[380px] animate-pulse"></div>
+                  <div className="absolute border border-blue-200/20 rounded-full w-[220px] h-[220px] sm:w-[270px] sm:h-[270px] md:w-[300px] md:h-[300px] lg:w-[380px] lg:h-[380px] xl:w-[400px] xl:h-[400px]"></div>
                 </div>
                 
                 {/* État de chargement */}
@@ -389,28 +393,28 @@ export default function HomePage() {
                 )}
                 
                 {/* Actualités qui tournent en cercle */}
-                {isClient && orbitingArticles.slice(0, 8).map((article, index) => (
+                {isClient && orbitingArticles.slice(0, 6).map((article, index) => (
                   <div
                     key={`orbiting-${article.id}-${index}`}
-                    className="absolute top-1/2 left-1/2 w-20 h-20 lg:w-24 lg:h-24 -translate-x-1/2 -translate-y-1/2"
+                    className="absolute top-1/2 left-1/2 w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24 -translate-x-1/2 -translate-y-1/2"
                     style={{
-                      animation: `orbitContinuous 10s linear infinite`,
-                      animationDelay: `${index * 1.25}s`, // Décalage de 1.25s entre chaque actualité (10s / 8 = 1.25s)
+                      animation: `orbitContinuous 12s linear infinite`,
+                      animationDelay: `${index * 2}s`, // Décalage de 2s entre chaque actualité (12s / 6 = 2s)
                     }}
                   >
                     <div className="relative w-full h-full group cursor-pointer">
-                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110">
+                      <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110">
             <Image
                           src={article.image}
                           alt={article.title}
                           fill
-                          className="object-cover rounded-2xl opacity-80 group-hover:opacity-100 transition-opacity"
+                          className="object-cover rounded-xl sm:rounded-2xl opacity-80 group-hover:opacity-100 transition-opacity"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-2xl"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl sm:rounded-2xl"></div>
                         
-                        {/* Contenu de l'actualité */}
-                        <div className="absolute bottom-0 left-0 right-0 p-2 text-white">
-                          <div className="text-xs font-semibold mb-1 bg-blue-600 px-2 py-0.5 rounded-full w-fit opacity-90">
+                        {/* Contenu de l'actualité - Hidden on very small screens */}
+                        <div className="absolute bottom-0 left-0 right-0 p-1 sm:p-2 text-white hidden sm:block">
+                          <div className="text-xs font-semibold mb-0.5 sm:mb-1 bg-blue-600 px-1 sm:px-2 py-0.5 rounded-full w-fit opacity-90">
                             {article.category}
                           </div>
                           <h3 className="font-bold text-xs line-clamp-1 leading-tight">
@@ -420,8 +424,9 @@ export default function HomePage() {
                       </div>
                       
                       {/* Badge numéro */}
-                      <div className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-md">
-                        📰
+                      <div className="absolute -top-1 sm:-top-2 -right-1 sm:-right-2 w-4 h-4 sm:w-6 sm:h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-md">
+                        <span className="hidden sm:inline">📰</span>
+                        <span className="sm:hidden text-[8px]">📰</span>
                       </div>
                     </div>
         </div>
@@ -430,8 +435,8 @@ export default function HomePage() {
                                 {/* Article central (article actuel) */}
                 {isClient && (
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-40 h-40 lg:w-48 lg:h-48 relative group cursor-pointer">
-                      <div className="absolute inset-0 rounded-3xl bg-white shadow-2xl border-4 border-blue-500/20 overflow-hidden transform group-hover:scale-105 transition-all duration-500">
+                    <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 xl:w-48 xl:h-48 relative group cursor-pointer">
+                      <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-white shadow-2xl border-2 sm:border-4 border-blue-500/20 overflow-hidden transform group-hover:scale-105 transition-all duration-500">
           <Image
                           key={`central-${currentArticleIndex}`} // Force re-render pour transition
                           src={featuredArticles[currentArticleIndex]?.image || ''}
@@ -442,22 +447,22 @@ export default function HomePage() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                         
                         {/* Contenu de l'article */}
-                        <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                          <div className="text-xs font-semibold mb-1 bg-blue-600 px-2 py-1 rounded-full w-fit animate-pulse">
+                        <div className="absolute bottom-0 left-0 right-0 p-1.5 sm:p-3 lg:p-4 text-white">
+                          <div className="text-xs font-semibold mb-0.5 sm:mb-1 bg-blue-600 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full w-fit animate-pulse">
                             {featuredArticles[currentArticleIndex]?.category}
                           </div>
-                          <h3 className="font-bold text-sm line-clamp-2 leading-tight transition-all duration-500">
+                          <h3 className="font-bold text-xs sm:text-sm line-clamp-2 leading-tight transition-all duration-500">
                             {featuredArticles[currentArticleIndex]?.title}
                           </h3>
-                          <p className="text-xs opacity-90 mt-1 transition-all duration-500">
+                          <p className="text-xs opacity-90 mt-0.5 sm:mt-1 transition-all duration-500 hidden sm:block">
                             ⏱️ {featuredArticles[currentArticleIndex]?.readTime}min • 🔥 À la une
                           </p>
                         </div>
                       </div>
 
                       {/* Effet de pulsation renforcé */}
-                      <div className="absolute inset-0 rounded-3xl border-2 border-blue-500 animate-ping opacity-30"></div>
-                      <div className="absolute inset-0 rounded-3xl border-4 border-blue-300 animate-ping opacity-10" style={{animationDelay: '0.5s'}}></div>
+                      <div className="absolute inset-0 rounded-2xl sm:rounded-3xl border-2 border-blue-500 animate-ping opacity-30"></div>
+                      <div className="absolute inset-0 rounded-2xl sm:rounded-3xl border-2 sm:border-4 border-blue-300 animate-ping opacity-10" style={{animationDelay: '0.5s'}}></div>
                     </div>
                   </div>
                 )}
@@ -480,18 +485,18 @@ export default function HomePage() {
                 )}
               </div>
 
-              {/* Texte "Actualités en Mouvement Circulaire" */}
-              <div className="absolute -bottom-20 left-1/2 transform -translate-x-1/2 text-center">
-                <p className="text-xl font-bold text-slate-700 mb-2 animate-pulse">🔄 Mouvement Circulaire des Actualités</p>
-                <p className="text-sm text-slate-500 mb-2">
-                  📰 8 actualités tournent physiquement en cercle • ⭐ Article central qui change
+              {/* Texte "Actualités en Mouvement Circulaire" - Hidden on mobile */}
+              <div className="absolute -bottom-16 sm:-bottom-20 left-1/2 transform -translate-x-1/2 text-center hidden sm:block">
+                <p className="text-lg sm:text-xl font-bold text-slate-700 mb-2 animate-pulse">🔄 Mouvement Circulaire des Actualités</p>
+                <p className="text-xs sm:text-sm text-slate-500 mb-2">
+                  📰 6 actualités tournent physiquement en cercle • ⭐ Article central qui change
                 </p>
                 <p className="text-xs text-slate-400">
                   Rotation visible • Mouvement circulaire continu • Chaque actualité fait le tour complet
                 </p>
                 {isClient && (
-                  <div className="mt-2 flex justify-center items-center space-x-4 text-xs font-medium">
-                    <div className="text-blue-600">🔄 Tour complet: 10 secondes</div>
+                  <div className="mt-2 flex flex-col sm:flex-row justify-center items-center space-y-1 sm:space-y-0 sm:space-x-4 text-xs font-medium">
+                    <div className="text-blue-600">🔄 Tour complet: 12 secondes</div>
                     <div className="text-green-600">📰 Centre: Change toutes les 3s</div>
                     <div className="text-purple-600">👁️ Suivez les actualités du regard</div>
                   </div>
@@ -501,15 +506,15 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Éléments flottants améliorés */}
-        <div className="absolute top-32 left-16 w-24 h-24 bg-gradient-creative rounded-3xl opacity-20 animate-float shadow-glow"></div>
-        <div className="absolute top-48 right-24 w-20 h-20 bg-gradient-success rounded-full opacity-25 animate-float shadow-medium" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute bottom-32 left-1/4 w-16 h-16 bg-accent-yellow rounded-2xl opacity-30 animate-float" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute top-64 right-1/3 w-12 h-12 bg-accent-orange rounded-full opacity-25 animate-float" style={{ animationDelay: '0.5s' }}></div>
+        {/* Éléments flottants améliorés - Hidden on mobile */}
+        <div className="absolute top-32 left-8 sm:left-16 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-creative rounded-3xl opacity-20 animate-float shadow-glow hidden sm:block"></div>
+        <div className="absolute top-48 right-8 sm:right-24 w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gradient-success rounded-full opacity-25 animate-float shadow-medium hidden sm:block" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute bottom-32 left-1/4 w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-accent-yellow rounded-2xl opacity-30 animate-float hidden sm:block" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-64 right-1/3 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-accent-orange rounded-full opacity-25 animate-float hidden sm:block" style={{ animationDelay: '0.5s' }}></div>
         
-        {/* Logo mosaïque décoratif */}
-        <div className="absolute top-1/2 left-10 transform -translate-y-1/2 opacity-10">
-          <div className="w-32 h-40 relative">
+        {/* Logo mosaïque décoratif - Hidden on mobile */}
+        <div className="absolute top-1/2 left-4 sm:left-10 transform -translate-y-1/2 opacity-10 hidden lg:block">
+          <div className="w-24 h-32 sm:w-28 sm:h-36 lg:w-32 lg:h-40 relative">
             {/* Écran de la tablette */}
             <div className="w-24 h-32 bg-neutral-800 rounded-2xl mx-auto relative overflow-hidden">
               {/* Grille mosaïque 3x3 */}
@@ -533,33 +538,34 @@ export default function HomePage() {
       </section>
 
       {/* Section Articles par Catégorie */}
-      <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-neutral-900 mb-2">
+      <section className="py-6 sm:py-8 lg:py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8">
+          <div className="text-center mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 mb-2">
               Actualités du Congo
             </h2>
-            <p className="text-sm text-neutral-600 mb-4">
+            <p className="text-xs sm:text-sm text-neutral-600 mb-4">
               {allSortedArticles.length} articles {selectedCategory === 'all' ? '' : `- ${availableCategories.find(cat => cat.key === selectedCategory)?.name}`}
             </p>
             
             {/* Contrôles compacts */}
-            <div className="bg-white rounded-xl p-3 shadow-sm border border-slate-200 max-w-6xl mx-auto">
+            <div className="bg-white rounded-lg sm:rounded-xl p-2 sm:p-3 shadow-sm border border-slate-200 max-w-6xl mx-auto">
               {/* Filtrage par catégorie - compact */}
-              <div className="mb-3">
-                <div className="flex flex-wrap items-center justify-center gap-1">
+              <div className="mb-2 sm:mb-3">
+                <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-2">
                   {availableCategories.map((category) => (
                     <button
                       key={`category-filter-${category.key}`}
                       onClick={() => setSelectedCategory(category.key)}
-                      className={`flex items-center space-x-1 px-2 py-1 rounded-lg text-xs font-medium transition-all duration-200 ${
+                      className={`flex items-center space-x-1 px-1.5 sm:px-2 py-1 rounded-md sm:rounded-lg text-xs font-medium transition-all duration-200 ${
                         selectedCategory === category.key
                           ? 'bg-blue-600 text-white'
                           : 'bg-slate-100 text-neutral-700 hover:bg-slate-200'
                       }`}
                     >
-                      <span className="text-sm">{category.emoji}</span>
-                      <span>{category.name}</span>
+                      <span className="text-xs sm:text-sm">{category.emoji}</span>
+                      <span className="hidden sm:inline">{category.name}</span>
+                      <span className="sm:hidden text-xs">{category.name.split(' ')[0]}</span>
                       <span className={`text-xs px-1 py-0.5 rounded ${
                         selectedCategory === category.key 
                           ? 'bg-white/20 text-white' 
@@ -573,40 +579,43 @@ export default function HomePage() {
               </div>
               
               {/* Boutons de tri global - compact */}
-              <div className="flex items-center justify-center space-x-2">
-                <span className="text-xs font-medium text-neutral-600 mr-1">Tri :</span>
+              <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-2">
+                <span className="text-xs font-medium text-neutral-600 mr-1 hidden sm:inline">Tri :</span>
               
                 <button
                   onClick={() => setGlobalSortOption('recent')}
-                  className={`px-3 py-1 rounded-md text-xs font-medium transition-all duration-200 ${
+                  className={`px-2 sm:px-3 py-1 rounded-md text-xs font-medium transition-all duration-200 ${
                     globalSortOption === 'recent'
                       ? 'bg-blue-600 text-white'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                   }`}
                 >
-                  📅 Récents
+                  <span className="hidden sm:inline">📅 Récents</span>
+                  <span className="sm:hidden">📅</span>
                 </button>
                 
                 <button
                   onClick={() => setGlobalSortOption('featured')}
-                  className={`px-3 py-1 rounded-md text-xs font-medium transition-all duration-200 ${
+                  className={`px-2 sm:px-3 py-1 rounded-md text-xs font-medium transition-all duration-200 ${
                     globalSortOption === 'featured'
                       ? 'bg-red-600 text-white'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                   }`}
                 >
-                  🔥 Une
+                  <span className="hidden sm:inline">🔥 Une</span>
+                  <span className="sm:hidden">🔥</span>
                 </button>
                 
                 <button
                   onClick={() => setGlobalSortOption('popular')}
-                  className={`px-3 py-1 rounded-md text-xs font-medium transition-all duration-200 ${
+                  className={`px-2 sm:px-3 py-1 rounded-md text-xs font-medium transition-all duration-200 ${
                     globalSortOption === 'popular'
                       ? 'bg-green-600 text-white'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                   }`}
                 >
-                  ⚡ Rapide
+                  <span className="hidden sm:inline">⚡ Rapide</span>
+                  <span className="sm:hidden">⚡</span>
                 </button>
 
                 <button
@@ -614,27 +623,28 @@ export default function HomePage() {
                     setGlobalSortOption('random')
                     setShuffleSeed(Date.now()) // Force un nouveau mélange
                   }}
-                  className={`px-3 py-1 rounded-md text-xs font-medium transition-all duration-200 ${
+                  className={`px-2 sm:px-3 py-1 rounded-md text-xs font-medium transition-all duration-200 ${
                     globalSortOption === 'random'
                       ? 'bg-purple-600 text-white'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                   }`}
                 >
-                  🎲 Aléa
+                  <span className="hidden sm:inline">🎲 Aléa</span>
+                  <span className="sm:hidden">🎲</span>
                 </button>
               </div>
             </div>
           </div>
 
                     {/* Une seule grille avec tous les articles triés */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 sm:gap-3 lg:gap-4">
             {allSortedArticles.map((article, index) => (
               <div 
                 key={`global-article-${article.id}-${index}`} 
-                className="group bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-200 border border-slate-200/50 overflow-hidden"
+                className="group bg-white rounded-lg sm:rounded-xl shadow-sm hover:shadow-md transition-all duration-200 border border-slate-200/50 overflow-hidden"
               >
                 {/* Image de l'article */}
-                <div className="relative h-24 overflow-hidden">
+                <div className="relative h-16 sm:h-20 lg:h-24 overflow-hidden">
           <Image
                     src={article.image}
                     alt={article.title}
@@ -644,35 +654,36 @@ export default function HomePage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                   
                   {/* Badge catégorie avec couleur dynamique */}
-                  <div className={`absolute top-1 left-1 bg-gradient-to-r ${categoryColors[article.category] || 'from-gray-600 to-gray-700'} text-white text-xs px-1.5 py-0.5 rounded-md font-medium`}>
-                    {article.category}
+                  <div className={`absolute top-0.5 sm:top-1 left-0.5 sm:left-1 bg-gradient-to-r ${categoryColors[article.category] || 'from-gray-600 to-gray-700'} text-white text-xs px-1 sm:px-1.5 py-0.5 rounded-sm sm:rounded-md font-medium`}>
+                    <span className="hidden sm:inline">{article.category}</span>
+                    <span className="sm:hidden text-xs">{article.category.slice(0, 3)}</span>
                   </div>
                   
                   {/* Badge "À la une" si featured */}
                   {article.featured && (
-                    <div className="absolute top-1 right-1 bg-red-600 text-white text-xs px-1.5 py-0.5 rounded-md font-medium">
+                    <div className="absolute top-0.5 sm:top-1 right-0.5 sm:right-1 bg-red-600 text-white text-xs px-1 sm:px-1.5 py-0.5 rounded-sm sm:rounded-md font-medium">
                       🔥
                     </div>
                   )}
                 </div>
 
                 {/* Contenu de l'article */}
-                <div className="p-2">
+                <div className="p-1.5 sm:p-2">
                   <h4 className="font-semibold text-neutral-900 text-xs mb-1 line-clamp-2 group-hover:text-blue-700 transition-colors leading-tight">
                     {article.title}
                   </h4>
                   
-                  <p className="text-neutral-600 text-xs mb-2 line-clamp-1 leading-relaxed">
+                  <p className="text-neutral-600 text-xs mb-1 sm:mb-2 line-clamp-1 leading-relaxed hidden sm:block">
                     {article.excerpt}
                   </p>
                   
                   {/* Métadonnées compactes */}
-                  <div className="flex items-center justify-between text-xs text-neutral-500">
-                    <span className="font-medium truncate">{article.author}</span>
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-xs text-neutral-500 space-y-1 sm:space-y-0">
+                    <span className="font-medium truncate text-xs">{article.author}</span>
                     <div className="flex items-center space-x-1 text-xs">
                       <span>{article.readTime}min</span>
-                      <span>•</span>
-                      <span>
+                      <span className="hidden sm:inline">•</span>
+                      <span className="hidden sm:inline">
                         {new Date(article.publishedAt).toLocaleDateString('fr-FR', {
                           day: 'numeric',
                           month: 'short'
@@ -681,9 +692,9 @@ export default function HomePage() {
                     </div>
                   </div>
                   
-                  {/* Tags réduits */}
+                  {/* Tags réduits - Hidden on mobile */}
                   {article.tags && article.tags.length > 0 && (
-                    <div className="flex gap-1 mt-1">
+                    <div className="flex gap-1 mt-1 hidden sm:flex">
                       {article.tags.slice(0, 1).map((tag: string, tagIndex: number) => (
                         <span 
                           key={`global-tag-${article.id}-${tagIndex}`}
@@ -713,12 +724,12 @@ export default function HomePage() {
       </section>
       
       {/* Footer */}
-      <footer className="bg-neutral-900 text-neutral-300 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-12 mb-16">
-            <div className="col-span-2">
-              <div className="flex items-center space-x-4 mb-8">
-                <div className="w-16 h-16 bg-gradient-primary rounded-3xl flex items-center justify-center shadow-glow p-3">
+      <footer className="bg-neutral-900 text-neutral-300 py-8 sm:py-12 lg:py-20">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12 mb-8 sm:mb-12 lg:mb-16">
+            <div className="sm:col-span-2 lg:col-span-2">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-4 mb-6 sm:mb-8">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-primary rounded-2xl sm:rounded-3xl flex items-center justify-center shadow-glow p-2 sm:p-3">
                   {/* Logo mosaïque footer */}
                   <div className="grid grid-cols-3 gap-1 w-full h-full">
                     <div className="bg-white rounded-sm"></div>
@@ -732,45 +743,45 @@ export default function HomePage() {
                     <div className="bg-white rounded-sm"></div>
                   </div>
                 </div>
-                <div>
-                  <h3 className="text-3xl font-bold text-white">La Grande Mosaïque</h3>
-                  <span className="text-primary-400 text-lg font-semibold">Culture • Arts • Talents • Congo</span>
+                <div className="text-center sm:text-left">
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white">La Grande Mosaïque</h3>
+                  <span className="text-primary-400 text-sm sm:text-base lg:text-lg font-semibold">Culture • Arts • Talents • Congo</span>
                 </div>
               </div>
-              <p className="text-neutral-400 leading-relaxed text-lg max-w-md mb-8">
+              <p className="text-neutral-400 leading-relaxed text-sm sm:text-base lg:text-lg max-w-md mb-6 sm:mb-8 text-center sm:text-left">
                 La plateforme de référence pour la promotion et la célébration de la richesse culturelle 
                 et artistique du Congo. Ensemble, construisons notre mosaïque culturelle.
               </p>
             </div>
             
-            <div>
-              <h4 className="text-white font-bold text-xl mb-6">Navigation</h4>
-              <ul className="space-y-4">
-                <li><a href="/artistes" className="hover:text-primary-400 transition-colors text-lg">Artistes</a></li>
-                <li><a href="/culture" className="hover:text-primary-400 transition-colors text-lg">Culture</a></li>
-                <li><a href="/sports" className="hover:text-primary-400 transition-colors text-lg">Sports</a></li>
-                <li><a href="/votes" className="hover:text-primary-400 transition-colors text-lg">Votes</a></li>
+            <div className="text-center sm:text-left">
+              <h4 className="text-white font-bold text-lg sm:text-xl mb-4 sm:mb-6">Navigation</h4>
+              <ul className="space-y-2 sm:space-y-4">
+                <li><a href="/artistes" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Artistes</a></li>
+                <li><a href="/culture" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Culture</a></li>
+                <li><a href="/sports" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Sports</a></li>
+                <li><a href="/votes" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Votes</a></li>
               </ul>
             </div>
             
-            <div>
-              <h4 className="text-white font-bold text-xl mb-6">Communauté</h4>
-              <ul className="space-y-4">
-                <li><a href="/inscription" className="hover:text-primary-400 transition-colors text-lg">Inscription</a></li>
-                <li><a href="/connexion" className="hover:text-primary-400 transition-colors text-lg">Connexion</a></li>
-                <li><a href="/contact" className="hover:text-primary-400 transition-colors text-lg">Contact</a></li>
-                <li><a href="/aide" className="hover:text-primary-400 transition-colors text-lg">Aide</a></li>
+            <div className="text-center sm:text-left">
+              <h4 className="text-white font-bold text-lg sm:text-xl mb-4 sm:mb-6">Communauté</h4>
+              <ul className="space-y-2 sm:space-y-4">
+                <li><a href="/inscription" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Inscription</a></li>
+                <li><a href="/connexion" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Connexion</a></li>
+                <li><a href="/contact" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Contact</a></li>
+                <li><a href="/aide" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Aide</a></li>
               </ul>
             </div>
           </div>
           
-          <div className="border-t border-neutral-800 pt-12">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <p className="text-neutral-400 text-lg">
+          <div className="border-t border-neutral-800 pt-6 sm:pt-8 lg:pt-12">
+            <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
+              <p className="text-neutral-400 text-sm sm:text-base lg:text-lg text-center lg:text-left">
                 © 2024 La Grande Mosaïque. Tous droits réservés. 
-                <span className="ml-2">Fait avec ❤️ pour la culture congolaise.</span>
+                <span className="block sm:inline sm:ml-2">Fait avec ❤️ pour la culture congolaise.</span>
               </p>
-              <div className="flex space-x-8 mt-4 md:mt-0 text-sm">
+              <div className="flex flex-wrap justify-center lg:justify-end space-x-4 sm:space-x-6 lg:space-x-8 text-xs sm:text-sm">
                 <span className="text-neutral-500">🌟 +25k votes</span>
                 <span className="text-neutral-500">🎨 +2.5k artistes</span>
                 <span className="text-neutral-500">🏆 +50 trophées</span>
