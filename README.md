@@ -1,3 +1,7 @@
+# Mosaïque
+
+The Congolese cultural hub & awards platform. Backend/Frontend de "La Grande Mosaïque", une plateforme d'information complète (culture, sport, actualités) pour la RDC, incluant un système de vote et de gestion de trophées pour les artistes.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
