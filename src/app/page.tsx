@@ -635,7 +635,7 @@ export default function HomePage() {
               >
                 {/* Image de l'article */}
                 <div className="relative h-24 overflow-hidden">
-                  <Image
+          <Image
                     src={article.image}
                     alt={article.title}
                     fill
@@ -708,23 +708,7 @@ export default function HomePage() {
             </div>
           )}
 
-          {/* Statistiques globales */}
-          <div className="mt-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-8 text-white text-center">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div>
-                <div className="text-4xl font-bold mb-2">{getAllArticles().length}</div>
-                <div className="text-blue-100">Articles au total</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold mb-2">{getAllArticles().filter(a => a.featured).length}</div>
-                <div className="text-blue-100">Articles à la une</div>
-              </div>
-              <div>
-                <div className="text-4xl font-bold mb-2">9</div>
-                <div className="text-blue-100">Catégories disponibles</div>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </section>
       
