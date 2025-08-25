@@ -17,13 +17,16 @@ import {
   Zap
 } from 'lucide-react'
 import Header from '../components/layout/Header'
-import { getFeaturedArticles, getAllArticles } from '../data/actualites'
+import { getFeaturedArticles, getAllArticles, Article } from '../data/actualites'
 import Image from 'next/image'
 
 export default function HomePage() {
   const [isVisible, setIsVisible] = useState(false)
   const [currentArticleIndex, setCurrentArticleIndex] = useState(0)
   const [isClient, setIsClient] = useState(false)
+  const [shuffleSeed, setShuffleSeed] = useState(Date.now()) // Pour forcer un nouveau mélange
+  const [globalSortOption, setGlobalSortOption] = useState<'recent' | 'featured' | 'popular' | 'random'>('recent')
+  const [selectedCategory, setSelectedCategory] = useState<string>('all')
 
   // Récupérer les articles pour le carrousel
   const featuredArticles = getFeaturedArticles().slice(0, 6) // Article central qui change
@@ -55,7 +58,82 @@ export default function HomePage() {
     }
   }, [featuredArticles.length, isClient])
 
+  // Fonction de mélange aléatoire
+  const shuffleArray = (array: Article[]) => {
+    const shuffled = [...array]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+    }
+    return shuffled
+  }
 
+  // Fonction de tri global de tous les articles
+  const sortAllArticles = (articles: Article[], sortBy: 'recent' | 'featured' | 'popular' | 'random') => {
+    let sortedArticles: Article[]
+    
+    switch (sortBy) {
+      case 'recent':
+        sortedArticles = [...articles].sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+        break
+      case 'featured':
+        sortedArticles = [...articles].sort((a, b) => {
+          if (a.featured && !b.featured) return -1
+          if (!a.featured && b.featured) return 1
+          return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+        })
+        break
+      case 'popular':
+        sortedArticles = [...articles].sort((a, b) => a.readTime - b.readTime) // Articles courts = plus populaires
+        break
+      case 'random':
+        sortedArticles = shuffleArray(articles)
+        break
+      default:
+        sortedArticles = articles
+    }
+    
+    return sortedArticles
+  }
+
+  // Filtrer les articles par catégorie si nécessaire
+  const getFilteredArticles = () => {
+    const allArticles = getAllArticles()
+    if (selectedCategory === 'all') {
+      return allArticles
+    }
+    return allArticles.filter(article => article.category === selectedCategory)
+  }
+
+  // Obtenir tous les articles filtrés et triés
+  const allSortedArticles = sortAllArticles(getFilteredArticles(), globalSortOption)
+
+  // Liste des catégories disponibles
+  const availableCategories = [
+    { key: 'all', name: 'Toutes les catégories', emoji: '🌟', count: getAllArticles().length },
+    { key: 'cinema', name: 'Cinéma', emoji: '🎬', count: getAllArticles().filter(a => a.category === 'cinema').length },
+    { key: 'clash', name: 'Clash', emoji: '⚡', count: getAllArticles().filter(a => a.category === 'clash').length },
+    { key: 'comedie', name: 'Comédie', emoji: '😄', count: getAllArticles().filter(a => a.category === 'comedie').length },
+    { key: 'decouverte', name: 'Découverte', emoji: '🔍', count: getAllArticles().filter(a => a.category === 'decouverte').length },
+    { key: 'education', name: 'Éducation', emoji: '📚', count: getAllArticles().filter(a => a.category === 'education').length },
+    { key: 'enquete', name: 'Enquête', emoji: '🕵️', count: getAllArticles().filter(a => a.category === 'enquete').length },
+    { key: 'evenements', name: 'Événements', emoji: '🎉', count: getAllArticles().filter(a => a.category === 'evenements').length },
+    { key: 'recompense', name: 'Récompense', emoji: '🏆', count: getAllArticles().filter(a => a.category === 'recompense').length },
+    { key: 'lifestyle', name: 'Lifestyle', emoji: '✨', count: getAllArticles().filter(a => a.category === 'lifestyle').length }
+  ]
+
+  // Couleurs pour les badges de catégorie
+  const categoryColors: Record<string, string> = {
+    'cinema': 'from-purple-600 to-pink-600',
+    'clash': 'from-red-600 to-orange-600',
+    'comedie': 'from-yellow-600 to-orange-600',
+    'decouverte': 'from-green-600 to-teal-600',
+    'education': 'from-blue-600 to-indigo-600',
+    'enquete': 'from-gray-600 to-slate-600',
+    'evenements': 'from-pink-600 to-purple-600',
+    'recompense': 'from-amber-600 to-yellow-600',
+    'lifestyle': 'from-teal-600 to-cyan-600'
+  }
 
   const stats = [
     { icon: Users, value: '2,500+', label: 'Artistes Inscrits', color: 'bg-primary-600' },
@@ -106,7 +184,69 @@ export default function HomePage() {
 
       {/* Hero Section Spectaculaire */}
       <section className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-accent-purple/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+        {/* Émetteur en arrière-plan */}
+        <div className="absolute right-8 top-1/4 transform -translate-y-1/4 opacity-15 pointer-events-none z-0">
+          <div className="w-64 h-96 lg:w-80 lg:h-[480px]">
+            {/* Tour de l'émetteur */}
+            <div className="relative w-full h-full">
+              {/* Antenne principale */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 top-0 w-2 h-32 bg-gradient-to-t from-gray-600 to-gray-800 rounded-full"></div>
+              
+              {/* Antennes horizontales */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 top-8 w-12 h-1 bg-gray-700 rounded-full"></div>
+              <div className="absolute left-1/2 transform -translate-x-1/2 top-16 w-16 h-1 bg-gray-700 rounded-full"></div>
+              <div className="absolute left-1/2 transform -translate-x-1/2 top-24 w-12 h-1 bg-gray-700 rounded-full"></div>
+              
+              {/* Corps principal de l'émetteur */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 top-32 w-24 h-48 bg-gradient-to-b from-gray-700 to-gray-900 rounded-t-lg shadow-2xl">
+                {/* Panneaux sur la tour */}
+                <div className="absolute inset-2 grid grid-cols-2 gap-1">
+                  <div className="bg-blue-600 rounded-sm opacity-80"></div>
+                  <div className="bg-white rounded-sm"></div>
+                  <div className="bg-white rounded-sm"></div>
+                  <div className="bg-blue-600 rounded-sm opacity-80"></div>
+                  <div className="bg-blue-600 rounded-sm opacity-80"></div>
+                  <div className="bg-white rounded-sm"></div>
+                </div>
+                
+                {/* Antennes de diffusion */}
+                <div className="absolute -left-8 top-4 w-16 h-2 bg-gray-600 rounded-full"></div>
+                <div className="absolute -right-8 top-4 w-16 h-2 bg-gray-600 rounded-full"></div>
+                <div className="absolute -left-6 top-12 w-12 h-2 bg-gray-600 rounded-full"></div>
+                <div className="absolute -right-6 top-12 w-12 h-2 bg-gray-600 rounded-full"></div>
+              </div>
+              
+              {/* Base de l'émetteur */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 bottom-16 w-32 h-32 bg-gradient-to-b from-gray-800 to-black rounded-2xl shadow-2xl">
+                {/* Écran/Panneau de contrôle */}
+                <div className="absolute inset-4 bg-gray-900 rounded-xl border-2 border-gray-600">
+                  <div className="absolute inset-2 grid grid-cols-3 gap-1">
+                    <div className="bg-blue-600 rounded-sm"></div>
+                    <div className="bg-blue-500 rounded-sm"></div>
+                    <div className="bg-blue-600 rounded-sm"></div>
+                    <div className="bg-blue-500 rounded-sm"></div>
+                    <div className="bg-white rounded-sm"></div>
+                    <div className="bg-blue-500 rounded-sm"></div>
+                    <div className="bg-blue-600 rounded-sm"></div>
+                    <div className="bg-blue-500 rounded-sm"></div>
+                    <div className="bg-blue-600 rounded-sm"></div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Support de base */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 bottom-0 w-40 h-16 bg-gradient-to-b from-gray-800 to-black rounded-b-2xl shadow-xl"></div>
+              
+              {/* Ondes de transmission animées */}
+              <div className="absolute left-1/2 top-0 transform -translate-x-1/2">
+                <div className="w-4 h-4 border-2 border-blue-400 rounded-full animate-ping opacity-30"></div>
+                <div className="absolute top-0 left-0 w-4 h-4 border-2 border-blue-500 rounded-full animate-ping opacity-20" style={{animationDelay: '0.5s'}}></div>
+                <div className="absolute top-0 left-0 w-4 h-4 border-2 border-blue-600 rounded-full animate-ping opacity-10" style={{animationDelay: '1s'}}></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Contenu principal */}
             <div className={`text-left transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -392,111 +532,202 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Section Statistiques */}
-      <section className="py-20 bg-white/80 backdrop-blur-sm border-y border-neutral-200/50">
+      {/* Section Articles par Catégorie */}
+      <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-neutral-900 mb-4">
-              Notre Impact Culturel
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-neutral-900 mb-2">
+              Actualités du Congo
             </h2>
-            <p className="text-xl text-neutral-600">
-              Des chiffres qui témoignent de notre engagement pour la culture congolaise
+            <p className="text-sm text-neutral-600 mb-4">
+              {allSortedArticles.length} articles {selectedCategory === 'all' ? '' : `- ${availableCategories.find(cat => cat.key === selectedCategory)?.name}`}
             </p>
-          </div>
-          
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={`stat-${index}-${stat.label}`} className="text-center group">
-                <div className={`inline-flex items-center justify-center w-20 h-20 bg-gradient-primary rounded-3xl text-white mb-6 group-hover:shadow-glow-lg transition-all duration-500 transform group-hover:scale-110 group-hover:rotate-3`}>
-                  <stat.icon className="w-10 h-10" />
+            
+            {/* Contrôles compacts */}
+            <div className="bg-white rounded-xl p-3 shadow-sm border border-slate-200 max-w-6xl mx-auto">
+              {/* Filtrage par catégorie - compact */}
+              <div className="mb-3">
+                <div className="flex flex-wrap items-center justify-center gap-1">
+                  {availableCategories.map((category) => (
+                    <button
+                      key={`category-filter-${category.key}`}
+                      onClick={() => setSelectedCategory(category.key)}
+                      className={`flex items-center space-x-1 px-2 py-1 rounded-lg text-xs font-medium transition-all duration-200 ${
+                        selectedCategory === category.key
+                          ? 'bg-blue-600 text-white'
+                          : 'bg-slate-100 text-neutral-700 hover:bg-slate-200'
+                      }`}
+                    >
+                      <span className="text-sm">{category.emoji}</span>
+                      <span>{category.name}</span>
+                      <span className={`text-xs px-1 py-0.5 rounded ${
+                        selectedCategory === category.key 
+                          ? 'bg-white/20 text-white' 
+                          : 'bg-white text-slate-600'
+                      }`}>
+                        {category.count}
+                      </span>
+                    </button>
+                  ))}
                 </div>
-                <div className="text-4xl font-bold text-neutral-900 mb-3">{stat.value}</div>
-                <div className="text-neutral-600 font-semibold text-lg">{stat.label}</div>
-                <div className={`w-16 h-1 ${stat.color} rounded-full mx-auto mt-3 opacity-60`}></div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+              
+              {/* Boutons de tri global - compact */}
+              <div className="flex items-center justify-center space-x-2">
+                <span className="text-xs font-medium text-neutral-600 mr-1">Tri :</span>
+              
+                <button
+                  onClick={() => setGlobalSortOption('recent')}
+                  className={`px-3 py-1 rounded-md text-xs font-medium transition-all duration-200 ${
+                    globalSortOption === 'recent'
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                >
+                  📅 Récents
+                </button>
+                
+                <button
+                  onClick={() => setGlobalSortOption('featured')}
+                  className={`px-3 py-1 rounded-md text-xs font-medium transition-all duration-200 ${
+                    globalSortOption === 'featured'
+                      ? 'bg-red-600 text-white'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                >
+                  🔥 Une
+                </button>
+                
+                <button
+                  onClick={() => setGlobalSortOption('popular')}
+                  className={`px-3 py-1 rounded-md text-xs font-medium transition-all duration-200 ${
+                    globalSortOption === 'popular'
+                      ? 'bg-green-600 text-white'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                >
+                  ⚡ Rapide
+                </button>
 
-      {/* Section Catégories */}
-      <section className="py-24 bg-gradient-subtle">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl font-bold text-neutral-900 mb-6">
-              L&apos;Univers Culturel Congolais
-            </h2>
-            <p className="text-2xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
-              Plongez dans la richesse et la diversité de notre patrimoine artistique
-            </p>
+                <button
+                  onClick={() => {
+                    setGlobalSortOption('random')
+                    setShuffleSeed(Date.now()) // Force un nouveau mélange
+                  }}
+                  className={`px-3 py-1 rounded-md text-xs font-medium transition-all duration-200 ${
+                    globalSortOption === 'random'
+                      ? 'bg-purple-600 text-white'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
+                >
+                  🎲 Aléa
+                </button>
+              </div>
+            </div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {categories.map((category, index) => (
-              <div key={`category-${index}-${category.title}`} className="group cursor-pointer">
-                <div className="bg-white rounded-4xl p-8 shadow-soft hover:shadow-strong transition-all duration-700 transform group-hover:-translate-y-3 border border-neutral-100 hover:border-primary-200 relative overflow-hidden">
-                  <div className={`absolute inset-0 bg-gradient-to-br ${category.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+                    {/* Une seule grille avec tous les articles triés */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
+            {allSortedArticles.map((article, index) => (
+              <div 
+                key={`global-article-${article.id}-${index}`} 
+                className="group bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-200 border border-slate-200/50 overflow-hidden"
+              >
+                {/* Image de l'article */}
+                <div className="relative h-24 overflow-hidden">
+                  <Image
+                    src={article.image}
+                    alt={article.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                   
-                  <div className="relative flex items-center justify-between mb-6">
-                    <div className={`w-20 h-20 bg-gradient-to-br ${category.gradient} rounded-3xl flex items-center justify-center text-4xl group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-medium`}>
-                      {category.image}
-                    </div>
-                    <category.icon className="w-8 h-8 text-neutral-400 group-hover:text-primary-600 transition-colors" />
+                  {/* Badge catégorie avec couleur dynamique */}
+                  <div className={`absolute top-1 left-1 bg-gradient-to-r ${categoryColors[article.category] || 'from-gray-600 to-gray-700'} text-white text-xs px-1.5 py-0.5 rounded-md font-medium`}>
+                    {article.category}
                   </div>
                   
-                  <div className="relative">
-                    <h3 className="text-2xl font-bold text-neutral-900 mb-4 group-hover:text-primary-700 transition-colors">
-                      {category.title}
-                    </h3>
-                    
-                    <p className="text-neutral-600 mb-6 leading-relaxed">
-                      {category.description}
-                    </p>
-                    
-                    <div className="flex items-center justify-between mb-6">
-                      <span className="text-sm font-semibold text-primary-600 bg-primary-50 px-3 py-1 rounded-full">
-                        {category.stats}
+                  {/* Badge "À la une" si featured */}
+                  {article.featured && (
+                    <div className="absolute top-1 right-1 bg-red-600 text-white text-xs px-1.5 py-0.5 rounded-md font-medium">
+                      🔥
+                    </div>
+                  )}
+                </div>
+
+                {/* Contenu de l'article */}
+                <div className="p-2">
+                  <h4 className="font-semibold text-neutral-900 text-xs mb-1 line-clamp-2 group-hover:text-blue-700 transition-colors leading-tight">
+                    {article.title}
+                  </h4>
+                  
+                  <p className="text-neutral-600 text-xs mb-2 line-clamp-1 leading-relaxed">
+                    {article.excerpt}
+                  </p>
+                  
+                  {/* Métadonnées compactes */}
+                  <div className="flex items-center justify-between text-xs text-neutral-500">
+                    <span className="font-medium truncate">{article.author}</span>
+                    <div className="flex items-center space-x-1 text-xs">
+                      <span>{article.readTime}min</span>
+                      <span>•</span>
+                      <span>
+                        {new Date(article.publishedAt).toLocaleDateString('fr-FR', {
+                          day: 'numeric',
+                          month: 'short'
+                        })}
                       </span>
                     </div>
-                    
-                    <div className="flex items-center text-primary-700 font-bold group-hover:text-primary-800 text-lg">
-                      <span>Explorer</span>
-                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform duration-300" />
-                    </div>
                   </div>
+                  
+                  {/* Tags réduits */}
+                  {article.tags && article.tags.length > 0 && (
+                    <div className="flex gap-1 mt-1">
+                      {article.tags.slice(0, 1).map((tag: string, tagIndex: number) => (
+                        <span 
+                          key={`global-tag-${article.id}-${tagIndex}`}
+                          className="bg-slate-100 text-slate-600 text-xs px-1.5 py-0.5 rounded-md"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
           </div>
+
+          {/* Message si pas d'articles */}
+          {allSortedArticles.length === 0 && (
+            <div className="text-center py-12 bg-slate-50 rounded-2xl border-2 border-dashed border-slate-300">
+              <div className="text-6xl mb-4">📰</div>
+              <h4 className="text-xl font-semibold text-slate-600 mb-2">Aucun article disponible</h4>
+              <p className="text-slate-500">Les articles seront bientôt disponibles.</p>
+            </div>
+          )}
+
+          {/* Statistiques globales */}
+          <div className="mt-20 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-8 text-white text-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div>
+                <div className="text-4xl font-bold mb-2">{getAllArticles().length}</div>
+                <div className="text-blue-100">Articles au total</div>
+              </div>
+              <div>
+                <div className="text-4xl font-bold mb-2">{getAllArticles().filter(a => a.featured).length}</div>
+                <div className="text-blue-100">Articles à la une</div>
+              </div>
+              <div>
+                <div className="text-4xl font-bold mb-2">9</div>
+                <div className="text-blue-100">Catégories disponibles</div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="py-24 bg-gradient-creative text-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="mb-12">
-            <h2 className="text-6xl font-bold mb-8">
-              Rejoignez La Grande Mosaïque
-            </h2>
-            <p className="text-2xl opacity-90 leading-relaxed">
-              Partagez votre passion, découvrez de nouveaux talents et participez à la célébration 
-              de notre richesse culturelle. Votre voix compte dans cette mosaïque exceptionnelle !
-            </p>
-          </div>
-          
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <button className="bg-white text-primary-700 px-10 py-5 rounded-2xl font-bold text-xl hover:bg-neutral-50 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-3 shadow-strong">
-              <span>Devenir Membre</span>
-            </button>
-            
-            <button className="bg-white/20 backdrop-blur-sm text-white px-10 py-5 rounded-2xl font-bold text-xl border-2 border-white/30 hover:bg-white/30 transition-all duration-300 flex items-center justify-center space-x-3">
-              <Star className="w-6 h-6" />
-              <span>Voter Maintenant</span>
-            </button>
-          </div>
-        </div>
-      </section>
-
+      
       {/* Footer */}
       <footer className="bg-neutral-900 text-neutral-300 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
