@@ -122,27 +122,40 @@ export default function HomePage() {
               {/* Carte géographique RDC */}
               <div className="relative mr-6">
                 <div className="w-28 h-36 lg:w-36 lg:h-44 relative bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-2 shadow-lg border border-green-200/50">
-                  {/* Forme plus réaliste de la RDC en SVG */}
-                  <svg viewBox="0 0 100 120" className="w-full h-full">
-                    {/* Contour principal de la RDC */}
-                    <path d="M15 25 Q25 15 40 18 Q60 12 75 20 Q85 25 88 35 Q90 45 85 55 Q87 65 82 72 Q85 78 80 85 Q75 92 68 95 Q58 100 48 102 Q38 98 30 94 Q22 88 18 80 Q12 70 10 60 Q8 50 12 40 Q10 35 15 25 Z" 
+                  {/* Vraie forme de la RDC selon l'image fournie */}
+                  <svg viewBox="0 0 120 80" className="w-full h-full">
+                    {/* Vraie forme de la RDC basée exactement sur votre image */}
+                    <path d="M8 45 
+                             C8 43 12 42 18 42
+                             C25 41 35 40 48 39
+                             C62 38 78 37 92 38
+                             C102 39 108 41 110 43
+                             C112 45 110 47 106 48
+                             C100 49 92 50 82 50
+                             C70 50 58 50 48 50
+                             C38 50 28 50 20 49
+                             C14 48 10 47 8 45 Z" 
                           className="fill-emerald-100 stroke-emerald-600 stroke-2" />
                     
-                    {/* Fleuve Congo */}
-                    <path d="M45 30 Q55 40 50 50 Q45 60 40 70 Q35 80 30 85" 
+                    {/* Fleuve Congo traversant le pays */}
+                    <path d="M75 42 Q60 45 45 46 Q30 47 18 47" 
                           className="stroke-blue-400 stroke-1 fill-none" />
                     
-                    {/* Kinshasa */}
-                    <circle cx="35" cy="75" r="2.5" className="fill-red-500 animate-pulse" />
-                    <text x="40" y="78" className="text-[8px] fill-red-700 font-bold">Kinshasa</text>
+                    {/* Kinshasa (à l'ouest, queue étroite) */}
+                    <circle cx="18" cy="46" r="2" className="fill-red-500 animate-pulse" />
+                    <text x="8" y="52" className="text-[7px] fill-red-700 font-bold">Kinshasa</text>
                     
-                    {/* Lubumbashi */}
-                    <circle cx="60" cy="90" r="1.5" className="fill-blue-500" />
-                    <text x="63" y="92" className="text-[6px] fill-blue-700 font-semibold">Lubumbashi</text>
+                    {/* Lubumbashi (sud-est du territoire principal) */}
+                    <circle cx="90" cy="48" r="1.5" className="fill-blue-500" />
+                    <text x="78" y="54" className="text-[6px] fill-blue-700 font-semibold">Lubumbashi</text>
                     
-                    {/* Goma */}
-                    <circle cx="75" cy="45" r="1.5" className="fill-green-500" />
-                    <text x="77" y="47" className="text-[6px] fill-green-700 font-semibold">Goma</text>
+                    {/* Goma (à l'est) */}
+                    <circle cx="105" cy="44" r="1.5" className="fill-green-500" />
+                    <text x="95" y="40" className="text-[6px] fill-green-700 font-semibold">Goma</text>
+                    
+                    {/* Kisangani (centre du pays) */}
+                    <circle cx="75" cy="43" r="1.5" className="fill-purple-500" />
+                    <text x="65" y="39" className="text-[6px] fill-purple-700 font-semibold">Kisangani</text>
                   </svg>
                   
                   {/* Drapeau RDC animé */}
@@ -170,7 +183,7 @@ export default function HomePage() {
                 {/* Textes accrocheurs */}
                 <div className="space-y-1 mb-4">
                   <div className="text-sm lg:text-base text-blue-600 font-medium italic">
-                    "Là où chaque talent congolais brille comme une étoile"
+                    &ldquo;Là où chaque talent congolais brille comme une étoile&rdquo;
                   </div>
                   <div className="text-xs lg:text-sm text-emerald-600 font-semibold">
                     🌟 Plus de 80 millions de talents à découvrir
@@ -247,7 +260,7 @@ export default function HomePage() {
                   >
                     <div className="relative w-full h-full group cursor-pointer">
                       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110">
-                        <Image
+            <Image
                           src={article.image}
                           alt={article.title}
                           fill
@@ -271,7 +284,7 @@ export default function HomePage() {
                         📰
                       </div>
                     </div>
-                  </div>
+        </div>
                 ))}
 
                                 {/* Article central (article actuel) */}
@@ -279,7 +292,7 @@ export default function HomePage() {
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-40 h-40 lg:w-48 lg:h-48 relative group cursor-pointer">
                       <div className="absolute inset-0 rounded-3xl bg-white shadow-2xl border-4 border-blue-500/20 overflow-hidden transform group-hover:scale-105 transition-all duration-500">
-                        <Image
+          <Image
                           key={`central-${currentArticleIndex}`} // Force re-render pour transition
                           src={featuredArticles[currentArticleIndex]?.image || ''}
                           alt={featuredArticles[currentArticleIndex]?.title || ''}
