@@ -14,7 +14,10 @@ import {
   Calendar,
   Award,
   Coffee,
-  Sparkles
+  Sparkles,
+  Menu,
+  X,
+  ChevronRight
 } from 'lucide-react'
 import { getArticlesByCategory } from '../../data/actualites'
 import Image from 'next/image'
@@ -22,6 +25,8 @@ import Image from 'next/image'
 export default function Header() {
   const [isActualitesDropdownOpen, setIsActualitesDropdownOpen] = useState(false)
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isMobileActualitesOpen, setIsMobileActualitesOpen] = useState(false)
 
   // Catégories d'actualités avec données fictives
   const actualitesCategories = [
