@@ -159,9 +159,10 @@ export default function HomePage() {
                 {/* Cercle de base */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-50 via-white to-purple-50 shadow-2xl border border-slate-200/30"></div>
                 
-                {/* Orbite guide (optionnel) */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-5">
-                  <div className="absolute border border-blue-300 rounded-full w-[400px] h-[400px]"></div>
+                {/* Orbite guide visible */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="absolute border-2 border-dashed border-blue-300/30 rounded-full w-[360px] h-[360px] animate-pulse"></div>
+                  <div className="absolute border border-blue-200/20 rounded-full w-[380px] h-[380px]"></div>
                 </div>
                 
                 {/* État de chargement */}
@@ -171,14 +172,14 @@ export default function HomePage() {
                   </div>
                 )}
                 
-                {/* Actualités qui défilent une par une autour du cercle */}
-                {isClient && orbitingArticles.map((article, index) => (
+                {/* Actualités qui tournent en cercle */}
+                {isClient && orbitingArticles.slice(0, 8).map((article, index) => (
                   <div
                     key={`orbiting-${article.id}-${index}`}
                     className="absolute top-1/2 left-1/2 w-20 h-20 lg:w-24 lg:h-24 -translate-x-1/2 -translate-y-1/2"
                     style={{
-                      animation: `orbitContinuous 8s linear infinite`,
-                      animationDelay: `${index * 0.4}s`, // Décalage de 0.4s entre chaque actualité
+                      animation: `orbitContinuous 10s linear infinite`,
+                      animationDelay: `${index * 1.25}s`, // Décalage de 1.25s entre chaque actualité (10s / 8 = 1.25s)
                     }}
                   >
                     <div className="relative w-full h-full group cursor-pointer">
@@ -263,19 +264,20 @@ export default function HomePage() {
                 )}
               </div>
 
-              {/* Texte "Actualités en Orbite" */}
+              {/* Texte "Actualités en Mouvement Circulaire" */}
               <div className="absolute -bottom-20 left-1/2 transform -translate-x-1/2 text-center">
-                <p className="text-xl font-bold text-slate-700 mb-2 animate-pulse">🌍 Actualités en Orbite</p>
+                <p className="text-xl font-bold text-slate-700 mb-2 animate-pulse">🔄 Mouvement Circulaire des Actualités</p>
                 <p className="text-sm text-slate-500 mb-2">
-                  📰 Actualités défilantes • ⭐ Article central qui change • 🔄 Information continue
+                  📰 8 actualités tournent physiquement en cercle • ⭐ Article central qui change
                 </p>
                 <p className="text-xs text-slate-400">
-                  20 actualités circulent • Une nouvelle toutes les 0.4s • Défilement infini
+                  Rotation visible • Mouvement circulaire continu • Chaque actualité fait le tour complet
                 </p>
                 {isClient && (
                   <div className="mt-2 flex justify-center items-center space-x-4 text-xs font-medium">
-                    <div className="text-blue-600">🔄 Orbite: 8s par tour</div>
+                    <div className="text-blue-600">🔄 Tour complet: 10 secondes</div>
                     <div className="text-green-600">📰 Centre: Change toutes les 3s</div>
+                    <div className="text-purple-600">👁️ Suivez les actualités du regard</div>
                   </div>
                 )}
               </div>

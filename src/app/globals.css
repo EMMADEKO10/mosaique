@@ -305,21 +305,13 @@ img {
 
 @keyframes orbitContinuous {
   0% {
-    transform: rotate(0deg) translateX(200px) rotate(0deg);
-    opacity: 0;
-    scale: 0.8;
-  }
-  10% {
-    opacity: 1;
-    scale: 1;
-  }
-  90% {
+    transform: rotate(0deg) translateX(180px) rotate(0deg);
     opacity: 1;
     scale: 1;
   }
   100% {
-    transform: rotate(360deg) translateX(200px) rotate(-360deg);
-    opacity: 0;
-    scale: 0.8;
+    transform: rotate(360deg) translateX(180px) rotate(-360deg);
+    opacity: 1;
+    scale: 1;
   }
 }
