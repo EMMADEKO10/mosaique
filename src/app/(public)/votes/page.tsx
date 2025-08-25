@@ -121,38 +121,38 @@ interface VoteSectionProps {
 // Section de vote pour les chansons
 function SongsVoteSection({ songs, onVote, votedItems }: VoteSectionProps & { songs: Song[] }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
       {songs.map((song, index) => (
         <div key={song.id} className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-slate-200">
           <div className="relative">
             <img 
               src={song.coverUrl} 
               alt={song.title}
-              className="w-full h-48 object-cover"
+              className="w-full h-32 sm:h-40 lg:h-48 object-cover"
             />
-            <div className="absolute top-3 left-3 bg-black/70 text-white px-2 py-1 rounded-full text-sm font-semibold">
+            <div className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-black/70 text-white px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-semibold">
               #{index + 1}
             </div>
-            <div className="absolute top-3 right-3 bg-white/90 px-2 py-1 rounded-full text-sm font-semibold">
+            <div className="absolute top-2 sm:top-3 right-2 sm:right-3 bg-white/90 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-semibold">
               {song.duration}
             </div>
           </div>
-          <div className="p-4">
-            <h3 className="font-bold text-lg text-slate-900 mb-1">{song.title}</h3>
-            <p className="text-slate-600 mb-2">{song.artist}</p>
-            <div className="flex items-center justify-between text-sm text-slate-500 mb-3">
-              <span>{song.genre}</span>
-              <span>{song.streams?.toLocaleString()} streams</span>
+          <div className="p-3 sm:p-4">
+            <h3 className="font-bold text-sm sm:text-base lg:text-lg text-slate-900 mb-1 line-clamp-2">{song.title}</h3>
+            <p className="text-slate-600 mb-2 text-xs sm:text-sm line-clamp-1">{song.artist}</p>
+            <div className="flex items-center justify-between text-xs sm:text-sm text-slate-500 mb-3">
+              <span className="truncate">{song.genre}</span>
+              <span className="whitespace-nowrap ml-2">{song.streams?.toLocaleString()} streams</span>
             </div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <Vote className="w-4 h-4 text-blue-600" />
-                <span className="font-semibold text-blue-600">{song.votes?.toLocaleString()} votes</span>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
+              <div className="flex items-center space-x-1 sm:space-x-2">
+                <Vote className="w-3 h-3 sm:w-4 sm:h-4 text-blue-600" />
+                <span className="font-semibold text-blue-600 text-xs sm:text-sm">{song.votes?.toLocaleString()} votes</span>
               </div>
               <button
                 onClick={() => onVote(song.id)}
                 disabled={votedItems.has(song.id)}
-                className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+                className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-semibold transition-all text-xs sm:text-sm ${
                   votedItems.has(song.id)
                     ? 'bg-green-100 text-green-700 cursor-not-allowed'
                     : 'bg-blue-600 text-white hover:bg-blue-700'
@@ -171,41 +171,42 @@ function SongsVoteSection({ songs, onVote, votedItems }: VoteSectionProps & { so
 // Section de vote pour les artistes
 function ArtistsVoteSection({ artists, onVote, votedItems }: VoteSectionProps & { artists: Artist[] }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
       {artists.map((artist) => (
         <div key={artist.id} className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-slate-200">
           <div className="relative">
             <img 
               src={artist.image} 
               alt={artist.name}
-              className="w-full h-48 object-cover"
+              className="w-full h-32 sm:h-40 lg:h-48 object-cover"
             />
-            <div className="absolute top-3 left-3 bg-black/70 text-white px-2 py-1 rounded-full text-sm font-semibold">
+            <div className="absolute top-2 sm:top-3 left-2 sm:left-3 bg-black/70 text-white px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-semibold">
               #{artist.rank}
             </div>
             {artist.trending && (
-              <div className="absolute top-3 right-3 bg-red-500 text-white px-2 py-1 rounded-full text-sm font-semibold">
-                🔥 Trending
+              <div className="absolute top-2 sm:top-3 right-2 sm:right-3 bg-red-500 text-white px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-semibold">
+                <span className="hidden sm:inline">🔥 Trending</span>
+                <span className="sm:hidden">🔥</span>
               </div>
             )}
           </div>
-          <div className="p-4">
-            <h3 className="font-bold text-lg text-slate-900 mb-1">{artist.name}</h3>
-            <p className="text-slate-600 text-sm mb-2">{artist.location} • {artist.specialty}</p>
-            <p className="text-slate-500 text-sm mb-3 line-clamp-2">{artist.description}</p>
-            <div className="flex items-center justify-between text-sm text-slate-500 mb-3">
-              <span>{artist.socialMedia.followers.toLocaleString()} followers</span>
-              <span>{artist.socialMedia.engagement}</span>
+          <div className="p-3 sm:p-4">
+            <h3 className="font-bold text-sm sm:text-base lg:text-lg text-slate-900 mb-1 line-clamp-2">{artist.name}</h3>
+            <p className="text-slate-600 text-xs sm:text-sm mb-2 line-clamp-1">{artist.location} • {artist.specialty}</p>
+            <p className="text-slate-500 text-xs sm:text-sm mb-3 line-clamp-2">{artist.description}</p>
+            <div className="flex items-center justify-between text-xs sm:text-sm text-slate-500 mb-3">
+              <span className="truncate">{artist.socialMedia.followers.toLocaleString()} followers</span>
+              <span className="whitespace-nowrap ml-2">{artist.socialMedia.engagement}</span>
             </div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <Heart className="w-4 h-4 text-red-500" />
-                <span className="font-semibold text-red-500">{artist.votes.toLocaleString()} votes</span>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
+              <div className="flex items-center space-x-1 sm:space-x-2">
+                <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-red-500" />
+                <span className="font-semibold text-red-500 text-xs sm:text-sm">{artist.votes.toLocaleString()} votes</span>
               </div>
               <button
                 onClick={() => onVote(artist.id)}
                 disabled={votedItems.has(artist.id)}
-                className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+                className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg font-semibold transition-all text-xs sm:text-sm ${
                   votedItems.has(artist.id)
                     ? 'bg-green-100 text-green-700 cursor-not-allowed'
                     : 'bg-red-500 text-white hover:bg-red-600'
@@ -224,38 +225,38 @@ function ArtistsVoteSection({ artists, onVote, votedItems }: VoteSectionProps & 
 // Section de vote pour les battles
 function BattlesVoteSection({ battles, onVote, votedItems }: VoteSectionProps & { battles: Battle[] }) {
   return (
-    <div className="space-y-8">
+    <div className="space-y-4 sm:space-y-6 lg:space-y-8">
       {battles.map((battle) => (
         <div key={battle.id} className="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-200">
-          <div className="bg-gradient-to-r from-red-500 to-pink-500 text-white p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="text-xl font-bold">{battle.title}</h3>
-                <p className="text-red-100">{battle.description}</p>
+          <div className="bg-gradient-to-r from-red-500 to-pink-500 text-white p-3 sm:p-4 lg:p-6">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+              <div className="flex-1">
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-1 sm:mb-2 line-clamp-2">{battle.title}</h3>
+                <p className="text-red-100 text-sm sm:text-base line-clamp-2">{battle.description}</p>
               </div>
-              <div className="text-right">
-                <div className="text-sm opacity-90">Se termine le</div>
-                <div className="font-semibold">{new Date(battle.endDate).toLocaleDateString('fr-FR')}</div>
+              <div className="text-left sm:text-right flex-shrink-0">
+                <div className="text-xs sm:text-sm opacity-90">Se termine le</div>
+                <div className="font-semibold text-sm sm:text-base">{new Date(battle.endDate).toLocaleDateString('fr-FR')}</div>
               </div>
             </div>
           </div>
           
-          <div className="p-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="p-4 sm:p-5 lg:p-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
               {/* Artiste 1 */}
-              <div className="text-center">
+              <div className="text-center bg-blue-50/50 p-4 rounded-xl">
                 <img 
                   src={battle.artist1.image} 
                   alt={battle.artist1.name}
-                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-blue-200"
+                  className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 rounded-full mx-auto mb-3 sm:mb-4 object-cover border-2 sm:border-4 border-blue-200"
                 />
-                <h4 className="text-lg font-bold text-slate-900">{battle.artist1.name}</h4>
-                <p className="text-slate-600 text-sm">{battle.artist1.location} • {battle.artist1.style}</p>
-                <p className="text-blue-600 font-semibold mt-2">{battle.artist1.votes.toLocaleString()} votes</p>
+                <h4 className="text-sm sm:text-base lg:text-lg font-bold text-slate-900 line-clamp-1">{battle.artist1.name}</h4>
+                <p className="text-slate-600 text-xs sm:text-sm line-clamp-1">{battle.artist1.location} • {battle.artist1.style}</p>
+                <p className="text-blue-600 font-semibold mt-1 sm:mt-2 text-sm sm:text-base">{battle.artist1.votes.toLocaleString()} votes</p>
                 <button
                   onClick={() => onVote(battle.artist1.id)}
                   disabled={votedItems.has(battle.artist1.id)}
-                  className={`mt-3 px-6 py-2 rounded-lg font-semibold transition-all ${
+                  className={`mt-2 sm:mt-3 px-4 sm:px-6 py-1.5 sm:py-2 rounded-lg font-semibold transition-all text-xs sm:text-sm ${
                     votedItems.has(battle.artist1.id)
                       ? 'bg-green-100 text-green-700 cursor-not-allowed'
                       : 'bg-blue-600 text-white hover:bg-blue-700'
@@ -265,20 +266,30 @@ function BattlesVoteSection({ battles, onVote, votedItems }: VoteSectionProps & 
                 </button>
               </div>
 
+              {/* VS - Visible uniquement sur desktop dans la grille, sur mobile en séparateur */}
+              <div className="lg:hidden flex items-center justify-center py-2">
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center text-white font-bold text-lg mb-1">
+                    VS
+                  </div>
+                  <div className="text-xs text-slate-500">Total: {battle.totalVotes.toLocaleString()} votes</div>
+                </div>
+              </div>
+
               {/* Artiste 2 */}
-              <div className="text-center">
+              <div className="text-center bg-red-50/50 p-4 rounded-xl">
                 <img 
                   src={battle.artist2.image} 
                   alt={battle.artist2.name}
-                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-red-200"
+                  className="w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 rounded-full mx-auto mb-3 sm:mb-4 object-cover border-2 sm:border-4 border-red-200"
                 />
-                <h4 className="text-lg font-bold text-slate-900">{battle.artist2.name}</h4>
-                <p className="text-slate-600 text-sm">{battle.artist2.location} • {battle.artist2.style}</p>
-                <p className="text-red-600 font-semibold mt-2">{battle.artist2.votes.toLocaleString()} votes</p>
+                <h4 className="text-sm sm:text-base lg:text-lg font-bold text-slate-900 line-clamp-1">{battle.artist2.name}</h4>
+                <p className="text-slate-600 text-xs sm:text-sm line-clamp-1">{battle.artist2.location} • {battle.artist2.style}</p>
+                <p className="text-red-600 font-semibold mt-1 sm:mt-2 text-sm sm:text-base">{battle.artist2.votes.toLocaleString()} votes</p>
                 <button
                   onClick={() => onVote(battle.artist2.id)}
                   disabled={votedItems.has(battle.artist2.id)}
-                  className={`mt-3 px-6 py-2 rounded-lg font-semibold transition-all ${
+                  className={`mt-2 sm:mt-3 px-4 sm:px-6 py-1.5 sm:py-2 rounded-lg font-semibold transition-all text-xs sm:text-sm ${
                     votedItems.has(battle.artist2.id)
                       ? 'bg-green-100 text-green-700 cursor-not-allowed'
                       : 'bg-red-500 text-white hover:bg-red-600'
@@ -287,28 +298,38 @@ function BattlesVoteSection({ battles, onVote, votedItems }: VoteSectionProps & 
                   {votedItems.has(battle.artist2.id) ? '✓ Voté' : 'Voter'}
                 </button>
               </div>
+              
+              {/* VS - Version desktop seulement */}
+              <div className="hidden lg:flex lg:col-span-2 items-center justify-center py-4">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center text-white font-bold text-xl mb-2">
+                    VS
+                  </div>
+                  <div className="text-sm text-slate-500">Total: {battle.totalVotes.toLocaleString()} votes</div>
+                </div>
+              </div>
             </div>
 
             {/* Barre de progression */}
-            <div className="mt-6">
-              <div className="flex justify-between text-sm font-semibold mb-2">
+            <div className="mt-4 sm:mt-6">
+              <div className="flex justify-between text-xs sm:text-sm font-semibold mb-2">
                 <span className="text-blue-600">{((battle.artist1.votes / battle.totalVotes) * 100).toFixed(1)}%</span>
                 <span className="text-red-600">{((battle.artist2.votes / battle.totalVotes) * 100).toFixed(1)}%</span>
               </div>
-              <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+              <div className="w-full bg-gray-200 rounded-full h-2 sm:h-3 overflow-hidden">
                 <div className="h-full flex">
                   <div 
-                    className="bg-blue-500" 
+                    className="bg-blue-500 transition-all duration-500" 
                     style={{ width: `${(battle.artist1.votes / battle.totalVotes) * 100}%` }}
                   ></div>
                   <div 
-                    className="bg-red-500" 
+                    className="bg-red-500 transition-all duration-500" 
                     style={{ width: `${(battle.artist2.votes / battle.totalVotes) * 100}%` }}
                   ></div>
                 </div>
               </div>
-              <div className="text-center mt-2">
-                <span className="text-sm text-slate-500">Total: {battle.totalVotes.toLocaleString()} votes</span>
+              <div className="text-center mt-2 lg:hidden">
+                <span className="text-xs sm:text-sm text-slate-500">Total: {battle.totalVotes.toLocaleString()} votes</span>
               </div>
             </div>
           </div>
@@ -345,25 +366,25 @@ export default function VotePage() {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative py-6 overflow-hidden bg-cover bg-center bg-no-repeat" style={{backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url('/mosaique/Fally capture.png')"}}>
-        {/* Decorative Musical Notes */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-16 left-1/4 text-yellow-400/30 text-3xl animate-pulse">♪</div>
-          <div className="absolute bottom-16 right-1/4 text-yellow-400/30 text-2xl animate-pulse" style={{animationDelay: '1s'}}>♫</div>
-          <div className="absolute top-1/2 right-1/3 text-yellow-400/30 text-xl animate-pulse" style={{animationDelay: '0.5s'}}>♬</div>
+      <section className="relative py-4 sm:py-6 lg:py-8 overflow-hidden bg-cover bg-center bg-no-repeat" style={{backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url('/mosaique/Fally capture.png')"}}>
+        {/* Decorative Musical Notes - Hidden on mobile */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden hidden sm:block">
+          <div className="absolute top-8 sm:top-16 left-1/4 text-yellow-400/30 text-xl sm:text-2xl lg:text-3xl animate-pulse">♪</div>
+          <div className="absolute bottom-8 sm:bottom-16 right-1/4 text-yellow-400/30 text-lg sm:text-xl lg:text-2xl animate-pulse" style={{animationDelay: '1s'}}>♫</div>
+          <div className="absolute top-1/2 right-1/3 text-yellow-400/30 text-base sm:text-lg lg:text-xl animate-pulse" style={{animationDelay: '0.5s'}}>♬</div>
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center text-white">
+        <div className="relative z-10 max-w-4xl mx-auto px-3 sm:px-4 lg:px-6 text-center text-white">
           {/* Badge principal */}
-          <div className="inline-flex items-center space-x-2 bg-white/15 backdrop-blur-md px-4 py-2 rounded-full mb-3 shadow-lg border border-yellow-400/30">
-            <Vote className="w-4 h-4 text-yellow-400" />
-            <span className="font-semibold text-sm">La Grande Mosaïque</span>
-            <Trophy className="w-4 h-4 text-yellow-400" />
+          <div className="inline-flex items-center space-x-1 sm:space-x-2 bg-white/15 backdrop-blur-md px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-2 sm:mb-3 shadow-lg border border-yellow-400/30">
+            <Vote className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-400" />
+            <span className="font-semibold text-xs sm:text-sm">La Grande Mosaïque</span>
+            <Trophy className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-400" />
           </div>
           
           {/* Titre principal avec effet gradient */}
-          <div className="mb-3">
-            <h1 className="text-2xl lg:text-4xl font-black mb-1 leading-tight">
+          <div className="mb-2 sm:mb-3">
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black mb-1 leading-tight">
               {showCategories ? (
                 <>
                   <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-orange-400 bg-clip-text text-transparent">
@@ -388,22 +409,22 @@ export default function VotePage() {
             </h1>
             
             {/* Sous-titre stylé */}
-            <div className="max-w-2xl mx-auto">
-              <p className="text-sm lg:text-base mb-2 leading-relaxed font-medium text-white/95 drop-shadow-lg">
+            <div className="max-w-xs sm:max-w-sm md:max-w-xl lg:max-w-2xl mx-auto">
+              <p className="text-xs sm:text-sm lg:text-base mb-1 sm:mb-2 leading-relaxed font-medium text-white/95 drop-shadow-lg px-2 sm:px-0">
                 {showCategories 
                   ? "🎵 Découvrez nos différentes catégories de vote et soutenez vos artistes préférés ! 🇨🇩"
                   : activeCategory?.description || "⚔️ Participez aux votes et battles de la musique congolaise ! 🔥"
                 }
               </p>
               
-              <div className="flex items-center justify-center space-x-4 text-sm font-semibold text-yellow-300">
+              <div className="flex items-center justify-center space-x-2 sm:space-x-4 text-xs sm:text-sm font-semibold text-yellow-300">
                 <div className="flex items-center space-x-1">
-                  <Star className="w-3 h-3 animate-pulse" />
+                  <Star className="w-2.5 h-2.5 sm:w-3 sm:h-3 animate-pulse" />
                   <span>En Direct</span>
                 </div>
-                <div className="w-1 h-1 bg-yellow-300 rounded-full animate-pulse"></div>
+                <div className="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-yellow-300 rounded-full animate-pulse"></div>
                 <div className="flex items-center space-x-1">
-                  <TrendingUp className="w-3 h-3 animate-pulse" />
+                  <TrendingUp className="w-2.5 h-2.5 sm:w-3 sm:h-3 animate-pulse" />
                   <span>Temps Réel</span>
                 </div>
               </div>
@@ -411,14 +432,14 @@ export default function VotePage() {
           </div>
           
           {/* Navigation stylée */}
-          <div className="flex justify-center mb-4">
-            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-1 flex shadow-lg border border-white/10">
+          <div className="flex justify-center mb-2 sm:mb-4">
+            <div className="bg-white/5 backdrop-blur-md rounded-xl sm:rounded-2xl p-0.5 sm:p-1 flex shadow-lg border border-white/10 max-w-full overflow-hidden">
               <button
                 onClick={() => {
                   setShowCategories(true)
                   setActiveVoteCategory('')
                 }}
-                className={`px-4 py-2 rounded-xl font-semibold text-sm transition-all duration-300 ${
+                className={`px-2 sm:px-4 py-1 sm:py-2 rounded-lg sm:rounded-xl font-semibold text-xs sm:text-sm transition-all duration-300 whitespace-nowrap ${
                   showCategories 
                     ? 'bg-white text-blue-600 shadow-md' 
                     : 'text-white/80 hover:text-white hover:bg-white/10'
@@ -429,14 +450,14 @@ export default function VotePage() {
               {activeCategory && (
                 <button
                   onClick={() => setShowCategories(false)}
-                  className={`px-4 py-2 rounded-xl font-semibold text-sm transition-all duration-300 flex items-center space-x-2 ${
+                  className={`px-2 sm:px-4 py-1 sm:py-2 rounded-lg sm:rounded-xl font-semibold text-xs sm:text-sm transition-all duration-300 flex items-center space-x-1 sm:space-x-2 max-w-[180px] sm:max-w-none ${
                     !showCategories 
                       ? 'bg-white text-blue-600 shadow-md' 
                       : 'text-white/80 hover:text-white hover:bg-white/10'
                   }`}
                 >
-                  {activeCategory && <activeCategory.icon className="w-4 h-4" />}
-                  <span>{activeCategory?.title}</span>
+                  {activeCategory && <activeCategory.icon className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />}
+                  <span className="truncate">{activeCategory?.title}</span>
                 </button>
               )}
             </div>
@@ -445,28 +466,28 @@ export default function VotePage() {
       </section>
 
       {/* Section Vote */}
-      <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-6 sm:py-8 lg:py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8">
           
           {showCategories ? (
             /* Affichage des catégories de vote */
             <div>
-              <div className="text-center mb-12">
-                <h2 className="text-4xl font-bold text-neutral-900 mb-4">
+              <div className="text-center mb-6 sm:mb-8 lg:mb-12">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-900 mb-2 sm:mb-4">
                   Catégories de Vote
                 </h2>
-                <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                <p className="text-sm sm:text-base lg:text-lg text-slate-600 max-w-xl lg:max-w-2xl mx-auto px-4 sm:px-0">
                   Choisissez votre catégorie et participez aux votes qui vous passionnent
                 </p>
               </div>
 
               {/* Catégories Featured */}
-              <div className="mb-12">
-                <h3 className="text-2xl font-bold text-neutral-900 mb-6 flex items-center">
-                  <Star className="w-6 h-6 mr-2 text-yellow-500" />
+              <div className="mb-8 sm:mb-10 lg:mb-12">
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-neutral-900 mb-4 sm:mb-6 flex items-center justify-center sm:justify-start">
+                  <Star className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 mr-2 text-yellow-500" />
                   Votes Populaires
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
                   {voteCategories.filter(cat => cat.featured).map((category) => (
                     <div
                       key={category.id}
@@ -476,35 +497,36 @@ export default function VotePage() {
                       }}
                       className="group cursor-pointer bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border border-slate-200 overflow-hidden"
                     >
-                      <div className={`h-32 bg-gradient-to-r ${category.color} relative overflow-hidden`}>
+                      <div className={`h-24 sm:h-28 lg:h-32 bg-gradient-to-r ${category.color} relative overflow-hidden`}>
                         <div className="absolute inset-0 bg-black/20"></div>
                         <div className="relative z-10 h-full flex items-center justify-center">
-                          <category.icon className="w-12 h-12 text-white" />
+                          <category.icon className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-white" />
                         </div>
-                        <div className="absolute top-3 right-3">
-                          <div className="bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">
-                            <span className="text-white text-sm font-semibold">{category.period}</span>
+                        <div className="absolute top-2 sm:top-3 right-2 sm:right-3">
+                          <div className="bg-white/20 backdrop-blur-sm px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full">
+                            <span className="text-white text-xs sm:text-sm font-semibold">{category.period}</span>
                           </div>
                         </div>
                       </div>
-                      <div className="p-6">
-                        <h4 className="text-xl font-bold text-neutral-900 mb-2 group-hover:text-purple-600 transition-colors">
+                      <div className="p-4 sm:p-5 lg:p-6">
+                        <h4 className="text-base sm:text-lg lg:text-xl font-bold text-neutral-900 mb-1 sm:mb-2 group-hover:text-purple-600 transition-colors line-clamp-2">
                           {category.title}
                         </h4>
-                        <p className="text-slate-600 text-sm mb-4 leading-relaxed">
+                        <p className="text-slate-600 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed line-clamp-3">
                           {category.description}
                         </p>
                         <div className="flex items-center justify-between">
-                          <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${
+                          <span className={`inline-flex items-center px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-medium ${
                             category.type === 'battle' 
                               ? 'bg-red-100 text-red-700' 
                               : category.type === 'song'
                               ? 'bg-blue-100 text-blue-700'
                               : 'bg-green-100 text-green-700'
                           }`}>
-                            {category.type === 'battle' ? '⚔️ Battle' : category.type === 'song' ? '🎵 Chanson' : '👤 Artiste'}
+                            <span className="hidden sm:inline">{category.type === 'battle' ? '⚔️ Battle' : category.type === 'song' ? '🎵 Chanson' : '👤 Artiste'}</span>
+                            <span className="sm:hidden">{category.type === 'battle' ? '⚔️' : category.type === 'song' ? '🎵' : '👤'}</span>
                           </span>
-                          <ChevronRight className="w-5 h-5 text-slate-400 group-hover:text-purple-600 transition-colors" />
+                          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 group-hover:text-purple-600 transition-colors" />
                         </div>
                       </div>
                     </div>
@@ -514,11 +536,11 @@ export default function VotePage() {
 
               {/* Autres catégories */}
               <div>
-                <h3 className="text-2xl font-bold text-neutral-900 mb-6 flex items-center">
-                  <Music className="w-6 h-6 mr-2 text-purple-500" />
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-neutral-900 mb-4 sm:mb-6 flex items-center justify-center sm:justify-start">
+                  <Music className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 mr-2 text-purple-500" />
                   Autres Catégories
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                   {voteCategories.filter(cat => !cat.featured).map((category) => (
                     <div
                       key={category.id}
@@ -549,19 +571,19 @@ export default function VotePage() {
             /* Affichage du contenu de vote */
             <div>
               {/* En-tête de la catégorie */}
-              <div className={`bg-gradient-to-r ${activeCategory?.color} rounded-2xl p-8 mb-8 text-white`}>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h2 className="text-3xl font-bold mb-2">{activeCategory?.title}</h2>
-                    <p className="text-lg opacity-90 mb-4">{activeCategory?.description}</p>
-                    <div className="flex items-center space-x-4">
+              <div className={`bg-gradient-to-r ${activeCategory?.color} rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8 text-white`}>
+                <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:items-center sm:justify-between">
+                  <div className="flex-1">
+                    <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 line-clamp-2">{activeCategory?.title}</h2>
+                    <p className="text-sm sm:text-base lg:text-lg opacity-90 mb-3 sm:mb-4 line-clamp-3">{activeCategory?.description}</p>
+                    <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
                       <div className="flex items-center space-x-2">
-                        <Calendar className="w-5 h-5" />
-                        <span>Période: {activeCategory?.period}</span>
+                        <Calendar className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <span className="text-sm sm:text-base">Période: {activeCategory?.period}</span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <TrendingUp className="w-5 h-5" />
-                        <span>
+                        <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5" />
+                        <span className="text-sm sm:text-base">
                           {categoryStats
                             ? `${categoryStats.totalItems} ${categoryStats.type === 'battles' ? 'battle(s)' : categoryStats.type === 'songs' ? 'chansons' : 'artistes'}`
                             : '0 éléments'
@@ -570,12 +592,13 @@ export default function VotePage() {
                       </div>
                     </div>
                   </div>
-                  <div className="text-right">
+                  <div className="flex-shrink-0">
                     <button
                       onClick={() => setShowCategories(true)}
-                      className="bg-white/20 hover:bg-white/30 backdrop-blur-sm px-4 py-2 rounded-xl transition-all"
+                      className="bg-white/20 hover:bg-white/30 backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl transition-all text-sm sm:text-base w-full sm:w-auto"
                     >
-                      ← Retour aux catégories
+                      <span className="sm:hidden">← Retour</span>
+                      <span className="hidden sm:inline">← Retour aux catégories</span>
                     </button>
                   </div>
                 </div>
