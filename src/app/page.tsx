@@ -117,14 +117,77 @@ export default function HomePage() {
                 <Zap className="w-5 h-5" />
               </div>
               
-              {/* Titre principal */}
-              <h1 className="text-5xl lg:text-7xl font-bold text-neutral-900 mb-8 leading-none">
-                <span className="block">Découvrez la</span>
-                <span className="block bg-gradient-creative bg-clip-text text-transparent animate-gradient">
-                  Grande Mosaïque
-                </span>
-                <span className="block text-4xl lg:text-5xl text-neutral-700">culturelle du Congo</span>
-              </h1>
+                          {/* Titre principal avec carte RDC */}
+            <div className="flex items-center justify-center mb-8">
+              {/* Carte géographique RDC */}
+              <div className="relative mr-6">
+                <div className="w-28 h-36 lg:w-36 lg:h-44 relative bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-2 shadow-lg border border-green-200/50">
+                  {/* Forme plus réaliste de la RDC en SVG */}
+                  <svg viewBox="0 0 100 120" className="w-full h-full">
+                    {/* Contour principal de la RDC */}
+                    <path d="M15 25 Q25 15 40 18 Q60 12 75 20 Q85 25 88 35 Q90 45 85 55 Q87 65 82 72 Q85 78 80 85 Q75 92 68 95 Q58 100 48 102 Q38 98 30 94 Q22 88 18 80 Q12 70 10 60 Q8 50 12 40 Q10 35 15 25 Z" 
+                          className="fill-emerald-100 stroke-emerald-600 stroke-2" />
+                    
+                    {/* Fleuve Congo */}
+                    <path d="M45 30 Q55 40 50 50 Q45 60 40 70 Q35 80 30 85" 
+                          className="stroke-blue-400 stroke-1 fill-none" />
+                    
+                    {/* Kinshasa */}
+                    <circle cx="35" cy="75" r="2.5" className="fill-red-500 animate-pulse" />
+                    <text x="40" y="78" className="text-[8px] fill-red-700 font-bold">Kinshasa</text>
+                    
+                    {/* Lubumbashi */}
+                    <circle cx="60" cy="90" r="1.5" className="fill-blue-500" />
+                    <text x="63" y="92" className="text-[6px] fill-blue-700 font-semibold">Lubumbashi</text>
+                    
+                    {/* Goma */}
+                    <circle cx="75" cy="45" r="1.5" className="fill-green-500" />
+                    <text x="77" y="47" className="text-[6px] fill-green-700 font-semibold">Goma</text>
+                  </svg>
+                  
+                  {/* Drapeau RDC animé */}
+                  <div className="absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-r from-blue-600 via-yellow-400 to-red-600 rounded-full flex items-center justify-center animate-bounce shadow-md">
+                    <span className="text-white text-xs font-bold">⭐</span>
+                  </div>
+                  
+                  {/* Badge "Cœur de l'Afrique" */}
+                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-green-600 text-white text-[10px] px-2 py-1 rounded-full font-bold shadow-sm">
+                    💚 Cœur de l&apos;Afrique
+                  </div>
+                </div>
+              </div>
+
+              {/* Titre */}
+              <div className="text-left">
+                <h1 className="text-5xl lg:text-7xl font-bold text-neutral-900 leading-none mb-3">
+                  <span className="block text-blue-700">La Grande</span>
+                  <span className="block text-neutral-900">Mosaïque</span>
+                </h1>
+                <div className="text-xl lg:text-2xl text-neutral-600 font-semibold mb-2">
+                  République Démocratique du Congo
+                </div>
+                
+                {/* Textes accrocheurs */}
+                <div className="space-y-1 mb-4">
+                  <div className="text-sm lg:text-base text-blue-600 font-medium italic">
+                    "Là où chaque talent congolais brille comme une étoile"
+                  </div>
+                  <div className="text-xs lg:text-sm text-emerald-600 font-semibold">
+                    🌟 Plus de 80 millions de talents à découvrir
+                  </div>
+                  <div className="text-xs lg:text-sm text-purple-600 font-semibold">
+                    🎭 De Kinshasa à Lubumbashi, une richesse culturelle infinie
+                  </div>
+                </div>
+                
+                {/* Badge spécial */}
+                <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-green-100 to-yellow-100 border border-green-300 rounded-full px-3 py-1 text-xs font-bold text-green-800">
+                  <span>🏆</span>
+                  <span>Première plateforme culturelle du Congo</span>
+                  <span>🇨🇩</span>
+                </div>
+              </div>
+            </div>
               
               {/* Sous-titre */}
               <p className="text-xl text-neutral-600 max-w-2xl mb-12 leading-relaxed">
