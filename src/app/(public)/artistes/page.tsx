@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react"
 import { useRouter } from "next/navigation"
 import ArtistCard from "@/components/cards/ArtistCard"
-import { artistesData } from "@/data/votesData"
+import { getAllArtists } from "@/data/artists"
 import Header from "@/components/layout/Header"
 
 type SortKey = "name" | "rank"
@@ -27,7 +27,14 @@ export default function ArtistesPage() {
   const artists = useMemo(() => {
     const normalized = query.trim().toLowerCase()
 
-    let list = artistesData.map(a => ({ ...a }))
+    let list = getAllArtists().map((a, index) => ({ 
+    ...a, 
+    category: a.specialty || 'Musique',
+    description: a.biography,
+    rank: index + 1,
+    trending: Boolean(a.stats?.followers && a.stats.followers > 1000000),
+    featured: Boolean(a.stats?.awards && a.stats.awards > 5)
+  }))
 
     if (normalized) {
       list = list.filter(a =>
