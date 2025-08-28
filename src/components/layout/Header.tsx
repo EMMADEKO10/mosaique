@@ -21,6 +21,7 @@ import {
 } from 'lucide-react'
 import { getArticlesByCategory } from '../../data/actualites'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Header() {
   const [isActualitesDropdownOpen, setIsActualitesDropdownOpen] = useState(false)
@@ -135,28 +136,34 @@ export default function Header() {
               <div className="absolute -inset-1 bg-gradient-primary rounded-xl sm:rounded-2xl opacity-20 group-hover:opacity-30 transition-opacity blur"></div>
             </div>
             <div className="hidden sm:block">
+              <Link href="/">
               <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-slate-900">La Grande</h1>
               <span className="text-blue-700 font-bold text-xs sm:text-sm tracking-wider">MOSAÏQUE</span>
+              </Link> 
             </div>
           </div>
           
           <div className="hidden lg:flex items-center space-x-8">
-            <a href="/artistes" className="text-slate-700 hover:text-blue-700 transition-colors font-medium relative group">
+            <Link href="/artistes" className="text-slate-700 hover:text-blue-700 transition-colors font-medium relative group">
               Artistes
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
-            </a>
-            <a href="/culture" className="text-slate-700 hover:text-blue-700 transition-colors font-medium relative group">
+            </Link>
+            {/* <a href="/actualites" className="text-slate-700 hover:text-blue-700 transition-colors font-medium relative group">
+              Actualités
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
+            </a> */}
+            {/* <a href="/culture" className="text-slate-700 hover:text-blue-700 transition-colors font-medium relative group">
               Culture
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
             </a>
             <a href="/sports" className="text-slate-700 hover:text-blue-700 transition-colors font-medium relative group">
               Sports
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
-            </a>
-            <a href="/votes" className="text-slate-700 hover:text-blue-700 transition-colors font-medium relative group">
+            </a> */}
+            <Link href="/votes" className="text-slate-700 hover:text-blue-700 transition-colors font-medium relative group">
               Votez Vos Artistes
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
-            </a>
+            </Link>
             
             {/* Menu déroulant Actualités */}
             <div 
@@ -221,7 +228,7 @@ export default function Header() {
                           onMouseEnter={() => setHoveredCategory(categoryKey)}
                           onMouseLeave={() => setHoveredCategory(null)}
                         >
-                          <a
+                          <Link
                             href={category.href}
                             className="flex flex-col items-center text-center p-2 sm:p-3 rounded-lg sm:rounded-xl hover:bg-blue-50 transition-all duration-200 border border-transparent hover:border-blue-200/50 hover:shadow-md min-h-[120px] sm:min-h-[140px] lg:min-h-[160px]"
                           >
@@ -247,7 +254,7 @@ export default function Header() {
                                 📰 {category.latestArticle}
                               </div>
                             </div>
-                          </a>
+                          </Link>
 
                           {/* Aperçu des actualités au survol - Hidden on small screens */}
                           {hoveredCategory === categoryKey && categoryArticles.length > 0 && (
@@ -260,7 +267,7 @@ export default function Header() {
                                 
                                                                   <div className="space-y-3">
                                     {categoryArticles.map((article, articleIndex) => (
-                                      <a
+                                      <Link
                                         key={`header-${categoryKey}-${article.id}-${articleIndex}`}
                                         href={`/actualites/${article.category}/${article.id}`}
                                         className="group/article flex items-start space-x-3 p-2 rounded-lg hover:bg-blue-50 transition-all duration-200"
@@ -288,18 +295,18 @@ export default function Header() {
                                           </span>
                                         )}
                                       </div>
-                                    </a>
+                                    </Link>
                                   ))}
                                 </div>
                                 
                                 <div className="mt-3 pt-2 border-t border-slate-200">
-                                  <a
+                                  <Link
                                     href={category.href}
                                     className="flex items-center justify-center space-x-2 w-full py-2 text-blue-600 hover:text-blue-700 font-semibold text-xs transition-colors"
                                   >
                                     <span>Voir tout {category.name}</span>
                                     <ArrowRight className="w-3 h-3" />
-                                  </a>
+                                  </Link>
                                 </div>
                               </div>
                             </div>
@@ -327,7 +334,7 @@ export default function Header() {
                         <span className="inline-flex items-center px-2 py-1 bg-white rounded-full text-xs font-medium text-slate-700 border border-slate-200">
                           #CongoleseMusic
                         </span>
-                        <span className="inline-flex items-center px-2 py-1 bg-white rounded-full text-xs font-medium text-slate-700 border border-slate-200 hidden sm:inline-flex">
+                        <span className="items-center px-2 py-1 bg-white rounded-full text-xs font-medium text-slate-700 border border-slate-200 hidden sm:inline-flex">
                           #ArtisteDuMois
                         </span>
                       </div>
@@ -337,7 +344,7 @@ export default function Header() {
                     <div className="flex flex-col justify-center">
                       <h4 className="text-xs sm:text-sm font-bold text-slate-900 mb-2">Découvrez Plus</h4>
                       <p className="text-xs text-slate-600 mb-3 sm:mb-4 hidden sm:block">Accédez à toutes nos actualités et restez informé de l&apos;actualité culturelle congolaise</p>
-                      <a 
+                      <Link 
                         href="/actualites" 
                         className="flex items-center justify-center space-x-2 w-full py-2 sm:py-3 bg-gradient-primary text-white rounded-lg sm:rounded-xl font-semibold hover:shadow-glow transition-all duration-300 transform hover:scale-105 text-xs sm:text-sm"
                       >
@@ -345,7 +352,7 @@ export default function Header() {
                         <span className="hidden sm:inline">Voir Toutes les Actualités</span>
                         <span className="sm:hidden">Toutes les Actualités</span>
                         <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -394,18 +401,18 @@ export default function Header() {
             <div className="px-3 py-4 space-y-3">
               {/* Navigation principale */}
               <div className="space-y-2">
-                <a href="/artistes" className="block px-3 py-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors font-medium">
+                <Link href="/artistes" className="block px-3 py-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors font-medium">
                   🎨 Artistes
-                </a>
-                <a href="/culture" className="block px-3 py-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors font-medium">
+                </Link>
+                <Link href="/culture" className="block px-3 py-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors font-medium">
                   🏛️ Culture
-                </a>
-                <a href="/sports" className="block px-3 py-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors font-medium">
+                </Link>
+                <Link href="/sports" className="block px-3 py-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors font-medium">
                   ⚽ Sports
-                </a>
-                <a href="/votes" className="block px-3 py-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors font-medium">
+                </Link>
+                <Link href="/votes" className="block px-3 py-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors font-medium">
                   🗳️ Votez Vos Artistes
-                </a>
+                </Link>
                 
                 {/* Actualités avec sous-menu */}
                 <div>
@@ -421,7 +428,7 @@ export default function Header() {
                   {isMobileActualitesOpen && (
                     <div className="mt-2 ml-4 space-y-1">
                       {actualitesCategories.slice(0, 6).map((category) => (
-                        <a
+                        <Link
                           key={category.name}
                           href={category.href}
                           className="flex items-center space-x-2 px-3 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
@@ -431,16 +438,16 @@ export default function Header() {
                           <span className="text-xs bg-slate-200 text-slate-600 px-1.5 py-0.5 rounded-full">
                             {category.count}
                           </span>
-                        </a>
+                        </Link>
                       ))}
-                      <a
+                      <Link
                         href="/actualites"
                         className="flex items-center space-x-2 px-3 py-2 text-sm text-blue-600 font-semibold hover:bg-blue-50 rounded-lg transition-colors"
                       >
                         <TrendingUp className="w-4 h-4" />
                         <span>Voir toutes les actualités</span>
                         <ChevronRight className="w-3 h-3" />
-                      </a>
+                      </Link>
                     </div>
                   )}
                 </div>

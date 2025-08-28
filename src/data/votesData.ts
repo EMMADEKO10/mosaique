@@ -29,6 +29,8 @@ export interface Artist {
     followers: number
     engagement: string
   }
+  status?: 'alive' | 'deceased'
+  age?: number
 }
 
 export interface BattleArtist {
@@ -192,6 +194,8 @@ export const artistesData: Artist[] = [
     featured: true,
     location: "Kinshasa",
     specialty: "Rumba, Afrobeat",
+    status: 'alive',
+    age: 46,
     socialMedia: {
       followers: 2500000,
       engagement: "Très élevé"
@@ -209,6 +213,8 @@ export const artistesData: Artist[] = [
     featured: true,
     location: "Goma", 
     specialty: "Afrobeat, Pop",
+    status: 'alive',
+    age: 27,
     socialMedia: {
       followers: 1800000,
       engagement: "Élevé"
@@ -226,6 +232,8 @@ export const artistesData: Artist[] = [
     featured: true,
     location: "Lubumbashi",
     specialty: "R&B, Soul Congolais",
+    status: 'alive',
+    age: 30,
     socialMedia: {
       followers: 950000,
       engagement: "Moyen"
@@ -243,6 +251,8 @@ export const artistesData: Artist[] = [
     featured: true,
     location: "Kinshasa",
     specialty: "Rumba, Guitare",
+    status: 'alive',
+    age: 48,
     socialMedia: {
       followers: 1200000,
       engagement: "Élevé"
@@ -260,6 +270,8 @@ export const artistesData: Artist[] = [
     featured: false,
     location: "Kinshasa",
     specialty: "Rap Conscient, Hip-Hop",
+    status: 'alive',
+    age: 32,
     socialMedia: {
       followers: 680000,
       engagement: "Très élevé"
@@ -277,6 +289,8 @@ export const artistesData: Artist[] = [
     featured: true,
     location: "Kinshasa",
     specialty: "Soukous, Rumba",
+    status: 'alive',
+    age: 67,
     socialMedia: {
       followers: 1500000,
       engagement: "Moyen"

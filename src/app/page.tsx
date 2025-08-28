@@ -10,6 +10,7 @@ import {
   Zap
 } from 'lucide-react'
 import Header from '../components/layout/Header'
+import Link from 'next/link'
 import { getFeaturedArticles, getAllArticles, Article } from '../data/actualites'
 import Image from 'next/image'
 
@@ -749,20 +750,20 @@ export default function HomePage() {
             <div className="text-center sm:text-left">
               <h4 className="text-white font-bold text-lg sm:text-xl mb-4 sm:mb-6">Navigation</h4>
               <ul className="space-y-2 sm:space-y-4">
-                <li><a href="/artistes" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Artistes</a></li>
-                <li><a href="/culture" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Culture</a></li>
-                <li><a href="/sports" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Sports</a></li>
-                <li><a href="/votes" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Votes</a></li>
+                <li><Link href="/artistes" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Artistes</Link></li>
+                <li><Link href="/culture" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Culture</Link></li>
+                <li><Link href="/sports" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Sports</Link></li>
+                <li><Link href="/votes" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Votes</Link></li>
               </ul>
             </div>
             
             <div className="text-center sm:text-left">
               <h4 className="text-white font-bold text-lg sm:text-xl mb-4 sm:mb-6">Communauté</h4>
               <ul className="space-y-2 sm:space-y-4">
-                <li><a href="/inscription" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Inscription</a></li>
-                <li><a href="/connexion" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Connexion</a></li>
-                <li><a href="/contact" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Contact</a></li>
-                <li><a href="/aide" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Aide</a></li>
+                <li><Link href="/inscription" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Inscription</Link></li>
+                <li><Link href="/connexion" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Connexion</Link></li>
+                <li><Link href="/contact" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Contact</Link></li>
+                <li><Link href="/aide" className="hover:text-primary-400 transition-colors text-sm sm:text-base lg:text-lg">Aide</Link></li>
               </ul>
             </div>
           </div>

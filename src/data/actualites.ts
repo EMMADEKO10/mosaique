@@ -633,12 +633,24 @@ export const actualitesData: Record<string, Article[]> = {
 // Fonction pour obtenir tous les articles
 export const getAllArticles = (): Article[] => {
   const allArticles: Article[] = []
-  Object.values(actualitesData).forEach(categoryArticles => {
+  const seenIds = new Set<string>()
+
+  Object.entries(actualitesData).forEach(([key, categoryArticles]) => {
+    // Ignore the aggregated 'tous' bucket to avoid duplication
+    if (key === 'tous') return
     if (Array.isArray(categoryArticles)) {
-      allArticles.push(...categoryArticles)
+      categoryArticles.forEach(article => {
+        if (!seenIds.has(article.id)) {
+          seenIds.add(article.id)
+          allArticles.push(article)
+        }
+      })
     }
   })
-  return allArticles.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+
+  return allArticles.sort(
+    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  )
 }
 
 // Fonction pour obtenir les articles par catégorie
