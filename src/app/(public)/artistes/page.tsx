@@ -39,8 +39,8 @@ export default function ArtistesPage() {
     if (normalized) {
       list = list.filter(a =>
         a.name.toLowerCase().includes(normalized) ||
-        a.location.toLowerCase().includes(normalized) ||
-        a.specialty.toLowerCase().includes(normalized)
+        (a.location || '').toLowerCase().includes(normalized) ||
+        (a.specialty || '').toLowerCase().includes(normalized)
       )
     }
 

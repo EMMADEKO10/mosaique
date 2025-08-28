@@ -664,6 +664,356 @@ export const artistsDetails: Record<string, ArtistDetails> = {
       { id: 'cool-track-3', title: 'Rumba', duration: '4:25' },
     ],
   },
+  'artist-17': {
+    id: 'artist-17',
+    name: 'Jean Sylvain Akwala',
+    image: '/mosaique/photo artiste/Jean sylvain akwala gospel.png',
+    location: 'Kinshasa',
+    specialty: 'Gospel, Musique Chrétienne',
+    biography:
+      'Artiste gospel de renom, Jean Sylvain Akwala inspire des milliers de fidèles avec sa musique spirituelle et ses messages d\'espoir.',
+    yearsActive: '2005 – présent',
+    label: 'Gospel Records',
+    socials: {
+      instagram: 'https://instagram.com/jeansylvain',
+      youtube: 'https://youtube.com',
+      facebook: 'https://facebook.com/jeansylvain',
+    },
+    stats: {
+      followers: 800000,
+      monthlyListeners: 600000,
+      awards: 6,
+    },
+    albums: [
+      {
+        id: 'jean-album-1',
+        title: 'Louange et Adoration',
+        year: 2018,
+        coverUrl: '/mosaique/photo artiste/Jean sylvain akwala gospel.png',
+        tracksCount: 14,
+      },
+    ],
+    topTracks: [
+      { id: 'jean-track-1', title: 'Louange et Adoration', duration: '5:30' },
+      { id: 'jean-track-2', title: 'Gloire à Dieu', duration: '4:45' },
+      { id: 'jean-track-3', title: 'Merci Seigneur', duration: '6:15' },
+    ],
+  },
+  'artist-18': {
+    id: 'artist-18',
+    name: 'Gaz Fabilous',
+    image: '/mosaique/photo artiste/Gaz Fabilous rappeur congolais.png',
+    location: 'Kinshasa',
+    specialty: 'Rap, Hip-Hop',
+    biography:
+      'Rappeur congolais talentueux, Gaz Fabilous est connu pour ses textes percutants et son style unique dans la scène rap congolaise.',
+    yearsActive: '2016 – présent',
+    label: 'Gaz Records',
+    socials: {
+      instagram: 'https://instagram.com/gazfabilous',
+      youtube: 'https://youtube.com',
+      twitter: 'https://twitter.com/gazfabilous',
+    },
+    stats: {
+      followers: 600000,
+      monthlyListeners: 400000,
+      awards: 4,
+    },
+    albums: [
+      {
+        id: 'gazf-album-1',
+        title: 'Gaz Fabilous',
+        year: 2020,
+        coverUrl: '/mosaique/photo artiste/Gaz Fabilous rappeur congolais.png',
+        tracksCount: 15,
+      },
+    ],
+    topTracks: [
+      { id: 'gazf-track-1', title: 'Gaz Fabilous', duration: '3:45' },
+      { id: 'gazf-track-2', title: 'Rap Congo', duration: '4:12' },
+      { id: 'gazf-track-3', title: 'Kinshasa', duration: '3:58' },
+    ],
+  },
+  'artist-19': {
+    id: 'artist-19',
+    name: 'Mbilia Bel',
+    image: '/mosaique/photo artiste/Mbilia bel.png',
+    location: 'Kinshasa',
+    specialty: 'Rumba, Soukous',
+    biography:
+      'Légende féminine de la rumba congolaise, Mbilia Bel est une artiste culte qui a marqué l\'histoire de la musique congolaise.',
+    yearsActive: '1980 – présent',
+    label: 'Afrisa International',
+    socials: {
+      instagram: 'https://instagram.com/mbiliabel',
+      youtube: 'https://youtube.com',
+      facebook: 'https://facebook.com/mbiliabel',
+    },
+    stats: {
+      followers: 1200000,
+      monthlyListeners: 800000,
+      awards: 12,
+    },
+    albums: [
+      {
+        id: 'mbilia-album-1',
+        title: 'Boya Ye',
+        year: 1983,
+        coverUrl: '/mosaique/photo artiste/Mbilia bel.png',
+        tracksCount: 10,
+      },
+    ],
+    topTracks: [
+      { id: 'mbilia-track-1', title: 'Boya Ye', duration: '6:20' },
+      { id: 'mbilia-track-2', title: 'Nakei Nairobi', duration: '5:45' },
+      { id: 'mbilia-track-3', title: 'Eswi Yo Wapi', duration: '7:10' },
+    ],
+  },
+  'artist-20': {
+    id: 'artist-20',
+    name: 'Cindy',
+    image: '/mosaique/photo artiste/cindy.png',
+    location: 'Kinshasa',
+    specialty: 'Rumba, Soukous',
+    biography:
+      'Artiste féminine de rumba, Cindy apporte une touche moderne et féminine à la tradition musicale congolaise.',
+    yearsActive: '2010 – présent',
+    label: 'Cindy Music',
+    socials: {
+      instagram: 'https://instagram.com/cindy',
+      youtube: 'https://youtube.com',
+      facebook: 'https://facebook.com/cindy',
+    },
+    stats: {
+      followers: 450000,
+      monthlyListeners: 300000,
+      awards: 3,
+    },
+    albums: [
+      {
+        id: 'cindy2-album-1',
+        title: 'Cindy',
+        year: 2015,
+        coverUrl: '/mosaique/photo artiste/cindy.png',
+        tracksCount: 12,
+      },
+    ],
+    topTracks: [
+      { id: 'cindy2-track-1', title: 'Cindy', duration: '4:15' },
+      { id: 'cindy2-track-2', title: 'Rumba', duration: '3:50' },
+      { id: 'cindy2-track-3', title: 'Amour', duration: '4:05' },
+    ],
+  },
+  'artist-21': {
+    id: 'artist-21',
+    name: 'Matou Samuel',
+    image: '/mosaique/photo artiste/Matou samuel gospel.png',
+    location: 'Kinshasa',
+    specialty: 'Gospel, Musique Chrétienne',
+    biography:
+      'Artiste gospel dévoué, Matou Samuel inspire avec sa musique spirituelle et ses messages d\'espoir pour la jeunesse congolaise.',
+    yearsActive: '2012 – présent',
+    label: 'Gospel Records',
+    socials: {
+      instagram: 'https://instagram.com/matousamuel',
+      youtube: 'https://youtube.com',
+      facebook: 'https://facebook.com/matousamuel',
+    },
+    stats: {
+      followers: 700000,
+      monthlyListeners: 500000,
+      awards: 5,
+    },
+    albums: [
+      {
+        id: 'matou-album-1',
+        title: 'Louange et Adoration',
+        year: 2019,
+        coverUrl: '/mosaique/photo artiste/Matou samuel gospel.png',
+        tracksCount: 13,
+      },
+    ],
+    topTracks: [
+      { id: 'matou-track-1', title: 'Louange et Adoration', duration: '5:45' },
+      { id: 'matou-track-2', title: 'Gloire à Dieu', duration: '4:30' },
+      { id: 'matou-track-3', title: 'Merci Seigneur', duration: '6:20' },
+    ],
+  },
+  'artist-22': {
+    id: 'artist-22',
+    name: 'Nadège Bumba',
+    image: '/mosaique/photo artiste/Nadege bumba gospel.png',
+    location: 'Kinshasa',
+    specialty: 'Gospel, Musique Chrétienne',
+    biography:
+      'Artiste gospel féminine, Nadège Bumba apporte une voix douce et inspirante à la musique chrétienne congolaise.',
+    yearsActive: '2015 – présent',
+    label: 'Gospel Records',
+    socials: {
+      instagram: 'https://instagram.com/nadegebumba',
+      youtube: 'https://youtube.com',
+      facebook: 'https://facebook.com/nadegebumba',
+    },
+    stats: {
+      followers: 550000,
+      monthlyListeners: 380000,
+      awards: 4,
+    },
+    albums: [
+      {
+        id: 'nadege-album-1',
+        title: 'Louange et Adoration',
+        year: 2020,
+        coverUrl: '/mosaique/photo artiste/Nadege bumba gospel.png',
+        tracksCount: 11,
+      },
+    ],
+    topTracks: [
+      { id: 'nadege-track-1', title: 'Louange et Adoration', duration: '5:15' },
+      { id: 'nadege-track-2', title: 'Gloire à Dieu', duration: '4:20' },
+      { id: 'nadege-track-3', title: 'Merci Seigneur', duration: '5:55' },
+    ],
+  },
+  'artist-23': {
+    id: 'artist-23',
+    name: 'Athoms Bumba',
+    image: '/mosaique/photo artiste/Athoms bumba gospel.png',
+    location: 'Kinshasa',
+    specialty: 'Gospel, Musique Chrétienne',
+    biography:
+      'Artiste gospel masculin, Athoms Bumba inspire avec sa musique spirituelle et ses messages d\'espoir.',
+    yearsActive: '2013 – présent',
+    label: 'Gospel Records',
+    socials: {
+      instagram: 'https://instagram.com/athomsbumba',
+      youtube: 'https://youtube.com',
+      facebook: 'https://facebook.com/athomsbumba',
+    },
+    stats: {
+      followers: 480000,
+      monthlyListeners: 320000,
+      awards: 3,
+    },
+    albums: [
+      {
+        id: 'athoms-album-1',
+        title: 'Louange et Adoration',
+        year: 2018,
+        coverUrl: '/mosaique/photo artiste/Athoms bumba gospel.png',
+        tracksCount: 12,
+      },
+    ],
+    topTracks: [
+      { id: 'athoms-track-1', title: 'Louange et Adoration', duration: '5:30' },
+      { id: 'athoms-track-2', title: 'Gloire à Dieu', duration: '4:15' },
+      { id: 'athoms-track-3', title: 'Merci Seigneur', duration: '6:05' },
+    ],
+  },
+  'artist-24': {
+    id: 'artist-24',
+    name: 'Lifoko du Ciel',
+    image: '/mosaique/photo artiste/Lifoko du ciel gospel.png',
+    location: 'Kinshasa',
+    specialty: 'Gospel, Musique Chrétienne',
+    biography:
+      'Artiste gospel inspirant, Lifoko du Ciel apporte une dimension spirituelle unique à la musique chrétienne congolaise.',
+    yearsActive: '2011 – présent',
+    label: 'Gospel Records',
+    socials: {
+      instagram: 'https://instagram.com/lifokoduciel',
+      youtube: 'https://youtube.com',
+      facebook: 'https://facebook.com/lifokoduciel',
+    },
+    stats: {
+      followers: 620000,
+      monthlyListeners: 420000,
+      awards: 5,
+    },
+    albums: [
+      {
+        id: 'lifoko-album-1',
+        title: 'Louange et Adoration',
+        year: 2017,
+        coverUrl: '/mosaique/photo artiste/Lifoko du ciel gospel.png',
+        tracksCount: 14,
+      },
+    ],
+    topTracks: [
+      { id: 'lifoko-track-1', title: 'Louange et Adoration', duration: '5:40' },
+      { id: 'lifoko-track-2', title: 'Gloire à Dieu', duration: '4:25' },
+      { id: 'lifoko-track-3', title: 'Merci Seigneur', duration: '6:10' },
+    ],
+  },
+  'artist-25': {
+    id: 'artist-25',
+    name: 'Dena Mwana',
+    image: '/mosaique/photo artiste/Dena Mwana gospel.png',
+    location: 'Kinshasa',
+    specialty: 'Gospel, Musique Chrétienne',
+    biography:
+      'Artiste gospel féminine, Dena Mwana inspire avec sa voix mélodieuse et ses messages spirituels touchants.',
+    yearsActive: '2014 – présent',
+    label: 'Gospel Records',
+    socials: {
+      instagram: 'https://instagram.com/denamwana',
+      youtube: 'https://youtube.com',
+      facebook: 'https://facebook.com/denamwana',
+    },
+    stats: {
+      followers: 520000,
+      monthlyListeners: 350000,
+      awards: 4,
+    },
+    albums: [
+      {
+        id: 'dena-album-1',
+        title: 'Louange et Adoration',
+        year: 2019,
+        coverUrl: '/mosaique/photo artiste/Dena Mwana gospel.png',
+        tracksCount: 13,
+      },
+    ],
+    topTracks: [
+      { id: 'dena-track-1', title: 'Louange et Adoration', duration: '5:20' },
+      { id: 'dena-track-2', title: 'Gloire à Dieu', duration: '4:10' },
+      { id: 'dena-track-3', title: 'Merci Seigneur', duration: '5:50' },
+    ],
+  },
+  'artist-26': {
+    id: 'artist-26',
+    name: 'Lord Lombo',
+    image: '/mosaique/photo artiste/lord lombo gospel congo.png',
+    location: 'Kinshasa',
+    specialty: 'Gospel, Musique Chrétienne',
+    biography:
+      'Artiste gospel de renom, Lord Lombo est connu pour sa musique spirituelle inspirante et ses messages d\'espoir.',
+    yearsActive: '2008 – présent',
+    label: 'Gospel Records',
+    socials: {
+      instagram: 'https://instagram.com/lordlombo',
+      youtube: 'https://youtube.com',
+      facebook: 'https://facebook.com/lordlombo',
+    },
+    stats: {
+      followers: 750000,
+      monthlyListeners: 550000,
+      awards: 7,
+    },
+    albums: [
+      {
+        id: 'lord-album-1',
+        title: 'Louange et Adoration',
+        year: 2016,
+        coverUrl: '/mosaique/photo artiste/lord lombo gospel congo.png',
+        tracksCount: 15,
+      },
+    ],
+    topTracks: [
+      { id: 'lord-track-1', title: 'Louange et Adoration', duration: '5:35' },
+      { id: 'lord-track-2', title: 'Gloire à Dieu', duration: '4:30' },
+      { id: 'lord-track-3', title: 'Merci Seigneur', duration: '6:15' },
+    ],
+  },
 }
 
 export const getAllArtists = (): ArtistDetails[] => Object.values(artistsDetails)
