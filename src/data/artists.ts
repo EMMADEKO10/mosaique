@@ -667,7 +667,7 @@ export const artistsDetails: Record<string, ArtistDetails> = {
   'artist-17': {
     id: 'artist-17',
     name: 'Jean Sylvain Akwala',
-    image: '/mosaique/photo artiste/Jean sylvain akwala gospel.png',
+    image: '/mosaique/photoartiste/Jean sylvain akwala gospel.png',
     location: 'Kinshasa',
     specialty: 'Gospel, Musique Chrétienne',
     biography:
@@ -689,7 +689,7 @@ export const artistsDetails: Record<string, ArtistDetails> = {
         id: 'jean-album-1',
         title: 'Louange et Adoration',
         year: 2018,
-        coverUrl: '/mosaique/photo artiste/Jean sylvain akwala gospel.png',
+        coverUrl: '/mosaique/photoartiste/Jean sylvain akwala gospel.png',
         tracksCount: 14,
       },
     ],
@@ -702,7 +702,7 @@ export const artistsDetails: Record<string, ArtistDetails> = {
   'artist-18': {
     id: 'artist-18',
     name: 'Gaz Fabilous',
-    image: '/mosaique/photo artiste/Gaz Fabilous rappeur congolais.png',
+    image: '/mosaique/photoartiste/Gaz Fabilous rappeur congolais.png',
     location: 'Kinshasa',
     specialty: 'Rap, Hip-Hop',
     biography:
@@ -724,7 +724,7 @@ export const artistsDetails: Record<string, ArtistDetails> = {
         id: 'gazf-album-1',
         title: 'Gaz Fabilous',
         year: 2020,
-        coverUrl: '/mosaique/photo artiste/Gaz Fabilous rappeur congolais.png',
+        coverUrl: '/mosaique/photoartiste/Gaz Fabilous rappeur congolais.png',
         tracksCount: 15,
       },
     ],
@@ -737,7 +737,7 @@ export const artistsDetails: Record<string, ArtistDetails> = {
   'artist-19': {
     id: 'artist-19',
     name: 'Mbilia Bel',
-    image: '/mosaique/photo artiste/Mbilia bel.png',
+    image: '/mosaique/photoartiste/Mbilia bel.png',
     location: 'Kinshasa',
     specialty: 'Rumba, Soukous',
     biography:
@@ -759,7 +759,7 @@ export const artistsDetails: Record<string, ArtistDetails> = {
         id: 'mbilia-album-1',
         title: 'Boya Ye',
         year: 1983,
-        coverUrl: '/mosaique/photo artiste/Mbilia bel.png',
+        coverUrl: '/mosaique/photoartiste/Mbilia bel.png',
         tracksCount: 10,
       },
     ],
@@ -772,7 +772,7 @@ export const artistsDetails: Record<string, ArtistDetails> = {
   'artist-20': {
     id: 'artist-20',
     name: 'Cindy',
-    image: '/mosaique/photo artiste/cindy.png',
+    image: '/mosaique/photoartiste/cindy.png',
     location: 'Kinshasa',
     specialty: 'Rumba, Soukous',
     biography:
@@ -794,7 +794,7 @@ export const artistsDetails: Record<string, ArtistDetails> = {
         id: 'cindy2-album-1',
         title: 'Cindy',
         year: 2015,
-        coverUrl: '/mosaique/photo artiste/cindy.png',
+        coverUrl: '/mosaique/photoartiste/cindy.png',
         tracksCount: 12,
       },
     ],
@@ -807,7 +807,7 @@ export const artistsDetails: Record<string, ArtistDetails> = {
   'artist-21': {
     id: 'artist-21',
     name: 'Matou Samuel',
-    image: '/mosaique/photo artiste/Matou samuel gospel.png',
+    image: '/mosaique/photoartiste/Matou samuel gospel.png',
     location: 'Kinshasa',
     specialty: 'Gospel, Musique Chrétienne',
     biography:
@@ -829,7 +829,7 @@ export const artistsDetails: Record<string, ArtistDetails> = {
         id: 'matou-album-1',
         title: 'Louange et Adoration',
         year: 2019,
-        coverUrl: '/mosaique/photo artiste/Matou samuel gospel.png',
+        coverUrl: '/mosaique/photoartiste/Matou samuel gospel.png',
         tracksCount: 13,
       },
     ],
@@ -842,7 +842,7 @@ export const artistsDetails: Record<string, ArtistDetails> = {
   'artist-22': {
     id: 'artist-22',
     name: 'Nadège Bumba',
-    image: '/mosaique/photo artiste/Nadege bumba gospel.png',
+    image: '/mosaique/photoartiste/Nadege bumba gospel.png',
     location: 'Kinshasa',
     specialty: 'Gospel, Musique Chrétienne',
     biography:
@@ -864,7 +864,7 @@ export const artistsDetails: Record<string, ArtistDetails> = {
         id: 'nadege-album-1',
         title: 'Louange et Adoration',
         year: 2020,
-        coverUrl: '/mosaique/photo artiste/Nadege bumba gospel.png',
+        coverUrl: '/mosaique/photoartiste/Nadege bumba gospel.png',
         tracksCount: 11,
       },
     ],
@@ -877,7 +877,7 @@ export const artistsDetails: Record<string, ArtistDetails> = {
   'artist-23': {
     id: 'artist-23',
     name: 'Athoms Bumba',
-    image: '/mosaique/photo artiste/Athoms bumba gospel.png',
+    image: '/mosaique/photoartiste/Athoms bumba gospel.png',
     location: 'Kinshasa',
     specialty: 'Gospel, Musique Chrétienne',
     biography:
@@ -899,7 +899,7 @@ export const artistsDetails: Record<string, ArtistDetails> = {
         id: 'athoms-album-1',
         title: 'Louange et Adoration',
         year: 2018,
-        coverUrl: '/mosaique/photo artiste/Athoms bumba gospel.png',
+        coverUrl: '/mosaique/photoartiste/Athoms bumba gospel.png',
         tracksCount: 12,
       },
     ],
@@ -912,7 +912,7 @@ export const artistsDetails: Record<string, ArtistDetails> = {
   'artist-24': {
     id: 'artist-24',
     name: 'Lifoko du Ciel',
-    image: '/mosaique/photo artiste/Lifoko du ciel gospel.png',
+    image: '/mosaique/photoartiste/Lifoko du ciel gospel.png',
     location: 'Kinshasa',
     specialty: 'Gospel, Musique Chrétienne',
     biography:
@@ -934,7 +934,7 @@ export const artistsDetails: Record<string, ArtistDetails> = {
         id: 'lifoko-album-1',
         title: 'Louange et Adoration',
         year: 2017,
-        coverUrl: '/mosaique/photo artiste/Lifoko du ciel gospel.png',
+        coverUrl: '/mosaique/photoartiste/Lifoko du ciel gospel.png',
         tracksCount: 14,
       },
     ],
@@ -947,7 +947,7 @@ export const artistsDetails: Record<string, ArtistDetails> = {
   'artist-25': {
     id: 'artist-25',
     name: 'Dena Mwana',
-    image: '/mosaique/photo artiste/Dena Mwana gospel.png',
+    image: '/mosaique/photoartiste/Dena Mwana gospel.png',
     location: 'Kinshasa',
     specialty: 'Gospel, Musique Chrétienne',
     biography:
@@ -969,7 +969,7 @@ export const artistsDetails: Record<string, ArtistDetails> = {
         id: 'dena-album-1',
         title: 'Louange et Adoration',
         year: 2019,
-        coverUrl: '/mosaique/photo artiste/Dena Mwana gospel.png',
+        coverUrl: '/mosaique/photoartiste/Dena Mwana gospel.png',
         tracksCount: 13,
       },
     ],
@@ -982,7 +982,7 @@ export const artistsDetails: Record<string, ArtistDetails> = {
   'artist-26': {
     id: 'artist-26',
     name: 'Lord Lombo',
-    image: '/mosaique/photo artiste/lord lombo gospel congo.png',
+    image: '/mosaique/photoartiste/lord lombo gospel congo.png',
     location: 'Kinshasa',
     specialty: 'Gospel, Musique Chrétienne',
     biography:
@@ -1004,7 +1004,7 @@ export const artistsDetails: Record<string, ArtistDetails> = {
         id: 'lord-album-1',
         title: 'Louange et Adoration',
         year: 2016,
-        coverUrl: '/mosaique/photo artiste/lord lombo gospel congo.png',
+        coverUrl: '/mosaique/photoartiste/lord lombo gospel congo.png',
         tracksCount: 15,
       },
     ],
