@@ -631,6 +631,27 @@ export const actualitesData: Record<string, Article[]> = {
 }
 
 // Fonction pour obtenir tous les articles
+const ADDED_KEY = 'lgm_added_articles_v1'
+
+export const getAddedArticles = (): Article[] => {
+  if (typeof window === 'undefined') return []
+  try {
+    const raw = window.localStorage.getItem(ADDED_KEY)
+    if (!raw) return []
+    const parsed = JSON.parse(raw)
+    return Array.isArray(parsed) ? parsed as Article[] : []
+  } catch {
+    return []
+  }
+}
+
+export const addArticle = (article: Article) => {
+  if (typeof window === 'undefined') return
+  const current = getAddedArticles()
+  const next = [article, ...current]
+  window.localStorage.setItem(ADDED_KEY, JSON.stringify(next))
+}
+
 export const getAllArticles = (): Article[] => {
   const allArticles: Article[] = []
   const seenIds = new Set<string>()
@@ -645,6 +666,15 @@ export const getAllArticles = (): Article[] => {
           allArticles.push(article)
         }
       })
+    }
+  })
+
+  // Merge user-added articles (client only)
+  const added = getAddedArticles()
+  added.forEach(a => {
+    if (!seenIds.has(a.id)) {
+      seenIds.add(a.id)
+      allArticles.push(a)
     }
   })
 

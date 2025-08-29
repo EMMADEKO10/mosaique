@@ -1,6 +1,6 @@
 "use client"
 
-import { Calendar, GraduationCap, Briefcase, Heart, Users, Plus, LayoutGrid, BookOpen, Landmark, MessageSquare } from "lucide-react"
+import { Calendar, GraduationCap, Briefcase, Heart, Users, Plus, LayoutGrid, BookOpen, Landmark, MessageSquare, Newspaper } from "lucide-react"
 import Link from "next/link"
 
 export default function AdminDashboardPage() {
@@ -130,6 +130,13 @@ const quickActions = [
     gradient: "bg-gradient-to-br from-orange-500 to-amber-500",
     icon: <MessageSquare className="w-5 h-5" />,
   },
+  {
+    title: "Nouvelle Actualité",
+    subtitle: "Publier une actualité",
+    href: "/admin/actualites/new",
+    gradient: "bg-gradient-to-br from-cyan-500 to-sky-500",
+    icon: <Newspaper className="w-5 h-5" />,
+  },
 ] as const
 
 const stats = [
@@ -146,6 +153,7 @@ const management = [
   { title: "Opportunités", subtitle: "Gérer les opportunités", href: "/admin/opportunites", badgeBg: "bg-fuchsia-500", icon: <Briefcase className="w-6 h-6" /> },
   { title: "Communauté", subtitle: "Gérer les communautés", href: "/admin/communaute", badgeBg: "bg-indigo-500", icon: <Users className="w-6 h-6" /> },
   { title: "Donations", subtitle: "Gérer les donations", href: "/admin/donations", badgeBg: "bg-rose-500", icon: <Landmark className="w-6 h-6" /> },
+  { title: "Actualités", subtitle: "Gérer les actualités", href: "/admin/actualites", badgeBg: "bg-sky-500", icon: <Newspaper className="w-6 h-6" /> },
 ] as const
 
 
