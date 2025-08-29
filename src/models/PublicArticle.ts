@@ -12,6 +12,10 @@ export interface IPublicArticle extends Document {
   author: string
   tags: string[]
   featured: boolean
+  sponsored: boolean
+  status: 'draft' | 'published' | 'archived'
+  metaTitle?: string
+  metaDescription?: string
   readTime: number
   publishedAt?: Date
   createdAt: Date
@@ -29,6 +33,10 @@ const PublicArticleSchema = new Schema<IPublicArticle>({
   author: { type: String, required: true },
   tags: [{ type: String, trim: true }],
   featured: { type: Boolean, default: false },
+  sponsored: { type: Boolean, default: false },
+  status: { type: String, enum: ['draft', 'published', 'archived'], default: 'draft' },
+  metaTitle: { type: String, trim: true, maxlength: 60 },
+  metaDescription: { type: String, trim: true, maxlength: 160 },
   readTime: { type: Number, default: 4, min: 1 },
   publishedAt: { type: Date },
 }, {
@@ -43,10 +51,26 @@ const PublicArticleSchema = new Schema<IPublicArticle>({
   }
 })
 
-PublicArticleSchema.index({ slug: 1 })
+// Index pour améliorer les performances (sans dupliquer l'index unique sur slug)
 PublicArticleSchema.index({ category: 1 })
+PublicArticleSchema.index({ status: 1 })
 PublicArticleSchema.index({ publishedAt: -1 })
 PublicArticleSchema.index({ title: 'text', content: 'text' })
+
+// Méthode statique pour générer un slug unique
+PublicArticleSchema.statics.generateUniqueSlug = async function(baseSlug: string): Promise<string> {
+  let slug = baseSlug
+  let counter = 1
+  
+  while (true) {
+    const existing = await this.findOne({ slug })
+    if (!existing) {
+      return slug
+    }
+    slug = `${baseSlug}-${counter}`
+    counter++
+  }
+}
 
 export const PublicArticle = mongoose.models.PublicArticle || mongoose.model<IPublicArticle>('PublicArticle', PublicArticleSchema)
 

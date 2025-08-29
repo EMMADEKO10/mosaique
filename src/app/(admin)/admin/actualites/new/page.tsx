@@ -3,7 +3,7 @@
 import { useState, useRef } from "react"
 // import { addArticle, Article } from "../../../../../data/actualites"
 import { useRouter } from "next/navigation"
-import { Calendar, Tag, Image as ImageIcon, Save, Upload, X } from "lucide-react"
+import { Calendar, Tag, Image as ImageIcon, Save, Upload, X, Globe, Eye, EyeOff } from "lucide-react"
 
 export default function NewActualitePage() {
   const router = useRouter()
@@ -19,6 +19,10 @@ export default function NewActualitePage() {
     readTime: 4,
     tags: "",
     featured: false,
+    sponsored: false,
+    status: "draft" as "draft" | "published" | "archived",
+    metaTitle: "",
+    metaDescription: "",
   })
   const [saving, setSaving] = useState(false)
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
@@ -30,6 +34,8 @@ export default function NewActualitePage() {
       setForm(prev => ({ ...prev, [name]: (e.target as HTMLInputElement).checked }))
     } else if (name === 'readTime') {
       setForm(prev => ({ ...prev, readTime: Number(value) || 0 }))
+    } else if (name === 'status') {
+      setForm(prev => ({ ...prev, status: value as "draft" | "published" | "archived" }))
     } else {
       setForm(prev => ({ ...prev, [name]: value }))
     }
@@ -99,6 +105,10 @@ export default function NewActualitePage() {
         readTime: Math.max(1, form.readTime),
         tags: form.tags.split(',').map(t => t.trim()).filter(Boolean),
         featured: !!form.featured,
+        sponsored: !!form.sponsored,
+        status: form.status,
+        metaTitle: form.metaTitle.trim(),
+        metaDescription: form.metaDescription.trim(),
       }
 
       const res = await fetch('/api/actualites', {
@@ -107,15 +117,24 @@ export default function NewActualitePage() {
         body: JSON.stringify(payload)
       })
 
+      const data = await res.json()
+
       if (!res.ok) {
-        const data = await res.json().catch(() => ({}))
-        throw new Error(data?.message || 'Erreur lors de la création')
+        if (res.status === 409) {
+          // Erreur de doublon de titre
+          throw new Error('Ce titre existe déjà. Veuillez modifier le titre de l\'article.')
+        } else {
+          throw new Error(data?.message || 'Erreur lors de la création de l\'article')
+        }
       }
 
+      // Succès
+      alert('Article créé avec succès !')
       router.push('/actualites')
     } catch (err) {
       console.error(err)
-      alert('Erreur: ' + (err as Error).message)
+      const errorMessage = err instanceof Error ? err.message : 'Une erreur inattendue s\'est produite'
+      alert('Erreur: ' + errorMessage)
     } finally {
       setSaving(false)
     }
@@ -123,38 +142,40 @@ export default function NewActualitePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-slate-50 to-slate-100">
-      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-6">
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-6">
         <h1 className="text-xl font-extrabold text-gray-900 mb-4">Nouvelle Actualité</h1>
-        <form onSubmit={handleSubmit} className="bg-white border border-gray-200 rounded-2xl shadow-soft p-4 sm:p-6 space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label className="block text-sm font-semibold text-gray-800 mb-1">Titre</label>
-              <input name="title" value={form.title} onChange={handleChange} required className="w-full rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/20" />
+        <form onSubmit={handleSubmit} className="bg-white border border-gray-200 rounded-2xl shadow-soft p-4 sm:p-6 space-y-6">
+          {/* Informations principales */}
+          <div className="space-y-4">
+            <h2 className="text-lg font-semibold text-gray-800 border-b border-gray-200 pb-2">Informations principales</h2>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label className="block text-sm font-semibold text-gray-800 mb-1">Titre</label>
+                <input name="title" value={form.title} onChange={handleChange} required className="w-full rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/20" />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-800 mb-1">Catégorie</label>
+                <select name="category" value={form.category} onChange={handleChange} className="w-full rounded-xl border border-gray-300 px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+                  {categories.map(c => <option key={c} value={c}>{c}</option>)}
+                </select>
+              </div>
             </div>
+
             <div>
-              <label className="block text-sm font-semibold text-gray-800 mb-1">Catégorie</label>
-              <select name="category" value={form.category} onChange={handleChange} className="w-full rounded-xl border border-gray-300 px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20">
-                {categories.map(c => <option key={c} value={c}>{c}</option>)}
-              </select>
+              <label className="block text-sm font-semibold text-gray-800 mb-1">Résumé</label>
+              <textarea name="excerpt" value={form.excerpt} onChange={handleChange} rows={2} className="w-full rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/20" />
             </div>
-          </div>
 
-          <div>
-            <label className="block text-sm font-semibold text-gray-800 mb-1">Résumé</label>
-            <textarea name="excerpt" value={form.excerpt} onChange={handleChange} rows={2} className="w-full rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/20" />
-          </div>
-
-          <div>
-            <label className="block text-sm font-semibold text-gray-800 mb-1">Contenu</label>
-            <textarea name="content" value={form.content} onChange={handleChange} rows={6} className="w-full rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/20" />
+            <div>
+              <label className="block text-sm font-semibold text-gray-800 mb-1">Contenu</label>
+              <textarea name="content" value={form.content} onChange={handleChange} rows={6} className="w-full rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/20" />
+            </div>
           </div>
 
           {/* Section Upload d'Image */}
           <div className="space-y-3">
-            <label className="text-sm font-semibold text-gray-800 flex items-center gap-1">
-              <ImageIcon className="w-4 h-4" /> 
-              Image de l&apos;article
-            </label>
+            <h2 className="text-lg font-semibold text-gray-800 border-b border-gray-200 pb-2">Image de l&apos;article</h2>
             
             {!imagePreview ? (
               <div className="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center hover:border-blue-400 transition-colors">
@@ -205,34 +226,91 @@ export default function NewActualitePage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label className="block text-sm font-semibold text-gray-800 mb-1">Auteur</label>
-              <input name="author" value={form.author} onChange={handleChange} className="w-full rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/20" />
+          {/* Métadonnées et options */}
+          <div className="space-y-4">
+            <h2 className="text-lg font-semibold text-gray-800 border-b border-gray-200 pb-2">Métadonnées et options</h2>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label className="block text-sm font-semibold text-gray-800 mb-1">Auteur</label>
+                <input name="author" value={form.author} onChange={handleChange} className="w-full rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/20" />
+              </div>
+              <div>
+                <label className="text-sm font-semibold text-gray-800 mb-1 flex items-center gap-1"><Calendar className="w-4 h-4" /> Date</label>
+                <input type="date" name="publishedAt" value={form.publishedAt} onChange={handleChange} className="w-full rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/20" />
+              </div>
             </div>
-            <div>
-              <label className="text-sm font-semibold text-gray-800 mb-1 flex items-center gap-1"><Calendar className="w-4 h-4" /> Date</label>
-              <input type="date" name="publishedAt" value={form.publishedAt} onChange={handleChange} className="w-full rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/20" />
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label className="block text-sm font-semibold text-gray-800 mb-1">Temps de lecture (min)</label>
+                <input type="number" min={1} name="readTime" value={form.readTime} onChange={handleChange} className="w-full rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/20" />
+              </div>
+              <div>
+                <label className="text-sm font-semibold text-gray-800 mb-1 flex items-center gap-1"><Tag className="w-4 h-4" /> Tags (séparés par virgules)</label>
+                <input name="tags" value={form.tags} onChange={handleChange} placeholder="musique, kinshasa" className="w-full rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/20" />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div>
+                <label className="text-sm font-semibold text-gray-800 mb-1 flex items-center gap-1">
+                  {form.status === 'published' ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />} 
+                  Statut
+                </label>
+                <select name="status" value={form.status} onChange={handleChange} className="w-full rounded-xl border border-gray-300 px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20">
+                  <option value="draft">Brouillon</option>
+                  <option value="published">Publié</option>
+                  <option value="archived">Archivé</option>
+                </select>
+              </div>
+              <div className="flex items-center gap-2 pt-6">
+                <input id="featured" type="checkbox" name="featured" checked={!!form.featured} onChange={handleChange} className="h-4 w-4" />
+                <label htmlFor="featured" className="text-sm font-medium text-gray-800">À la une</label>
+              </div>
+              <div className="flex items-center gap-2 pt-6">
+                <input id="sponsored" type="checkbox" name="sponsored" checked={!!form.sponsored} onChange={handleChange} className="h-4 w-4" />
+                <label htmlFor="sponsored" className="text-sm font-medium text-gray-800">Sponsorisé</label>
+              </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {/* SEO */}
+          <div className="space-y-4">
+            <h2 className="text-lg font-semibold text-gray-800 border-b border-gray-200 pb-2 flex items-center gap-2">
+              <Globe className="w-5 h-5" />
+              SEO
+            </h2>
+            
             <div>
-              <label className="block text-sm font-semibold text-gray-800 mb-1">Temps de lecture (min)</label>
-              <input type="number" min={1} name="readTime" value={form.readTime} onChange={handleChange} className="w-full rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/20" />
+              <label className="block text-sm font-semibold text-gray-800 mb-1">Titre SEO (meta title)</label>
+              <input 
+                name="metaTitle" 
+                value={form.metaTitle} 
+                onChange={handleChange} 
+                placeholder="Titre optimisé pour les moteurs de recherche"
+                maxLength={60}
+                className="w-full rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/20" 
+              />
+              <p className="text-xs text-gray-500 mt-1">{form.metaTitle.length}/60 caractères</p>
             </div>
+
             <div>
-              <label className="text-sm font-semibold text-gray-800 mb-1 flex items-center gap-1"><Tag className="w-4 h-4" /> Tags (séparés par virgules)</label>
-              <input name="tags" value={form.tags} onChange={handleChange} placeholder="musique, kinshasa" className="w-full rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/20" />
+              <label className="block text-sm font-semibold text-gray-800 mb-1">Description SEO (meta description)</label>
+              <textarea 
+                name="metaDescription" 
+                value={form.metaDescription} 
+                onChange={handleChange} 
+                rows={3}
+                placeholder="Description optimisée pour les moteurs de recherche"
+                maxLength={160}
+                className="w-full rounded-xl border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500/20" 
+              />
+              <p className="text-xs text-gray-500 mt-1">{form.metaDescription.length}/160 caractères</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <input id="featured" type="checkbox" name="featured" checked={!!form.featured} onChange={handleChange} className="h-4 w-4" />
-            <label htmlFor="featured" className="text-sm font-medium text-gray-800">Mettre à la une</label>
-          </div>
-
-          <div className="flex items-center justify-end gap-3">
+          <div className="flex items-center justify-end gap-3 pt-4 border-t border-gray-200">
             <button type="button" onClick={() => router.back()} className="px-4 py-2 rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-50">Annuler</button>
             <button disabled={saving} className="inline-flex items-center gap-2 px-5 py-2 rounded-xl bg-gradient-primary text-white font-semibold shadow-glow hover:shadow-glow-lg disabled:opacity-60">
               <Save className="w-4 h-4" />

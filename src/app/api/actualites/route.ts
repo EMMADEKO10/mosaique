@@ -25,6 +25,10 @@ export async function POST(req: NextRequest) {
       author,
       tags = [],
       featured = false,
+      sponsored = false,
+      status = 'draft',
+      metaTitle,
+      metaDescription,
       readTime = 4,
       publishedAt,
     } = data
@@ -33,7 +37,9 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: 'Champs requis manquants' }, { status: 400 })
     }
 
-    const slug = slugify(title)
+    // Générer un slug unique
+    const baseSlug = slugify(title)
+    const slug = await PublicArticle.generateUniqueSlug(baseSlug)
 
     let imageUrl: string | undefined
     let imagePublicId: string | undefined
@@ -62,13 +68,25 @@ export async function POST(req: NextRequest) {
       author: author || 'Rédaction',
       tags,
       featured: !!featured,
+      sponsored: !!sponsored,
+      status: status as 'draft' | 'published' | 'archived',
+      metaTitle: metaTitle?.trim(),
+      metaDescription: metaDescription?.trim(),
       readTime: Math.max(1, Number(readTime) || 1),
       publishedAt: publishedAt ? new Date(publishedAt) : undefined,
     })
 
     return NextResponse.json({ ok: true, article: doc.toJSON() }, { status: 201 })
-  } catch (error) {
+  } catch (error: any) {
     console.error('POST /api/actualites error', error)
+    
+    // Gestion spécifique des erreurs de doublon
+    if (error.code === 11000) {
+      return NextResponse.json({ 
+        message: 'Un article avec ce titre existe déjà. Veuillez modifier le titre.' 
+      }, { status: 409 })
+    }
+    
     return NextResponse.json({ message: 'Erreur serveur' }, { status: 500 })
   }
 }
