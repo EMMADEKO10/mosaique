@@ -32,6 +32,11 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isMobileActualitesOpen, setIsMobileActualitesOpen] = useState(false)
 
+  // Fermer le menu mobile quand on clique en dehors
+  const handleMobileMenuToggle = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
+
   // Catégories d'actualités avec données fictives
   const actualitesCategories = [
     { 
@@ -367,11 +372,11 @@ export default function Header() {
             </div>
           </div>
 
-          <div className="flex items-center space-x-2 sm:space-x-4">
+          <div className="flex items-center space-x-3 sm:space-x-4">
             {/* Menu Hamburger pour mobile */}
             <button 
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-slate-700 hover:text-blue-700 transition-colors"
+              onClick={handleMobileMenuToggle}
+              className="lg:hidden p-2 text-slate-700 hover:text-blue-700 transition-colors z-10 relative"
               aria-label="Menu"
             >
               {isMobileMenuOpen ? (
@@ -384,7 +389,7 @@ export default function Header() {
             {/* Bouton Dashboard - visible sur tous les devices */}
             <Link
               href="/admin"
-              className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white rounded-lg sm:rounded-xl shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-105 group"
+              className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white rounded-lg sm:rounded-xl shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-105 group relative z-10"
               title="Dashboard Admin"
             >
               <LayoutGrid className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -405,7 +410,7 @@ export default function Header() {
 
         {/* Menu Mobile */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden border-t border-slate-200 bg-white/95 backdrop-blur-md">
+          <div className="lg:hidden border-t border-slate-200 bg-white/95 backdrop-blur-md relative z-20">
             <div className="px-3 py-4 space-y-3">
               {/* Statut de connexion mobile */}
               <div className="px-3 py-2 border-b border-slate-200">
