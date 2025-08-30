@@ -369,14 +369,14 @@ export default function HomePage() {
 
             {/* Carrousel avec actualités défilantes */}
             <div className="relative flex items-center justify-center mt-8 lg:mt-0">
-              <div className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[400px] md:h-[400px] lg:w-[500px] lg:h-[500px] xl:w-[600px] xl:h-[600px]">
+              <div className="relative w-[320px] h-[320px] sm:w-[400px] sm:h-[400px] md:w-[450px] md:h-[450px] lg:w-[550px] lg:h-[550px] xl:w-[650px] xl:h-[650px]">
                 {/* Cercle de base */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-50 via-white to-purple-50 shadow-2xl border border-slate-200/30"></div>
                 
-                {/* Orbite guide visible */}
+                {/* Orbite guide visible - sans espaces */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="absolute border-2 border-dashed border-blue-300/30 rounded-full w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] md:w-[280px] md:h-[280px] lg:w-[360px] lg:h-[360px] xl:w-[380px] xl:h-[380px] animate-pulse"></div>
-                  <div className="absolute border border-blue-200/20 rounded-full w-[220px] h-[220px] sm:w-[270px] sm:h-[270px] md:w-[300px] md:h-[300px] lg:w-[380px] lg:h-[380px] xl:w-[400px] xl:h-[400px]"></div>
+                  <div className="absolute border-2 border-dashed border-blue-300/30 rounded-full w-[240px] h-[240px] sm:w-[300px] sm:h-[300px] md:w-[340px] md:h-[340px] lg:w-[420px] lg:h-[420px] xl:w-[480px] xl:h-[480px] animate-pulse"></div>
+                  <div className="absolute border border-blue-200/20 rounded-full w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] md:w-[360px] md:h-[360px] lg:w-[440px] lg:h-[440px] xl:w-[500px] xl:h-[500px]"></div>
                 </div>
                 
                 {/* État de chargement */}
@@ -390,7 +390,7 @@ export default function HomePage() {
                 {isClient && orbitingArticles.slice(0, 6).map((article, index) => (
                   <div
                     key={`orbiting-${article.id}-${index}`}
-                    className="absolute top-1/2 left-1/2 w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24 -translate-x-1/2 -translate-y-1/2"
+                    className="absolute top-1/2 left-1/2 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 -translate-x-1/2 -translate-y-1/2"
                     style={{
                       animation: `orbitContinuous 12s linear infinite`,
                       animationDelay: `${index * 2}s`, // Décalage de 2s entre chaque actualité (12s / 6 = 2s)
@@ -398,22 +398,25 @@ export default function HomePage() {
                   >
                     <div className="relative w-full h-full group cursor-pointer">
                       <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-110">
-            <Image
+                        <Image
                           src={article.image}
                           alt={article.title}
                           fill
                           className="object-cover rounded-xl sm:rounded-2xl opacity-80 group-hover:opacity-100 transition-opacity"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl sm:rounded-2xl"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-xl sm:rounded-2xl"></div>
                         
-                        {/* Contenu de l'actualité - Hidden on very small screens */}
-                        <div className="absolute bottom-0 left-0 right-0 p-1 sm:p-2 text-white hidden sm:block">
-                          <div className="text-xs font-semibold mb-0.5 sm:mb-1 bg-blue-600 px-1 sm:px-2 py-0.5 rounded-full w-fit opacity-90">
+                        {/* Contenu de l'actualité - Visible sur tous les écrans */}
+                        <div className="absolute bottom-0 left-0 right-0 p-1.5 sm:p-2 text-white">
+                          <div className="text-xs font-semibold mb-1 bg-blue-600 px-1.5 sm:px-2 py-0.5 rounded-full w-fit opacity-90">
                             {article.category}
                           </div>
-                          <h3 className="font-bold text-xs line-clamp-1 leading-tight">
+                          <h3 className="font-bold text-xs sm:text-sm line-clamp-2 leading-tight">
                             {article.title}
                           </h3>
+                          <p className="text-xs opacity-90 mt-1 hidden sm:block">
+                            {article.excerpt}
+                          </p>
                         </div>
                       </div>
                       
@@ -423,15 +426,15 @@ export default function HomePage() {
                         <span className="sm:hidden text-[8px]">📰</span>
                       </div>
                     </div>
-        </div>
+                  </div>
                 ))}
 
                                 {/* Article central (article actuel) */}
                 {isClient && (
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 xl:w-48 xl:h-48 relative group cursor-pointer">
+                    <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-44 lg:h-44 xl:w-52 xl:h-52 relative group cursor-pointer">
                       <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-white shadow-2xl border-2 sm:border-4 border-blue-500/20 overflow-hidden transform group-hover:scale-105 transition-all duration-500">
-          <Image
+                        <Image
                           key={`central-${currentArticleIndex}`} // Force re-render pour transition
                           src={featuredArticles[currentArticleIndex]?.image || ''}
                           alt={featuredArticles[currentArticleIndex]?.title || ''}
@@ -441,14 +444,17 @@ export default function HomePage() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
                         
                         {/* Contenu de l'article */}
-                        <div className="absolute bottom-0 left-0 right-0 p-1.5 sm:p-3 lg:p-4 text-white">
-                          <div className="text-xs font-semibold mb-0.5 sm:mb-1 bg-blue-600 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full w-fit animate-pulse">
+                        <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-3 lg:p-4 text-white">
+                          <div className="text-xs font-semibold mb-1 bg-blue-600 px-2 py-1 rounded-full w-fit animate-pulse">
                             {featuredArticles[currentArticleIndex]?.category}
                           </div>
-                          <h3 className="font-bold text-xs sm:text-sm line-clamp-2 leading-tight transition-all duration-500">
+                          <h3 className="font-bold text-sm sm:text-base line-clamp-2 leading-tight transition-all duration-500">
                             {featuredArticles[currentArticleIndex]?.title}
                           </h3>
-                          <p className="text-xs opacity-90 mt-0.5 sm:mt-1 transition-all duration-500 hidden sm:block">
+                          <p className="text-xs opacity-90 mt-1 transition-all duration-500">
+                            {featuredArticles[currentArticleIndex]?.excerpt}
+                          </p>
+                          <p className="text-xs opacity-90 mt-1 transition-all duration-500 hidden sm:block">
                             ⏱️ {featuredArticles[currentArticleIndex]?.readTime}min • 🔥 À la une
                           </p>
                         </div>
