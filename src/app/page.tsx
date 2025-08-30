@@ -244,8 +244,8 @@ export default function HomePage() {
           <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
             {/* Contenu principal */}
             <div className={`text-left transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              {/* Badge de nouveauté */}
-              <div className="inline-flex items-center space-x-1 sm:space-x-2 bg-gradient-creative text-white px-3 sm:px-6 lg:px-8 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 lg:mb-8 shadow-glow animate-fade-in-down">
+              {/* Badge de nouveauté - Hidden on mobile */}
+              <div className="hidden sm:inline-flex items-center space-x-1 sm:space-x-2 bg-gradient-creative text-white px-3 sm:px-6 lg:px-8 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 lg:mb-8 shadow-glow animate-fade-in-down">
                 <Crown className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
                 <span className="hidden sm:inline">La Première Plateforme Culturelle Congolaise</span>
                 <span className="sm:hidden">Plateforme Culturelle Congo</span>
@@ -254,8 +254,8 @@ export default function HomePage() {
               
                           {/* Titre principal avec carte RDC */}
             <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-start mb-4 sm:mb-6 lg:mb-8">
-              {/* Carte géographique RDC */}
-              <div className="relative mb-4 sm:mb-0 sm:mr-4 lg:mr-6">
+              {/* Carte géographique RDC - Hidden on mobile */}
+              <div className="hidden sm:relative mb-4 sm:mb-0 sm:mr-4 lg:mr-6">
                 <div className="w-20 h-24 sm:w-24 sm:h-30 lg:w-28 lg:h-36 xl:w-36 xl:h-44 relative bg-gradient-to-br from-green-50 to-blue-50 rounded-xl sm:rounded-2xl p-1.5 sm:p-2 shadow-lg border border-green-200/50">
                   {/* Vraie forme de la RDC selon l'image fournie */}
                   <svg viewBox="0 0 120 80" className="w-full h-full">
@@ -316,8 +316,8 @@ export default function HomePage() {
                   République Démocratique du Congo
                 </div>
                 
-                {/* Textes accrocheurs */}
-                <div className="space-y-1 mb-3 sm:mb-4">
+                {/* Textes accrocheurs - Hidden on mobile */}
+                <div className="hidden sm:space-y-1 mb-3 sm:mb-4">
                   <div className="text-xs sm:text-sm lg:text-base text-blue-600 font-medium italic text-center sm:text-left">
                     &ldquo;Là où chaque talent congolais brille comme une étoile&rdquo;
                   </div>
@@ -329,8 +329,8 @@ export default function HomePage() {
                   </div>
                 </div>
                 
-                {/* Badge spécial */}
-                <div className="inline-flex items-center space-x-1 sm:space-x-2 bg-gradient-to-r from-green-100 to-yellow-100 border border-green-300 rounded-full px-2 sm:px-3 py-1 text-xs font-bold text-green-800">
+                {/* Badge spécial - Hidden on mobile */}
+                <div className="hidden sm:inline-flex items-center space-x-1 sm:space-x-2 bg-gradient-to-r from-green-100 to-yellow-100 border border-green-300 rounded-full px-2 sm:px-3 py-1 text-xs font-bold text-green-800">
                   <span>🏆</span>
                   <span className="hidden sm:inline">Première plateforme culturelle du Congo</span>
                   <span className="sm:hidden">Plateforme culturelle Congo</span>
@@ -339,8 +339,8 @@ export default function HomePage() {
               </div>
             </div>
               
-              {/* Sous-titre */}
-              <p className="text-sm sm:text-base lg:text-lg xl:text-xl text-neutral-600 max-w-2xl mb-6 sm:mb-8 lg:mb-12 leading-relaxed text-center sm:text-left">
+              {/* Sous-titre - Hidden on mobile */}
+              <p className="hidden sm:block text-sm sm:text-base lg:text-lg xl:text-xl text-neutral-600 max-w-2xl mb-6 sm:mb-8 lg:mb-12 leading-relaxed text-center sm:text-left">
                 <span className="text-lg sm:text-xl lg:text-2xl">🎨 Explorez • 🎵 Célébrez • 🏆 Votez</span>
                 <br />
                 pour les talents artistiques exceptionnels du Congo
@@ -478,24 +478,6 @@ export default function HomePage() {
                   </div>
                 )}
               </div>
-
-              {/* Texte "Actualités en Mouvement Circulaire" - Hidden on mobile */}
-              {/* <div className="absolute -bottom-16 sm:-bottom-20 left-1/2 transform -translate-x-1/2 text-center hidden sm:block">
-                <p className="text-lg sm:text-xl font-bold text-slate-700 mb-2 animate-pulse">🔄 Mouvement Circulaire des Actualités</p>
-                <p className="text-xs sm:text-sm text-slate-500 mb-2">
-                  📰 6 actualités tournent physiquement en cercle • ⭐ Article central qui change
-                </p>
-                <p className="text-xs text-slate-400">
-                  Rotation visible • Mouvement circulaire continu • Chaque actualité fait le tour complet
-                </p>
-                {isClient && (
-                  <div className="mt-2 flex flex-col sm:flex-row justify-center items-center space-y-1 sm:space-y-0 sm:space-x-4 text-xs font-medium">
-                    <div className="text-blue-600">🔄 Tour complet: 12 secondes</div>
-                    <div className="text-green-600">📰 Centre: Change toutes les 3s</div>
-                    <div className="text-purple-600">👁️ Suivez les actualités du regard</div>
-                  </div>
-                )}
-              </div> */}
             </div>
           </div>
         </div>
