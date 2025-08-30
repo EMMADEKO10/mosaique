@@ -129,48 +129,6 @@ export default function HomePage() {
     'lifestyle': 'from-teal-600 to-cyan-600'
   }
 
-  // const stats = [
-  //   { icon: Users, value: '2,500+', label: 'Artistes Inscrits', color: 'bg-primary-600' },
-  //   { icon: Calendar, value: '150+', label: 'Événements', color: 'bg-accent-green' },
-  //   { icon: Trophy, value: '50+', label: 'Trophées Distribués', color: 'bg-accent-yellow' },
-  //   { icon: Star, value: '25k+', label: 'Votes Enregistrés', color: 'bg-accent-purple' },
-  // ]
-
-  // const categories = [
-  //   {
-  //     title: 'Musique',
-  //     description: 'Des rythmes traditionnels aux beats modernes, découvrez les talents musicaux congolais',
-  //     icon: Music,
-  //     image: '🎵',
-  //     gradient: 'from-accent-purple to-primary-600',
-  //     stats: '500+ artistes'
-  //   },
-  //   {
-  //     title: 'Arts Visuels', 
-  //     description: 'Peinture, sculpture, art digital - explorez la créativité visuelle sans limites',
-  //     icon: Palette,
-  //     image: '🎨',
-  //     gradient: 'from-accent-green to-primary-600',
-  //     stats: '300+ œuvres'
-  //   },
-  //   {
-  //     title: 'Cinéma & Vidéo',
-  //     description: 'Courts-métrages, documentaires, clips - le cinéma congolais à l&apos;honneur',
-  //     icon: Camera,
-  //     image: '🎬',
-  //     gradient: 'from-accent-orange to-primary-600',
-  //     stats: '100+ films'
-  //   },
-  //   {
-  //     title: 'Littérature',
-  //     description: 'Romans, poésie, nouvelles - plongez dans l&apos;univers littéraire local',
-  //     icon: BookOpen,
-  //     image: '📚',
-  //     gradient: 'from-accent-red to-primary-600',
-  //     stats: '200+ auteurs'
-  //   },
-  // ]
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/20 to-slate-100">
       {/* Header Component */}
@@ -344,18 +302,18 @@ export default function HomePage() {
                              
                {/* Boutons d'action */}
                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 items-center sm:items-start relative z-50">
-                 <button className="group bg-gradient-primary text-white px-5 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base lg:text-lg hover:shadow-glow-lg transition-all duration-300 transform hover:scale-105 flex items-center space-x-2 sm:space-x-3 w-full sm:w-auto justify-center">
+                 <Link href = "/artistes"><button className="group bg-gradient-primary text-white px-5 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base lg:text-lg hover:shadow-glow-lg transition-all duration-300 transform hover:scale-105 flex items-center space-x-2 sm:space-x-3 w-full sm:w-auto justify-center">
                    <Play className="w-4 h-4 sm:w-5 sm:h-5 lg:w-5 lg:h-5" />
                    <span>Découvrir Maintenant</span>
                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-5 lg:h-5 group-hover:translate-x-1 transition-transform" />
-                 </button>
+                 </button></Link>
                  
-                 <button className="group bg-white/90 backdrop-blur-sm text-neutral-900 px-5 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base lg:text-lg border-2 border-neutral-200 hover:border-primary-300 hover:shadow-strong transition-all duration-300 flex items-center space-x-2 sm:space-x-3 w-full sm:w-auto justify-center">
+                 <Link href = "/actualites"><button className="group bg-white/90 backdrop-blur-sm text-neutral-900 px-5 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base lg:text-lg border-2 border-neutral-200 hover:border-primary-300 hover:shadow-strong transition-all duration-300 flex items-center space-x-2 sm:space-x-3 w-full sm:w-auto justify-center">
                    <Trophy className="w-4 h-4 sm:w-5 sm:h-5 lg:w-5 lg:h-5 text-accent-yellow" />
-                   <span className="hidden sm:inline">Voir les Trophées</span>
-                   <span className="sm:hidden ">Trophées</span>
+                   <span className="hidden sm:inline">Voir les actualités</span>
+                   <span className="sm:hidden ">actualités</span>
                    <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-5 lg:h-5 group-hover:translate-x-1 transition-transform" />
-                 </button>
+                 </button></Link>
                </div>
              </div>
 
