@@ -349,17 +349,17 @@ export default function HomePage() {
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-5 lg:h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
                 
-                <button className="group bg-white/90 backdrop-blur-sm text-neutral-900 px-5 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base lg:text-lg border-2 border-neutral-200 hover:border-primary-300 hover:shadow-strong transition-all duration-300 flex items-center space-x-2 sm:space-x-3 w-full sm:w-auto justify-center">
+                <button className="group bg-white/90 backdrop-blur-sm text-neutral-900 px-5 sm:px-6 lg:px-8 py-2.5 sm:py-3 sm:mb-4 lg:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base lg:text-lg border-2 border-neutral-200 hover:border-primary-300 hover:shadow-strong transition-all duration-300 flex items-center space-x-2 sm:space-x-3 w-full sm:w-auto justify-center">
                   <Trophy className="w-4 h-4 sm:w-5 sm:h-5 lg:w-5 lg:h-5 text-accent-yellow" />
                   <span className="hidden sm:inline">Voir les Trophées</span>
-                  <span className="sm:hidden mb-3">Trophées</span>
+                  <span className="sm:hidden ">Trophées</span>
                   <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-5 lg:h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
 
             {/* Carrousel avec actualités défilantes */}
-            <div className="relative flex items-center justify-center mt-8 lg:mt-0 z-10">
+            <div className="relative flex items-center justify-center mt-20 sm:mt-24 lg:mt-0 z-10">
               <div className="relative w-[320px] h-[320px] sm:w-[400px] sm:h-[400px] md:w-[450px] md:h-[450px] lg:w-[450px] lg:h-[450px] xl:w-[500px] xl:h-[500px]">
                 {/* Cercle de base */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-50 via-white to-purple-50 shadow-2xl border border-slate-200/30"></div>
