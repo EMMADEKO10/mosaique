@@ -240,8 +240,8 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 py-8 sm:py-12 lg:py-24 xl:py-32 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 py-6 sm:py-8 lg:py-16 xl:py-20 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center">
             {/* Contenu principal */}
             <div className={`text-left transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               {/* Badge de nouveauté - Hidden on mobile */}
@@ -359,7 +359,7 @@ export default function HomePage() {
             </div>
 
             {/* Carrousel avec actualités défilantes */}
-            <div className="relative flex items-center justify-center mt-8 lg:mt-0">
+            <div className="relative flex items-center justify-center mt-6 lg:mt-0">
               <div className="relative w-[320px] h-[320px] sm:w-[400px] sm:h-[400px] md:w-[450px] md:h-[450px] lg:w-[450px] lg:h-[450px] xl:w-[500px] xl:h-[500px]">
                 {/* Cercle de base */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-50 via-white to-purple-50 shadow-2xl border border-slate-200/30"></div>
