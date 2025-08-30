@@ -348,6 +348,13 @@ export default function HomePage() {
                   <span>Découvrir Maintenant</span>
                   <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-5 lg:h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
+                
+                <button className="group bg-white/90 backdrop-blur-sm text-neutral-900 px-5 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base lg:text-lg border-2 border-neutral-200 hover:border-primary-300 hover:shadow-strong transition-all duration-300 flex items-center space-x-2 sm:space-x-3 w-full sm:w-auto justify-center">
+                  <Trophy className="w-4 h-4 sm:w-5 sm:h-5 lg:w-5 lg:h-5 text-accent-yellow" />
+                  <span className="hidden sm:inline">Voir les Trophées</span>
+                  <span className="sm:hidden">Trophées</span>
+                  <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-5 lg:h-5 group-hover:translate-x-1 transition-transform" />
+                </button>
               </div>
             </div>
 
