@@ -330,7 +330,7 @@ export default function HomePage() {
                 </div>
                 
                 {/* Badge spécial - Hidden on mobile */}
-                <div className="hidden sm:inline-flex items-center space-x-1 sm:space-x-2 bg-gradient-to-r from-green-100 to-yellow-100 border border-green-300 rounded-full px-2 sm:px-3 py-1 text-xs font-bold text-green-800">
+                <div className=" sm:inline-flex items-center space-x-1 sm:space-x-2 bg-gradient-to-r from-green-100 to-yellow-100 border border-green-300 rounded-full px-2 sm:px-3 py-1 text-xs font-bold text-green-800">
                   <span>🏆</span>
                   <span className="hidden sm:inline">Première plateforme culturelle du Congo</span>
                   <span className="sm:hidden">Plateforme culturelle Congo</span>
