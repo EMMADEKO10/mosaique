@@ -360,7 +360,7 @@ export default function HomePage() {
              </div>
 
              {/* Carrousel avec actualités défilantes */}
-             <div className="relative flex items-center justify-center lg:mt-0 z-10">
+             <div className="relative flex items-center justify-center mt-16 sm:mt-20 lg:mt-0 z-10">
               <div className="relative w-[320px] h-[320px] sm:w-[400px] sm:h-[400px] md:w-[450px] md:h-[450px] lg:w-[450px] lg:h-[450px] xl:w-[500px] xl:h-[500px]">
                 {/* Cercle de base */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-50 via-white to-purple-50 shadow-2xl border border-slate-200/30"></div>
