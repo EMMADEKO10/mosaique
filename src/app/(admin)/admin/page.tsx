@@ -1,6 +1,6 @@
 "use client"
 
-import { Calendar, GraduationCap, Briefcase, Heart, Users, Plus, LayoutGrid, BookOpen, Landmark, MessageSquare, Newspaper, Music } from "lucide-react"
+import { Calendar, GraduationCap, Briefcase, Heart, Users, Plus, LayoutGrid, BookOpen, Landmark, MessageSquare, Newspaper, Music, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
 export default function AdminDashboardPage() {
@@ -9,6 +9,9 @@ export default function AdminDashboardPage() {
       {/* Header */}
       <header className="sticky top-0 z-20 bg-white/80 backdrop-blur border-b border-gray-200">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4 flex items-center gap-3">
+          <Link href="/" className="sm:hidden flex items-center justify-center w-10 h-10 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors">
+            <ArrowLeft className="w-5 h-5" />
+          </Link>
           <div className="h-10 w-10 rounded-xl bg-gradient-primary text-white flex items-center justify-center shadow-soft">
             <LayoutGrid className="w-5 h-5" />
           </div>
@@ -16,9 +19,10 @@ export default function AdminDashboardPage() {
             <h1 className="text-lg sm:text-xl font-extrabold tracking-tight text-gray-900">Admin • Dashboard</h1>
             <p className="text-xs text-gray-500">Gérez le contenu et les activités de la plateforme</p>
           </div>
-          <Link href="/" className="hidden sm:inline-flex items-center gap-2 px-3 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors">
+          <Link href="/" className="inline-flex items-center gap-2 px-3 py-2 text-sm font-semibold rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 transition-colors">
             <Users className="w-4 h-4" />
-            Aller au site
+            <span className="hidden sm:inline">Aller au site</span>
+            <span className="sm:hidden">Site</span>
           </Link>
         </div>
       </header>
@@ -90,6 +94,16 @@ export default function AdminDashboardPage() {
           </div>
         </section>
       </main>
+
+      {/* Bouton flottant pour retour au site (mobile uniquement) */}
+      <div className="fixed bottom-6 right-6 sm:hidden z-50">
+        <Link
+          href="/"
+          className="flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
+        >
+          <Users className="w-6 h-6" />
+        </Link>
+      </div>
     </div>
   )
 }
