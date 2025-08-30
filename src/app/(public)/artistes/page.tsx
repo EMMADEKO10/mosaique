@@ -133,52 +133,53 @@ export default function ArtistesPage() {
      
 
       {/* Barre de recherche et filtres */}
-      <section className="relative mt-2 z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-8">
-        <div className="bg-white/90 backdrop-blur-xl border border-gray-200/50 rounded-3xl shadow-strong p-6">
+      <section className="relative mt-2 z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-6 sm:mb-8">
+        <div className="bg-white/90 backdrop-blur-xl border border-gray-200/50 rounded-2xl sm:rounded-3xl shadow-strong p-4 sm:p-6">
           {/* Recherche principale */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-6">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-4 sm:mb-6">
             <div className="flex-1 relative group">
-              <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-                <span className="text-gray-400 text-lg">🔍</span>
+              <div className="absolute inset-y-0 left-3 sm:left-4 flex items-center pointer-events-none">
+                <span className="text-gray-400 text-base sm:text-lg">🔍</span>
               </div>
               <input
                 type="text"
-                placeholder="Rechercher un artiste, une ville, un style musical..."
+                placeholder="Rechercher un artiste..."
                 value={query}
                 onChange={e => setQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-4 bg-gray-50/50 border border-gray-200 rounded-2xl text-base placeholder-gray-500 outline-none transition-all duration-300 focus:bg-white focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10 group-hover:border-gray-300"
+                className="w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 bg-gray-50/50 border border-gray-200 rounded-xl sm:rounded-2xl text-sm sm:text-base placeholder-gray-500 outline-none transition-all duration-300 focus:bg-white focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10 group-hover:border-gray-300"
               />
               {query && (
                 <button
                   onClick={() => setQuery("")}
-                  className="absolute inset-y-0 right-4 flex items-center text-gray-400 hover:text-gray-600 transition-colors"
+                  className="absolute inset-y-0 right-3 sm:right-4 flex items-center text-gray-400 hover:text-gray-600 transition-colors"
                 >
-                  <span className="text-lg">✕</span>
+                  <span className="text-base sm:text-lg">✕</span>
                 </button>
               )}
             </div>
             
-            <div className="flex gap-3">
+            <div className="flex gap-2 sm:gap-3">
               <button
                 onClick={() => setViewMode(viewMode === "grid" ? "list" : "grid")}
-                className="px-4 py-4 bg-gray-100 hover:bg-gray-200 border border-gray-200 rounded-2xl transition-all duration-300 hover:scale-105"
+                className="px-3 sm:px-4 py-3 sm:py-4 bg-gray-100 hover:bg-gray-200 border border-gray-200 rounded-xl sm:rounded-2xl transition-all duration-300 hover:scale-105"
                 title={`Basculer vers la vue ${viewMode === "grid" ? "liste" : "grille"}`}
               >
-                <span className="text-lg">{viewMode === "grid" ? "📋" : "⬜"}</span>
+                <span className="text-base sm:text-lg">{viewMode === "grid" ? "📋" : "⬜"}</span>
               </button>
               
               <button
                 onClick={() => setIsFilterOpen(!isFilterOpen)}
-                className={`px-6 py-4 rounded-2xl font-semibold transition-all duration-300 hover:scale-105 ${
+                className={`px-4 sm:px-6 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-semibold transition-all duration-300 hover:scale-105 text-sm sm:text-base ${
                   hasActiveFilters 
                     ? "bg-gradient-primary text-white shadow-glow" 
                     : "bg-gray-100 hover:bg-gray-200 border border-gray-200 text-gray-700"
                 }`}
               >
-                <span className="flex items-center gap-2">
+                <span className="flex items-center gap-1 sm:gap-2">
                   <span>🎛️</span>
-                  Filtres
-                  {hasActiveFilters && <span className="bg-white/30 text-xs px-2 py-1 rounded-full">●</span>}
+                  <span className="hidden sm:inline">Filtres</span>
+                  <span className="sm:hidden">Filtres</span>
+                  {hasActiveFilters && <span className="bg-white/30 text-xs px-1 sm:px-2 py-0.5 sm:py-1 rounded-full">●</span>}
                 </span>
               </button>
             </div>
@@ -186,38 +187,38 @@ export default function ArtistesPage() {
 
           {/* Panneau de filtres */}
           <div className={`transition-all duration-500 overflow-hidden ${
-            isFilterOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+            isFilterOpen ? "max-h-[500px] sm:max-h-96 opacity-100" : "max-h-0 opacity-0"
           }`}>
-            <div className="border-t border-gray-200/50 pt-6 space-y-6">
-              {/* Genre sélection avec icônes */}
+            <div className="border-t border-gray-200/50 pt-4 sm:pt-6 space-y-4 sm:space-y-6">
+              {/* Genre sélection avec icônes - Compact sur mobile */}
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-3">Genre musical</label>
-                <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2">
+                <label className="block text-sm font-semibold text-gray-700 mb-2 sm:mb-3">Genre musical</label>
+                <div className="grid grid-cols-4 sm:grid-cols-4 lg:grid-cols-8 gap-1 sm:gap-2">
                   {genreOptions.map(option => (
                     <button
                       key={option.value}
                       onClick={() => setGenre(option.value as Genre)}
-                      className={`flex flex-col items-center gap-1 p-3 rounded-xl transition-all duration-300 hover:scale-105 ${
+                      className={`flex flex-col items-center gap-1 p-2 sm:p-3 rounded-lg sm:rounded-xl transition-all duration-300 hover:scale-105 ${
                         genre === option.value
                           ? "bg-gradient-primary text-white shadow-glow"
                           : "bg-gray-50 hover:bg-gray-100 border border-gray-200"
                       }`}
                      >
-                      <span className="text-lg">{option.icon}</span>
-                      <span className="text-xs font-medium">{option.label}</span>
+                      <span className="text-sm sm:text-lg">{option.icon}</span>
+                      <span className="text-xs font-medium leading-tight">{option.label}</span>
                     </button>
                   ))}
                 </div>
               </div>
 
-              {/* Options de tri et filtres */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {/* Options de tri et filtres - Compact sur mobile */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Trier par</label>
                   <select
                     value={sortKey}
                     onChange={e => setSortKey(e.target.value as SortKey)}
-                    className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl outline-none transition-all duration-300 focus:bg-white focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-50 border border-gray-200 rounded-lg sm:rounded-xl outline-none transition-all duration-300 focus:bg-white focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10 text-sm"
                   >
                     <option value="rank">🏆 Classement</option>
                     <option value="name">📝 Nom (A→Z)</option>
@@ -232,11 +233,12 @@ export default function ArtistesPage() {
                   {hasActiveFilters && (
                     <button
                       onClick={resetFilters}
-                      className="px-6 py-3 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-xl font-semibold transition-all duration-300 hover:scale-105"
+                      className="px-4 sm:px-6 py-2 sm:py-3 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 rounded-lg sm:rounded-xl font-semibold transition-all duration-300 hover:scale-105 text-sm"
                     >
                       <span className="flex items-center gap-2">
                         <span>🔄</span>
-                        Réinitialiser
+                        <span className="hidden sm:inline">Réinitialiser</span>
+                        <span className="sm:hidden">Reset</span>
                       </span>
                     </button>
                   )}
@@ -291,8 +293,8 @@ export default function ArtistesPage() {
         ) : (
           <div className={`transition-all duration-500 ${
             viewMode === "grid"
-              ? "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6"
-              : "space-y-4"
+              ? "grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-3 sm:gap-6"
+              : "space-y-3 sm:space-y-4"
           }`}>
             {artists.map((artist, index) => (
               <div
