@@ -1,0 +1,10 @@
+[33m9e4b408[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfront[m[33m)[m Remove secrets from documentation files
+[33m82d08b5[m Ajout de la configuration d'authentification NextAuth avec Google, mise à jour des dépendances, et ajout de la gestion des utilisateurs avec MongoDB. Intégration de l'API YouTube pour récupérer les statistiques des chaînes et mise en place de nouveaux composants d'authentification.
+[33m29dbf97[m Ajout de fonctionnalités de tri et de filtrage des articles sur la page d'accueil, avec une nouvelle mise en page pour les catégories et les articles. Intégration d'un mélange aléatoire et d'une gestion des statistiques globales.
+[33mab6d1e7[m[33m ([m[1;31morigin/front[m[33m)[m `Added Music icon to admin dashboard and updated Artist model schema`
+[33m2ce0162[m[33m ([m[1;31morigin/dev[m[33m, [m[1;32mdev[m[33m)[m `feat: add sponsored field and meta data to actualites API and UI`
+[33md0071a1[m `feat: added cloudinary and multer dependencies, updated next.config.ts, and modified admin page and actualites data`
+[33mb8368f3[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m Refactor la logique de filtrage et de recherche dans le composant ActualitesPage pour améliorer la performance et la lisibilité du code
+[33m1c2e138[m `Refactor search bar and filters in ActualitesPage component`
+[33m057399e[m `Update image URLs in artists data to use 'photoartiste' instead of 'photo artiste'`
+[33m392b14d[m `Added 15 new artist entries to artistsDetails object and updated getAllArtists function to return the new entries.`

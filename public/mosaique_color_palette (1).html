@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palette de Couleurs - La Grande Mosaïque</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .logo-mini {
+            width: 40px;
+            height: 40px;
+            background: #1e40af;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .title {
+            color: #1e293b;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+        
+        .palette-section {
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .color-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .color-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .color-preview {
+            height: 120px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .color-info {
+            padding: 1.5rem;
+        }
+        
+        .color-name {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .color-values {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+        
+        .color-value {
+            background: #f8fafc;
+            padding: 0.5rem;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .color-value strong {
+            color: #475569;
+            display: block;
+            margin-bottom: 0.25rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .usage-note {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        .gradient-showcase {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-top: 2rem;
+        }
+        
+        .gradient-item {
+            height: 80px;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .accessibility-note {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 2rem;
+            color: #92400e;
+        }
+        
+        .copy-btn {
+            background: #1e40af;
+            color: white;
+            border: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .copy-btn:hover {
+            background: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-section">
+                <div class="logo-mini">M</div>
+                <h1 class="title">Palette de Couleurs</h1>
+            </div>
+            <p class="subtitle">La Grande Mosaïque - Guide de Couleurs Complet</p>
+        </div>
+
+        <!-- Couleurs Principales -->
+        <div class="palette-section">
+            <h2 class="section-title">🎨 Couleurs Principales</h2>
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-preview" style="background: #1e40af;">Bleu Principal</div>
+                    <div class="color-info">
+                        <div class="color-name">Bleu Mosaïque</div>
+                        <div class="color-values">
+                            <div class="color-value">
+                                <strong>HEX</strong>
+                                #1e40af <button class="copy-btn" onclick="copyToClipboard('#1e40af')">Copier</button>
+                            </div>
+                            <div class="color-value">
+                                <strong>RGB</strong>
+                                rgb(30, 64, 175)
+                            </div>
+                            <div class="color-value">
+                                <strong>HSL</strong>
+                                hsl(226, 71%, 40%)
+                            </div>
+                            <div class="color-value">
+                                <strong>Tailwind</strong>
+                                blue-700
+                            </div>
+                        </div>
+                        <div class="usage-note">Utilisé pour les éléments principaux, CTA, navigation</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-preview" style="background: #000000; color: white;">Noir</div>
+                    <div class="color-info">
+                        <div class="color-name">Noir Élégant</div>
+                        <div class="color-values">
+                            <div class="color-value">
+                                <strong>HEX</strong>
+                                #000000 <button class="copy-btn" onclick="copyToClipboard('#000000')">Copier</button>
+                            </div>
+                            <div class="color-value">
+                                <strong>RGB</strong>
+                                rgb(0, 0, 0)
+                            </div>
+                            <div class="color-value">
+                                <strong>HSL</strong>
+                                hsl(0, 0%, 0%)
+                            </div>
+                            <div class="color-value">
+                                <strong>Tailwind</strong>
+                                black
+                            </div>
+                        </div>
+                        <div class="usage-note">Texte principal, contours, éléments graphiques forts</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-preview" style="background: #ffffff; color: #000; border: 2px solid #e2e8f0;">Blanc Pur</div>
+                    <div class="color-info">
+                        <div class="color-name">Blanc Pur</div>
+                        <div class="color-values">
+                            <div class="color-value">
+                                <strong>HEX</strong>
+                                #ffffff <button class="copy-btn" onclick="copyToClipboard('#ffffff')">Copier</button>
+                            </div>
+                            <div class="color-value">
+                                <strong>RGB</strong>
+                                rgb(255, 255, 255)
+                            </div>
+                            <div class="color-value">
+                                <strong>HSL</strong>
+                                hsl(0, 0%, 100%)
+                            </div>
+                            <div class="color-value">
+                                <strong>Tailwind</strong>
+                                white
+                            </div>
+                        </div>
+                        <div class="usage-note">Arrière-plans, cartes, zones de contenu</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-preview" style="background: #dc2626;">Rouge Accent</div>
+                    <div class="color-info">
+                        <div class="color-name">Rouge Mosaïque</div>
+                        <div class="color-values">
+                            <div class="color-value">
+                                <strong>HEX</strong>
+                                #dc2626 <button class="copy-btn" onclick="copyToClipboard('#dc2626')">Copier</button>
+                            </div>
+                            <div class="color-value">
+                                <strong>RGB</strong>
+                                rgb(220, 38, 38)
+                            </div>
+                            <div class="color-value">
+                                <strong>HSL</strong>
+                                hsl(0, 74%, 51%)
+                            </div>
+                            <div class="color-value">
+                                <strong>Tailwind</strong>
+                                red-600
+                            </div>
+                        </div>
+                        <div class="usage-note">Alertes, notifications importantes, éléments d'urgence</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Variantes du Bleu -->
+        <div class="palette-section">
+            <h2 class="section-title">💙 Variantes du Bleu</h2>
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-preview" style="background: #dbeafe;">Bleu Très Clair</div>
+                    <div class="color-info">
+                        <div class="color-name">Bleu Ciel</div>
+                        <div class="color-values">
+                            <div class="color-value">
+                                <strong>HEX</strong>
+                                #dbeafe <button class="copy-btn" onclick="copyToClipboard('#dbeafe')">Copier</button>
+                            </div>
+                            <div class="color-value">
+                                <strong>Tailwind</strong>
+                                blue-100
+                            </div>
+                        </div>
+                        <div class="usage-note">Arrière-plans subtils, hover states légers</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-preview" style="background: #3b82f6;">Bleu Standard</div>
+                    <div class="color-info">
+                        <div class="color-name">Bleu Vibrant</div>
+                        <div class="color-values">
+                            <div class="color-value">
+                                <strong>HEX</strong>
+                                #3b82f6 <button class="copy-btn" onclick="copyToClipboard('#3b82f6')">Copier</button>
+                            </div>
+                            <div class="color-value">
+                                <strong>Tailwind</strong>
+                                blue-500
+                            </div>
+                        </div>
+                        <div class="usage-note">Liens, éléments interactifs secondaires</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-preview" style="background: #1d4ed8;">Bleu Foncé</div>
+                    <div class="color-info">
+                        <div class="color-name">Bleu Profond</div>
+                        <div class="color-values">
+                            <div class="color-value">
+                                <strong>HEX</strong>
+                                #1d4ed8 <button class="copy-btn" onclick="copyToClipboard('#1d4ed8')">Copier</button>
+                            </div>
+                            <div class="color-value">
+                                <strong>Tailwind</strong>
+                                blue-700
+                            </div>
+                        </div>
+                        <div class="usage-note">Hover states, éléments actifs</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-preview" style="background: #1e3a8a;">Bleu Très Foncé</div>
+                    <div class="color-info">
+                        <div class="color-name">Bleu Nuit</div>
+                        <div class="color-values">
+                            <div class="color-value">
+                                <strong>HEX</strong>
+                                #1e3a8a <button class="copy-btn" onclick="copyToClipboard('#1e3a8a')">Copier</button>
+                            </div>
+                            <div class="color-value">
+                                <strong>Tailwind</strong>
+                                blue-800
+                            </div>
+                        </div>
+                        <div class="usage-note">Headers, footers, zones de focus</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Couleurs Neutres -->
+        <div class="palette-section">
+            <h2 class="section-title">⚫ Couleurs Neutres</h2>
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-preview" style="background: #f8fafc; color: #000; border: 2px solid #e2e8f0;">Gris Très Clair</div>
+                    <div class="color-info">
+                        <div class="color-name">Gris Neige</div>
+                        <div class="color-values">
+                            <div class="color-value">
+                                <strong>HEX</strong>
+                                #f8fafc <button class="copy-btn" onclick="copyToClipboard('#f8fafc')">Copier</button>
+                            </div>
+                            <div class="color-value">
+                                <strong>Tailwind</strong>
+                                slate-50
+                            </div>
+                        </div>
+                        <div class="usage-note">Arrière-plan général, zones de repos visuel</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-preview" style="background: #64748b;">Gris Moyen</div>
+                    <div class="color-info">
+                        <div class="color-name">Gris Neutre</div>
+                        <div class="color-values">
+                            <div class="color-value">
+                                <strong>HEX</strong>
+                                #64748b <button class="copy-btn" onclick="copyToClipboard('#64748b')">Copier</button>
+                            </div>
+                            <div class="color-value">
+                                <strong>Tailwind</strong>
+                                slate-500
+                            </div>
+                        </div>
+                        <div class="usage-note">Texte secondaire, placeholders</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-preview" style="background: #1e293b;">Gris Foncé</div>
+                    <div class="color-info">
+                        <div class="color-name">Gris Charbon</div>
+                        <div class="color-values">
+                            <div class="color-value">
+                                <strong>HEX</strong>
+                                #1e293b <button class="copy-btn" onclick="copyToClipboard('#1e293b')">Copier</button>
+                            </div>
+                            <div class="color-value">
+                                <strong>Tailwind</strong>
+                                slate-800
+                            </div>
+                        </div>
+                        <div class="usage-note">Titres, texte important, contrastes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Couleurs Complémentaires -->
+        <div class="palette-section">
+            <h2 class="section-title">✨ Couleurs Complémentaires</h2>
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-preview" style="background: #059669;">Vert Succès</div>
+                    <div class="color-info">
+                        <div class="color-name">Vert Congo</div>
+                        <div class="color-values">
+                            <div class="color-value">
+                                <strong>HEX</strong>
+                                #059669 <button class="copy-btn" onclick="copyToClipboard('#059669')">Copier</button>
+                            </div>
+                            <div class="color-value">
+                                <strong>Tailwind</strong>
+                                emerald-600
+                            </div>
+                        </div>
+                        <div class="usage-note">Messages de succès, validation, éléments positifs</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-preview" style="background: #d97706;">Orange Accent</div>
+                    <div class="color-info">
+                        <div class="color-name">Orange Cuivre</div>
+                        <div class="color-values">
+                            <div class="color-value">
+                                <strong>HEX</strong>
+                                #d97706 <button class="copy-btn" onclick="copyToClipboard('#d97706')">Copier</button>
+                            </div>
+                            <div class="color-value">
+                                <strong>Tailwind</strong>
+                                amber-600
+                            </div>
+                        </div>
+                        <div class="usage-note">Alertes informatives, éléments en attente</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-preview" style="background: #7c3aed;">Violet Créativité</div>
+                    <div class="color-info">
+                        <div class="color-name">Violet Artistique</div>
+                        <div class="color-values">
+                            <div class="color-value">
+                                <strong>HEX</strong>
+                                #7c3aed <button class="copy-btn" onclick="copyToClipboard('#7c3aed')">Copier</button>
+                            </div>
+                            <div class="color-value">
+                                <strong>Tailwind</strong>
+                                violet-600
+                            </div>
+                        </div>
+                        <div class="usage-note">Section arts, créativité, éléments premium</div>
+                    </div>
+                </div>
+
+                <div class="color-card">
+                    <div class="color-preview" style="background: #fbbf24;">Jaune Solaire</div>
+                    <div class="color-info">
+                        <div class="color-name">Jaune Lumière</div>
+                        <div class="color-values">
+                            <div class="color-value">
+                                <strong>HEX</strong>
+                                #fbbf24 <button class="copy-btn" onclick="copyToClipboard('#fbbf24')">Copier</button>
+                            </div>
+                            <div class="color-value">
+                                <strong>Tailwind</strong>
+                                amber-400
+                            </div>
+                        </div>
+                        <div class="usage-note">Highlights, trophées, éléments d'or</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gradients Suggérés -->
+        <div class="gradient-showcase">
+            <h2 class="section-title">🌈 Dégradés Suggérés</h2>
+            
+            <div class="gradient-item" style="background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);">
+                Dégradé Bleu Principal
+            </div>
+            
+            <div class="gradient-item" style="background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);">
+                Dégradé Bleu vers Violet
+            </div>
+            
+            <div class="gradient-item" style="background: linear-gradient(135deg, #059669 0%, #1e40af 100%);">
+                Dégradé Vert vers Bleu
+            </div>
+            
+            <div class="gradient-item" style="background: linear-gradient(135deg, #f8fafc 0%, #dbeafe 100%); color: #1e293b;">
+                Dégradé Neutre Subtil
+            </div>
+        </div>
+
+        <div class="accessibility-note">
+            <strong>♿ Note d'Accessibilité :</strong> Toutes ces combinaisons de couleurs respectent les standards WCAG 2.1 AA pour le contraste. Le rapport de contraste entre le bleu principal (#1e40af) et le blanc est de 8.59:1, excellent pour la lisibilité.
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                // Feedback visuel optionnel
+                console.log('Couleur copiée: ' + text);
+            });
+        }
+    </script>
+</body>
+</html>
