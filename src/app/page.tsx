@@ -245,11 +245,11 @@ export default function HomePage() {
             {/* Contenu principal */}
             <div className={`text-left transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               {/* Badge de nouveauté - Hidden on mobile */}
-              <div className="hidden sm:inline-flex items-center space-x-1 sm:space-x-2 bg-gradient-creative text-white px-3 sm:px-6 lg:px-8 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-semibold mb-4 sm:mb-6 lg:mb-8 shadow-glow animate-fade-in-down">
-                <Crown className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
+              <div className="hidden sm:inline-flex items-center space-x-1 sm:space-x-2 bg-gradient-creative text-white px-2 sm:px-4 lg:px-6 py-1.5 sm:py-2 rounded-full text-xs font-semibold mb-3 sm:mb-4 lg:mb-6 shadow-glow animate-fade-in-down">
+                <Crown className="w-3 h-3 sm:w-4 sm:h-4 lg:w-4 lg:h-4" />
                 <span className="hidden sm:inline">La Première Plateforme Culturelle Congolaise</span>
                 <span className="sm:hidden">Plateforme Culturelle Congo</span>
-                <Zap className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5" />
+                <Zap className="w-3 h-3 sm:w-4 sm:h-4 lg:w-4 lg:h-4" />
               </div>
               
                           {/* Titre principal avec carte RDC */}
@@ -308,23 +308,23 @@ export default function HomePage() {
 
               {/* Titre */}
               <div className="text-center sm:text-left">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-bold text-neutral-900 leading-none mb-2 sm:mb-3">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl xl:text-5xl font-bold text-neutral-900 leading-none mb-2 sm:mb-3">
                   <span className="block text-blue-700">La Grande</span>
                   <span className="block text-neutral-900">Mosaïque</span>
                 </h1>
-                <div className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-neutral-600 font-semibold mb-2 sm:mb-3">
+                <div className="text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl text-neutral-600 font-semibold mb-2 sm:mb-3">
                   République Démocratique du Congo
                 </div>
                 
                 {/* Textes accrocheurs - Hidden on mobile */}
-                <div className="hidden sm:space-y-1 mb-3 sm:mb-4">
-                  <div className="text-xs sm:text-sm lg:text-base text-blue-600 font-medium italic text-center sm:text-left">
+                <div className="hidden sm:space-y-1 mb-2 sm:mb-3">
+                  <div className="text-xs sm:text-sm text-blue-600 font-medium italic text-center sm:text-left">
                     &ldquo;Là où chaque talent congolais brille comme une étoile&rdquo;
                   </div>
-                  <div className="text-xs lg:text-sm text-emerald-600 font-semibold text-center sm:text-left">
+                  <div className="text-xs text-emerald-600 font-semibold text-center sm:text-left">
                     🌟 Plus de 80 millions de talents à découvrir
                   </div>
-                  <div className="text-xs lg:text-sm text-purple-600 font-semibold text-center sm:text-left">
+                  <div className="text-xs text-purple-600 font-semibold text-center sm:text-left">
                     🎭 De Kinshasa à Lubumbashi, une richesse culturelle infinie
                   </div>
                 </div>
@@ -343,17 +343,17 @@ export default function HomePage() {
               
               {/* Boutons d'action */}
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 items-center sm:items-start">
-                <button className="group bg-gradient-primary text-white px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base lg:text-lg xl:text-xl hover:shadow-glow-lg transition-all duration-300 transform hover:scale-105 flex items-center space-x-2 sm:space-x-3 w-full sm:w-auto justify-center">
-                  <Play className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" />
+                <button className="group bg-gradient-primary text-white px-5 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base lg:text-lg hover:shadow-glow-lg transition-all duration-300 transform hover:scale-105 flex items-center space-x-2 sm:space-x-3 w-full sm:w-auto justify-center">
+                  <Play className="w-4 h-4 sm:w-5 sm:h-5 lg:w-5 lg:h-5" />
                   <span>Découvrir Maintenant</span>
-                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-5 lg:h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
                 
-                <button className="group bg-white/90 backdrop-blur-sm text-neutral-900 px-6 sm:px-8 lg:px-10 py-3 sm:py-4 lg:py-5 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base lg:text-lg xl:text-xl border-2 border-neutral-200 hover:border-primary-300 hover:shadow-strong transition-all duration-300 flex items-center space-x-2 sm:space-x-3 w-full sm:w-auto justify-center">
-                  <Trophy className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-accent-yellow" />
+                <button className="group bg-white/90 backdrop-blur-sm text-neutral-900 px-5 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base lg:text-lg border-2 border-neutral-200 hover:border-primary-300 hover:shadow-strong transition-all duration-300 flex items-center space-x-2 sm:space-x-3 w-full sm:w-auto justify-center">
+                  <Trophy className="w-4 h-4 sm:w-5 sm:h-5 lg:w-5 lg:h-5 text-accent-yellow" />
                   <span className="hidden sm:inline">Voir les Trophées</span>
                   <span className="sm:hidden">Trophées</span>
-                  <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 group-hover:translate-x-1 transition-transform" />
+                  <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 lg:w-5 lg:h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
