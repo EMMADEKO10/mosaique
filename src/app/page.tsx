@@ -395,17 +395,17 @@ export default function HomePage() {
                           fill
                           className="object-cover rounded-xl sm:rounded-2xl opacity-80 group-hover:opacity-100 transition-opacity"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-xl sm:rounded-2xl"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent rounded-xl sm:rounded-2xl"></div>
                         
-                        {/* Contenu de l'actualité - Visible sur tous les écrans */}
-                        <div className="absolute bottom-0 left-0 right-0 p-1.5 sm:p-2 text-white">
-                          <div className="text-xs font-semibold mb-1 bg-blue-600 px-1.5 sm:px-2 py-0.5 rounded-full w-fit opacity-90">
+                        {/* Contenu de l'actualité - Optimisé pour tous les écrans */}
+                        <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-3 text-white">
+                          <div className="text-xs font-semibold mb-1.5 bg-blue-600 px-2 py-1 rounded-full w-fit opacity-90">
                             {article.category}
                           </div>
-                          <h3 className="font-bold text-xs sm:text-sm line-clamp-2 leading-tight">
+                          <h3 className="font-bold text-sm sm:text-base lg:text-lg line-clamp-2 leading-tight mb-1">
                             {article.title}
                           </h3>
-                          <p className="text-xs opacity-90 mt-1 hidden sm:block">
+                          <p className="text-xs sm:text-sm opacity-90 line-clamp-2 leading-relaxed">
                             {article.excerpt}
                           </p>
                         </div>
@@ -432,20 +432,20 @@ export default function HomePage() {
                           fill
                           className="object-cover transition-opacity duration-700 ease-in-out"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-transparent"></div>
                         
                         {/* Contenu de l'article */}
-                        <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-3 lg:p-4 text-white">
-                          <div className="text-xs font-semibold mb-1 bg-blue-600 px-2 py-1 rounded-full w-fit animate-pulse">
+                        <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 lg:p-5 text-white">
+                          <div className="text-sm font-semibold mb-2 bg-blue-600 px-3 py-1.5 rounded-full w-fit animate-pulse">
                             {featuredArticles[currentArticleIndex]?.category}
                           </div>
-                          <h3 className="font-bold text-sm sm:text-base line-clamp-2 leading-tight transition-all duration-500">
+                          <h3 className="font-bold text-base sm:text-lg lg:text-xl line-clamp-2 leading-tight transition-all duration-500 mb-2">
                             {featuredArticles[currentArticleIndex]?.title}
                           </h3>
-                          <p className="text-xs opacity-90 mt-1 transition-all duration-500">
+                          <p className="text-sm sm:text-base opacity-90 line-clamp-3 leading-relaxed transition-all duration-500 mb-2">
                             {featuredArticles[currentArticleIndex]?.excerpt}
                           </p>
-                          <p className="text-xs opacity-90 mt-1 transition-all duration-500 hidden sm:block">
+                          <p className="text-xs sm:text-sm opacity-90 transition-all duration-500">
                             ⏱️ {featuredArticles[currentArticleIndex]?.readTime}min • 🔥 À la une
                           </p>
                         </div>
