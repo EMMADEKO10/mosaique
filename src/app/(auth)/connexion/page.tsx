@@ -43,19 +43,13 @@ export default function ConnexionPage() {
     setError('')
 
     try {
-      const result = await signIn('google', {
+      await signIn('google', {
         callbackUrl: '/admin',
-        redirect: false,
+        redirect: true,
       })
-
-      if (result?.error) {
-        setError('Erreur lors de la connexion avec Google')
-      } else if (result?.url) {
-        router.push(result.url)
-      }
-    } catch {
-      setError('Une erreur est survenue')
-    } finally {
+    } catch (error) {
+      console.error('Erreur Google OAuth:', error)
+      setError('Erreur lors de la connexion avec Google')
       setLoading(false)
     }
   }
