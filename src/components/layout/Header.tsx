@@ -149,7 +149,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8">
         <div className="flex items-center justify-between h-14 sm:h-16 lg:h-18">
           <div className="flex items-center space-x-2 sm:space-x-4">
-            <div className="relative group">
+            <Link href="/" className="relative group">
               <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-gradient-primary rounded-xl sm:rounded-2xl flex items-center justify-center shadow-glow group-hover:shadow-glow-lg transition-all duration-300 transform group-hover:scale-105 p-1.5 sm:p-2">
                 {/* Mini mosaïque 3x3 */}
                 <div className="grid grid-cols-3 gap-0.5 w-full h-full">
@@ -165,11 +165,11 @@ export default function Header() {
                 </div>
               </div>
               <div className="absolute -inset-1 bg-gradient-primary rounded-xl sm:rounded-2xl opacity-20 group-hover:opacity-30 transition-opacity blur"></div>
-            </div>
+            </Link>
             <div className="hidden sm:block">
               <Link href="/">
-              <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-slate-900">La Grande</h1>
-              <span className="text-blue-700 font-bold text-xs sm:text-sm tracking-wider">MOSAÏQUE</span>
+                <h1 className="text-lg sm:text-xl lg:text-2xl font-bold text-slate-900">La Grande</h1>
+                <span className="text-blue-700 font-bold text-xs sm:text-sm tracking-wider">MOSAÏQUE</span>
               </Link> 
             </div>
             {/* Statut de connexion - visible uniquement sur desktop */}
