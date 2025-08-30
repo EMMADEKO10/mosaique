@@ -5,7 +5,7 @@ import ArtistCard from "@/components/cards/ArtistCard"
 import { getAllArtists } from "@/data/artists"
 import Header from "@/components/layout/Header"
 
-type SortKey = "name" | "rank"
+type SortKey = "name"
 type Genre = "tous" | "rumba" | "gospel" | "rap" | "afrobeat" | "rnb" | "soukous" | "urbain"
 type ViewMode = "grid" | "list"
 
@@ -13,7 +13,7 @@ export default function ArtistesPage() {
   // const router = useRouter()
   const [mounted, setMounted] = useState(false)
   const [query, setQuery] = useState("")
-  const [sortKey, setSortKey] = useState<SortKey>("rank")
+  const [sortKey, setSortKey] = useState<SortKey>("name")
   
   const [genre, setGenre] = useState<Genre>("tous")
   const [viewMode, setViewMode] = useState<ViewMode>("grid")
@@ -26,11 +26,10 @@ export default function ArtistesPage() {
   const artists = useMemo(() => {
     const normalized = query.trim().toLowerCase()
 
-    let list = getAllArtists().map((a, index) => ({ 
+    let list = getAllArtists().map((a) => ({ 
     ...a, 
     category: a.specialty || 'Musique',
     description: a.biography,
-    rank: index + 1,
     trending: Boolean(a.stats?.followers && a.stats.followers > 1000000),
     featured: Boolean(a.stats?.awards && a.stats.awards > 5)
   }))
@@ -73,14 +72,7 @@ export default function ArtistesPage() {
     }
 
     list.sort((a, b) => {
-      switch (sortKey) {
-        case "name":
-          return a.name.localeCompare(b.name)
-        
-        case "rank":
-        default:
-          return (a.rank ?? Number.MAX_SAFE_INTEGER) - (b.rank ?? Number.MAX_SAFE_INTEGER)
-      }
+      return a.name.localeCompare(b.name)
     })
 
     return list
@@ -112,11 +104,11 @@ export default function ArtistesPage() {
 
   const resetFilters = () => {
     setQuery("")
-    setSortKey("rank")
+    setSortKey("name")
     setGenre("tous")
   }
 
-  const hasActiveFilters = query || sortKey !== "rank" || genre !== "tous"
+  const hasActiveFilters = query || genre !== "tous"
 
   return (
     <>
@@ -212,7 +204,7 @@ export default function ArtistesPage() {
               </div>
 
               {/* Options de tri et filtres - Compact sur mobile */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Trier par</label>
                   <select
@@ -220,13 +212,8 @@ export default function ArtistesPage() {
                     onChange={e => setSortKey(e.target.value as SortKey)}
                     className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-gray-50 border border-gray-200 rounded-lg sm:rounded-xl outline-none transition-all duration-300 focus:bg-white focus:border-blue-400 focus:ring-4 focus:ring-blue-500/10 text-sm"
                   >
-                    <option value="rank">🏆 Classement</option>
                     <option value="name">📝 Nom (A→Z)</option>
                   </select>
-                </div>
-
-                <div>
-                  
                 </div>
 
                 <div className="flex flex-col justify-end">
@@ -254,17 +241,12 @@ export default function ArtistesPage() {
         {/* En-tête des résultats */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-4">
-            <h2 className="text-2xl font-bold text-gray-900">
-              {artists.length} {artists.length === 1 ? 'Artiste' : 'Artistes'}
-              {hasActiveFilters && <span className="text-blue-600"> trouvé{artists.length > 1 ? 's' : ''}</span>}
-            </h2>
             {hasActiveFilters && (
               <div className="flex items-center gap-2 text-sm text-gray-600">
                 <span>Filtres actifs:</span>
                 <div className="flex gap-1">
                   {query && <span className="px-2 py-1 bg-blue-100 text-blue-700 rounded-lg">🔍 &quot;{query}&quot;</span>}
                   {genre !== "tous" && <span className="px-2 py-1 bg-purple-100 text-purple-700 rounded-lg">🎵 {genreOptions.find(g => g.value === genre)?.label}</span>}
-                  
                 </div>
               </div>
             )}
@@ -310,7 +292,6 @@ export default function ArtistesPage() {
                   description={artist.description}
                   location={artist.location}
                   specialty={artist.specialty}
-                  rank={artist.rank}
                   trending={artist.trending}
                   featured={artist.featured}
                   compact={viewMode === "grid"}

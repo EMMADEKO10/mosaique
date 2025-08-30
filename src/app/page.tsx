@@ -480,7 +480,7 @@ export default function HomePage() {
               </div>
 
               {/* Texte "Actualités en Mouvement Circulaire" - Hidden on mobile */}
-              <div className="absolute -bottom-16 sm:-bottom-20 left-1/2 transform -translate-x-1/2 text-center hidden sm:block">
+              {/* <div className="absolute -bottom-16 sm:-bottom-20 left-1/2 transform -translate-x-1/2 text-center hidden sm:block">
                 <p className="text-lg sm:text-xl font-bold text-slate-700 mb-2 animate-pulse">🔄 Mouvement Circulaire des Actualités</p>
                 <p className="text-xs sm:text-sm text-slate-500 mb-2">
                   📰 6 actualités tournent physiquement en cercle • ⭐ Article central qui change
@@ -495,7 +495,7 @@ export default function HomePage() {
                     <div className="text-purple-600">👁️ Suivez les actualités du regard</div>
                   </div>
                 )}
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
