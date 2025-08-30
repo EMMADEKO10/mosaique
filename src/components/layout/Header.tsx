@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { 
   ChevronDown,
   ArrowRight,
@@ -31,11 +31,34 @@ export default function Header() {
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isMobileActualitesOpen, setIsMobileActualitesOpen] = useState(false)
+  
+  const mobileMenuRef = useRef<HTMLDivElement>(null)
+  const hamburgerRef = useRef<HTMLButtonElement>(null)
 
   // Fermer le menu mobile quand on clique en dehors
   const handleMobileMenuToggle = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
   }
+
+  // Fermer le menu quand on clique en dehors
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isMobileMenuOpen &&
+        mobileMenuRef.current &&
+        hamburgerRef.current &&
+        !mobileMenuRef.current.contains(event.target as Node) &&
+        !hamburgerRef.current.contains(event.target as Node)
+      ) {
+        setIsMobileMenuOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isMobileMenuOpen])
 
   // Catégories d'actualités avec données fictives
   const actualitesCategories = [
@@ -375,6 +398,7 @@ export default function Header() {
           <div className="flex items-center space-x-3 sm:space-x-4">
             {/* Menu Hamburger pour mobile */}
             <button 
+              ref={hamburgerRef}
               onClick={handleMobileMenuToggle}
               className="lg:hidden p-2 text-slate-700 hover:text-blue-700 transition-colors z-10 relative"
               aria-label="Menu"
@@ -410,7 +434,7 @@ export default function Header() {
 
         {/* Menu Mobile */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden border-t border-slate-200 bg-white/95 backdrop-blur-md relative z-20">
+          <div ref={mobileMenuRef} className="lg:hidden border-t border-slate-200 bg-white/95 backdrop-blur-md relative z-20">
             <div className="px-3 py-4 space-y-3">
               {/* Statut de connexion mobile */}
               <div className="px-3 py-2 border-b border-slate-200">
@@ -418,10 +442,18 @@ export default function Header() {
               </div>
               {/* Navigation principale */}
               <div className="space-y-2">
-                <Link href="/artistes" className="block px-3 py-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors font-medium">
+                <Link 
+                  href="/artistes" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block px-3 py-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors font-medium"
+                >
                   🎨 Artistes
                 </Link>
-                <Link href="/votes" className="block px-3 py-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors font-medium">
+                <Link 
+                  href="/votes" 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block px-3 py-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors font-medium"
+                >
                   🗳️ Votez Vos Artistes
                 </Link>
                 
@@ -442,6 +474,7 @@ export default function Header() {
                         <Link
                           key={category.name}
                           href={category.href}
+                          onClick={() => setIsMobileMenuOpen(false)}
                           className="flex items-center space-x-2 px-3 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                         >
                           <category.icon className="w-4 h-4" />
@@ -453,6 +486,7 @@ export default function Header() {
                       ))}
                       <Link
                         href="/actualites"
+                        onClick={() => setIsMobileMenuOpen(false)}
                         className="flex items-center space-x-2 px-3 py-2 text-sm text-blue-600 font-semibold hover:bg-blue-50 rounded-lg transition-colors"
                       >
                         <TrendingUp className="w-4 h-4" />
@@ -476,6 +510,7 @@ export default function Header() {
                 {/* Accès Dashboard mobile */}
                 <Link
                   href="/admin"
+                  onClick={() => setIsMobileMenuOpen(false)}
                   className="flex items-center space-x-3 px-3 py-3 bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200 text-purple-700 hover:text-purple-800 hover:bg-gradient-to-r hover:from-purple-100 hover:to-indigo-100 rounded-lg transition-all duration-200 font-medium"
                 >
                   <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center">
