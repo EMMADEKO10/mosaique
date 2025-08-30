@@ -342,7 +342,7 @@ export default function HomePage() {
 
               
               {/* Boutons d'action */}
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 items-center sm:items-start relative z-20">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 items-center sm:items-start relative z-50">
                 <button className="group bg-gradient-primary text-white px-5 sm:px-6 lg:px-8 py-2.5 sm:py-3 lg:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base lg:text-lg hover:shadow-glow-lg transition-all duration-300 transform hover:scale-105 flex items-center space-x-2 sm:space-x-3 w-full sm:w-auto justify-center">
                   <Play className="w-4 h-4 sm:w-5 sm:h-5 lg:w-5 lg:h-5" />
                   <span>Découvrir Maintenant</span>
@@ -374,7 +374,7 @@ export default function HomePage() {
                 {isClient && orbitingArticles.slice(0, 6).map((article, index) => (
                   <div
                     key={`orbiting-${article.id}-${index}`}
-                    className="absolute top-1/2 left-1/2 w-16 h-16 sm:w-20 sm:h-20 lg:w-20 lg:h-20 xl:w-24 xl:h-24 -translate-x-1/2 -translate-y-1/2"
+                    className="absolute top-1/2 left-1/2 w-16 h-16 sm:w-20 sm:h-20 lg:w-20 lg:h-20 xl:w-24 xl:h-24 -translate-x-1/2 -translate-y-1/2 z-5"
                     style={{
                       animation: `orbitContinuous 12s linear infinite`,
                       animationDelay: `${index * 2}s`, // Décalage de 2s entre chaque actualité (12s / 6 = 2s)
@@ -416,7 +416,7 @@ export default function HomePage() {
                                 {/* Article central (article actuel) */}
                 {isClient && (
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-36 lg:h-36 xl:w-40 xl:h-40 relative group cursor-pointer">
+                    <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-36 lg:h-36 xl:w-40 xl:h-40 relative group cursor-pointer z-5">
                       <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-white shadow-2xl border-2 sm:border-4 border-blue-500/20 overflow-hidden transform group-hover:scale-105 transition-all duration-500">
                         <Image
                           key={`central-${currentArticleIndex}`} // Force re-render pour transition
