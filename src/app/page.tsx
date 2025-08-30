@@ -240,8 +240,8 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 py-8 sm:py-8 lg:py-16 xl:py-20 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-8 sm:gap-8 lg:gap-12 items-center">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 py-8 sm:py-12 lg:py-16 xl:py-20 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-12 items-center">
             {/* Contenu principal */}
             <div className={`text-left transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               {/* Badge de nouveauté - Hidden on mobile */}
@@ -520,7 +520,6 @@ export default function HomePage() {
             <p className="text-xs sm:text-sm text-neutral-600 mb-4">
               {allSortedArticles.length} articles {selectedCategory === 'all' ? '' : `- ${availableCategories.find(cat => cat.key === selectedCategory)?.name}`}
             </p>
-            
             {/* Contrôles compacts */}
             <div className="bg-white rounded-lg sm:rounded-xl p-2 sm:p-3 shadow-sm border border-slate-200 max-w-6xl mx-auto">
               {/* Filtrage par catégorie - compact */}
