@@ -16,7 +16,8 @@ import {
   Coffee,
   Menu,
   X,
-  ChevronRight
+  ChevronRight,
+  LayoutGrid
 } from 'lucide-react'
 import { getArticlesByCategory } from '../../data/actualites'
 import Image from 'next/image'
@@ -380,6 +381,16 @@ export default function Header() {
               )}
             </button>
 
+            {/* Bouton Dashboard - visible sur tous les devices */}
+            <Link
+              href="/admin"
+              className="flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white rounded-lg sm:rounded-xl shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-105 group"
+              title="Dashboard Admin"
+            >
+              <LayoutGrid className="w-4 h-4 sm:w-5 sm:h-5" />
+              <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-lg sm:rounded-xl opacity-20 group-hover:opacity-30 transition-opacity blur"></div>
+            </Link>
+
             {/* Boutons desktop */}
             <div className="hidden sm:flex items-center space-x-2 lg:space-x-4">
               <AuthNav />
@@ -404,12 +415,6 @@ export default function Header() {
               <div className="space-y-2">
                 <Link href="/artistes" className="block px-3 py-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors font-medium">
                   🎨 Artistes
-                </Link>
-                <Link href="/culture" className="block px-3 py-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors font-medium">
-                  🏛️ Culture
-                </Link>
-                <Link href="/sports" className="block px-3 py-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors font-medium">
-                  ⚽ Sports
                 </Link>
                 <Link href="/votes" className="block px-3 py-2 text-slate-700 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors font-medium">
                   🗳️ Votez Vos Artistes
@@ -462,6 +467,21 @@ export default function Header() {
                 <div className="px-3 py-2">
                   <AuthNav />
                 </div>
+                
+                {/* Accès Dashboard mobile */}
+                <Link
+                  href="/admin"
+                  className="flex items-center space-x-3 px-3 py-3 bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200 text-purple-700 hover:text-purple-800 hover:bg-gradient-to-r hover:from-purple-100 hover:to-indigo-100 rounded-lg transition-all duration-200 font-medium"
+                >
+                  <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center">
+                    <LayoutGrid className="w-4 h-4 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-semibold">Dashboard Admin</div>
+                    <div className="text-xs text-purple-600">Gérer le contenu</div>
+                  </div>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
               
               {/* Trending tags */}
