@@ -1,9 +1,7 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
-import { mongodbAdapter } from "@/lib/mongodb-adapter"
 
 const handler = (NextAuth as any)({
-  adapter: mongodbAdapter,
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
