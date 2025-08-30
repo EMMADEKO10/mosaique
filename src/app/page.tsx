@@ -339,16 +339,7 @@ export default function HomePage() {
               </div>
             </div>
               
-              {/* Sous-titre - Hidden on mobile */}
-              <p className="hidden sm:block text-sm sm:text-base lg:text-lg xl:text-xl text-neutral-600 max-w-2xl mb-6 sm:mb-8 lg:mb-12 leading-relaxed text-center sm:text-left">
-                <span className="text-lg sm:text-xl lg:text-2xl">🎨 Explorez • 🎵 Célébrez • 🏆 Votez</span>
-                <br />
-                pour les talents artistiques exceptionnels du Congo
-                <br />
-                <span className="text-sm sm:text-base lg:text-lg text-neutral-500 mt-2 block">
-                  Une plateforme qui unit tradition et modernité dans un écrin numérique unique
-                </span>
-              </p>
+
               
               {/* Boutons d'action */}
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 items-center sm:items-start">
