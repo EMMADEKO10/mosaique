@@ -369,14 +369,14 @@ export default function HomePage() {
 
             {/* Carrousel avec actualités défilantes */}
             <div className="relative flex items-center justify-center mt-8 lg:mt-0">
-              <div className="relative w-[320px] h-[320px] sm:w-[400px] sm:h-[400px] md:w-[450px] md:h-[450px] lg:w-[550px] lg:h-[550px] xl:w-[650px] xl:h-[650px]">
+              <div className="relative w-[320px] h-[320px] sm:w-[400px] sm:h-[400px] md:w-[450px] md:h-[450px] lg:w-[450px] lg:h-[450px] xl:w-[500px] xl:h-[500px]">
                 {/* Cercle de base */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-50 via-white to-purple-50 shadow-2xl border border-slate-200/30"></div>
                 
                 {/* Orbite guide visible - sans espaces */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="absolute border-2 border-dashed border-blue-300/30 rounded-full w-[240px] h-[240px] sm:w-[300px] sm:h-[300px] md:w-[340px] md:h-[340px] lg:w-[420px] lg:h-[420px] xl:w-[480px] xl:h-[480px] animate-pulse"></div>
-                  <div className="absolute border border-blue-200/20 rounded-full w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] md:w-[360px] md:h-[360px] lg:w-[440px] lg:h-[440px] xl:w-[500px] xl:h-[500px]"></div>
+                  <div className="absolute border-2 border-dashed border-blue-300/30 rounded-full w-[240px] h-[240px] sm:w-[300px] sm:h-[300px] md:w-[340px] md:h-[340px] lg:w-[320px] lg:h-[320px] xl:w-[360px] xl:h-[360px] animate-pulse"></div>
+                  <div className="absolute border border-blue-200/20 rounded-full w-[260px] h-[260px] sm:w-[320px] sm:h-[320px] md:w-[360px] md:h-[360px] lg:w-[340px] lg:h-[340px] xl:w-[380px] xl:h-[380px]"></div>
                 </div>
                 
                 {/* État de chargement */}
@@ -390,7 +390,7 @@ export default function HomePage() {
                 {isClient && orbitingArticles.slice(0, 6).map((article, index) => (
                   <div
                     key={`orbiting-${article.id}-${index}`}
-                    className="absolute top-1/2 left-1/2 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 -translate-x-1/2 -translate-y-1/2"
+                    className="absolute top-1/2 left-1/2 w-16 h-16 sm:w-20 sm:h-20 lg:w-20 lg:h-20 xl:w-24 xl:h-24 -translate-x-1/2 -translate-y-1/2"
                     style={{
                       animation: `orbitContinuous 12s linear infinite`,
                       animationDelay: `${index * 2}s`, // Décalage de 2s entre chaque actualité (12s / 6 = 2s)
@@ -432,7 +432,7 @@ export default function HomePage() {
                                 {/* Article central (article actuel) */}
                 {isClient && (
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-44 lg:h-44 xl:w-52 xl:h-52 relative group cursor-pointer">
+                    <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-36 lg:h-36 xl:w-40 xl:h-40 relative group cursor-pointer">
                       <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-white shadow-2xl border-2 sm:border-4 border-blue-500/20 overflow-hidden transform group-hover:scale-105 transition-all duration-500">
                         <Image
                           key={`central-${currentArticleIndex}`} // Force re-render pour transition
